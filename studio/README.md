@@ -1,4 +1,4 @@
-# pridemi26 Sanity Studio
+# mishpe26 Sanity Studio
 
 TypeScript [Sanity Studio](https://www.sanity.io/docs/sanity-studio) for the [Detroit Pride Innovation Summit](https://pridemi26.vercel.app/) site. It lives in `/studio` beside the Vite/React app and is **not** bundled into the public website.
 
@@ -6,7 +6,7 @@ Organizers and developers manage event content here. The public site reads speak
 
 |                   |                                                                                    |
 | ----------------- | ---------------------------------------------------------------------------------- |
-| **Project**       | `pridemi26`                                                                        |
+| **Project**       | `mishpe26`                                                                        |
 | **Project ID**    | `b18a6pbd`                                                                         |
 | **Local Studio**  | `http://localhost:3333` (`npm run studio:dev` from repo root)                      |
 | **Hosted Studio** | [pridemi26.sanity.studio](https://pridemi26.sanity.studio/)                        |
@@ -35,8 +35,8 @@ Open the URL shown in the terminal (usually `http://localhost:3333`).
 
 The Studio title shows the active dataset:
 
-- `pridemi26` — production (default)
-- `pridemi26 (<name>)` — if you override `SANITY_STUDIO_DATASET`
+- `mishpe26` — production (default)
+- `mishpe26 (<name>)` — if you override `SANITY_STUDIO_DATASET`
 
 ---
 

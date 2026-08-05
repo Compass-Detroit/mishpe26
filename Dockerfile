@@ -1,6 +1,6 @@
 # IWD Innovation Summit 2026
-# Build: docker build -t pridemi26 .
-# Run:   docker run -p 3000:3000 pridemi26
+# Build: docker build -t mishpe26 .
+# Run:   docker run -p 3000:3000 mishpe26
 FROM node:alpine
 
 WORKDIR /app

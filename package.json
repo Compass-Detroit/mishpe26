@@ -1,11 +1,11 @@
 {
-  "name": "pridemi26",
+  "name": "mishpe26",
   "private": true,
   "version": "0.1.0",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Compass-Detroit/pridemi26.git"
+    "url": "https://github.com/Compass-Detroit/mishpe26.git"
   },
   "scripts": {
     "dev": "vite",

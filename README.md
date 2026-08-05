@@ -26,7 +26,7 @@ This project includes VS Code extension recommendations. When you open the proje
 
 ```bash
 git clone <repo-url>
-cd pridemi26
+cd mishpe26
 npm install
 npm run dev
 ```
@@ -59,13 +59,13 @@ This application can be containerized using Docker for easy deployment and consi
 1. Build the Docker image:
 
 ```bash
-docker build -t pridemi26 .
+docker build -t mishpe26 .
 ```
 
 2. Run the container:
 
 ```bash
-docker run -p 3000:3000 pridemi26
+docker run -p 3000:3000 mishpe26
 ```
 
 3. Open your browser and navigate to `http://localhost:3000`
@@ -74,13 +74,13 @@ docker run -p 3000:3000 pridemi26
 
 | Command                                                   | Description                                     |
 | --------------------------------------------------------- | ----------------------------------------------- |
-| `docker build -t pridemi26 .`                             | Build the Docker image                          |
-| `docker run -p 3000:3000 pridemi26`                       | Run the container on port 3000                  |
-| `docker run -d -p 3000:3000 --name pridemi-app pridemi26` | Run container in detached mode with custom name |
+| `docker build -t mishpe26 .`                             | Build the Docker image                          |
+| `docker run -p 3000:3000 mishpe26`                       | Run the container on port 3000                  |
+| `docker run -d -p 3000:3000 --name mishpe-app mishpe26` | Run container in detached mode with custom name |
 | `docker stop pridemi-app`                                 | Stop the running container                      |
 | `docker rm pridemi-app`                                   | Remove the container                            |
 | `docker images`                                           | List all Docker images                          |
-| `docker rmi pridemi26`                                    | Remove the Docker image                         |
+| `docker rmi mishpe26`                                    | Remove the Docker image                         |
 
 ### Environment Variables
 
@@ -404,7 +404,7 @@ Dependency versions: `three`, `lil-gui` (see `package.json`).
 
 ### Issues
 
-This project uses GitHub Issues & GitHub Projects in the [Compass-Detroit/pridemi26](https://github.com/Compass-Detroit/pridemi26) repository for tracking development. Please create an issue if you encounter any problems or have suggestions for improvements.
+This project uses GitHub Issues & GitHub Projects in the [Compass-Detroit/mishpe26](https://github.com/Compass-Detroit/mishpe26) repository for tracking development. Please create an issue if you encounter any problems or have suggestions for improvements.
 
 ### Pull Requests
 

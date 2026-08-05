@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Renamed repository and package from `pridemi26` to `mishpe26` (GitHub: `Compass-Detroit/mishpe26`)
 - **React 19 upgrade**:
   - `react` / `react-dom` 18.2 → 19.2
   - `vite` 4.4 → 8.1
@@ -104,8 +105,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed Montserrat font weight to use Medium (500) instead of Thin (100)
 - Fixed incorrect variable name usage
 
-[Unreleased]: https://github.com/Compass-Detroit/pridemi26/compare/v0.2.0...HEAD
-[0.2.0]: https://github.com/Compass-Detroit/pridemi26/compare/v0.1.2...v0.2.0
-[0.1.2]: https://github.com/Compass-Detroit/pridemi26/compare/v0.1.1...v0.1.2
-[0.1.1]: https://github.com/Compass-Detroit/pridemi26/compare/v0.1.0...v0.1.1
-[0.1.0]: https://github.com/Compass-Detroit/pridemi26/releases/tag/v0.1.0
+[Unreleased]: https://github.com/Compass-Detroit/mishpe26/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/Compass-Detroit/mishpe26/compare/v0.1.2...v0.2.0
+[0.1.2]: https://github.com/Compass-Detroit/mishpe26/compare/v0.1.1...v0.1.2
+[0.1.1]: https://github.com/Compass-Detroit/mishpe26/compare/v0.1.0...v0.1.1
+[0.1.0]: https://github.com/Compass-Detroit/mishpe26/releases/tag/v0.1.0

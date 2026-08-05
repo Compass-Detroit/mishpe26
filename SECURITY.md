@@ -1,6 +1,6 @@
 # Security Policy
 
-The Detroit Pride Innovation Summit website (`pridemi26`) is a static, front-end-only
+The Detroit Pride Innovation Summit website (`mishpe26`) is a static, front-end-only
 site deployed on Vercel. It does not collect user accounts or handle payments, so the
 attack surface is small — but we still take security seriously.
 
@@ -19,7 +19,7 @@ fixes to older tags; security fixes ship by merging to `main`, which redeploys t
 Please **do not** open a public GitHub issue for security vulnerabilities.
 
 Instead, report privately using GitHub's
-[private vulnerability reporting](https://github.com/Compass-Detroit/pridemi26/security/advisories/new)
+[private vulnerability reporting](https://github.com/Compass-Detroit/mishpe26/security/advisories/new)
 ("Report a vulnerability" under the repository's **Security** tab). If that is
 unavailable, contact a Compass Detroit maintainer directly.
 
