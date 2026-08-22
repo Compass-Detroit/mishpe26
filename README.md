@@ -112,7 +112,7 @@ The **import pipeline** (`scripts/sanity-import/`) requires a `.env` file (gitig
 | `pnpm run commitlint`       | Validate commit message format                                    |
 | `pnpm run a11y:check`       | Lint for a11y issues, then run the axe audit over every route     |
 | `pnpm run audit`            | Report dependency vulnerabilities (CI fails on high/critical)     |
-| `ppnpm run import:speakers` | Run the Google Sheets → Sanity speaker import script              |
+| `pnpm run import:speakers`  | Run the Google Sheets → Sanity speaker import script              |
 
 ## Project Structure
 
