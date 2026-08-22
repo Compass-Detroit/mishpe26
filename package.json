@@ -33,6 +33,9 @@
       "eslint --fix",
       "eslint --config .eslintrc.a11y.cjs --fix",
       "prettier --write"
+    ],
+    "*.{ts,tsx,md,json,css,scss,yml,yaml,html}": [
+      "prettier --write"
     ]
   },
   "dependencies": {

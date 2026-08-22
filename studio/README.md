@@ -6,7 +6,7 @@ Organizers and developers manage event content here. The public site reads speak
 
 |                   |                                                                                    |
 | ----------------- | ---------------------------------------------------------------------------------- |
-| **Project**       | `mishpe26`                                                                        |
+| **Project**       | `mishpe26`                                                                         |
 | **Project ID**    | `b18a6pbd`                                                                         |
 | **Local Studio**  | `http://localhost:3333` (`npm run studio:dev` from repo root)                      |
 | **Hosted Studio** | [pridemi26.sanity.studio](https://pridemi26.sanity.studio/)                        |
@@ -89,12 +89,12 @@ SANITY_STUDIO_DATASET=production
 
 Schemas live in `schemaTypes/`:
 
-| Document         | Description                                                                                     |
-| ---------------- | ----------------------------------------------------------------------------------------------- |
+| Document         | Description                                                                                             |
+| ---------------- | ------------------------------------------------------------------------------------------------------- |
 | **`event`**      | One per summit year (e.g. Latino Heritage Month Innovation Summit 2026). Anchors speakers and sessions. |
-| **`speaker`**    | Person: name, bio, org, headshot, badges (WTM/GDE), optional social links.                      |
-| **`session`**    | Talk or panel: title, track, time, room, description, `participants[]` → speaker refs.          |
-| **`teamMember`** | Organizers and dev team: headshot, role, org, bio, `teamGroup` (`compass`, `devteam`, etc.).    |
+| **`speaker`**    | Person: name, bio, org, headshot, badges (WTM/GDE), optional social links.                              |
+| **`session`**    | Talk or panel: title, track, time, room, description, `participants[]` → speaker refs.                  |
+| **`teamMember`** | Organizers and dev team: headshot, role, org, bio, `teamGroup` (`compass`, `devteam`, etc.).            |
 
 **Panels:** multiple speakers on one session card share the same session title. The runner sheet uses one row per speaker per session; n8n groups by title.
 

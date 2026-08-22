@@ -3,6 +3,10 @@ dist
 dist-ssr
 .reference
 
+# Lockfiles are generated — reformatting them creates churn and risks corruption
+package-lock.json
+studio/package-lock.json
+
 # Sanity Studio — generated / installed locally
 studio/node_modules
 studio/dist
