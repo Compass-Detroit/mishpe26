@@ -3,11 +3,7 @@ import PropTypes from 'prop-types'
 import { FaArrowRight } from 'react-icons/fa6'
 import CTAButton from '@/components/ui/CTAButton'
 import useHeroAnimation from '@/hooks/useHeroAnimation'
-import heroTrails from '@/assets/images/hero/hero-trails.webp'
-import heroTrailsFull from '@/assets/images/hero/hero-trails.png'
-
-/** Matches Navbar / HeroAnimationProvider desktop breakpoint. */
-const HERO_DESKTOP_MEDIA = '(min-width: 1500px)'
+import heroRibbons from '@/assets/images/hero/hero-ribbons.webp'
 
 const HERO_LINKS = [
   { href: '#partners', label: 'Call for Sponsors' },
@@ -15,13 +11,13 @@ const HERO_LINKS = [
   { href: '#schedule', label: 'Schedule' },
 ]
 
-function PrideHeroForeground() {
+function ThreejsHeroForeground() {
   return (
     <div className="relative z-10 flex min-h-[90vh] w-full items-center justify-center px-4 py-24 pt-28 sm:px-6">
       <div
-        className="bg-pride-hero-glass mx-auto w-full max-w-3xl rounded-2xl px-6 py-10 text-center sm:px-10 sm:py-12"
+        className="bg-threejs-hero-glass mx-auto w-full max-w-3xl rounded-2xl px-6 py-10 text-center sm:px-10 sm:py-12"
         role="group"
-        aria-labelledby="pride-hero-title"
+        aria-labelledby="threejs-hero-title"
       >
         {/* Top metadata */}
         <p className="font-body text-[10px] font-semibold uppercase tracking-[0.35em] text-white/55 sm:text-xs">
@@ -31,7 +27,7 @@ function PrideHeroForeground() {
 
         {/* Main title */}
         <h1
-          id="pride-hero-title"
+          id="threejs-hero-title"
           className="mt-6 font-heading text-3xl font-black uppercase leading-[1.05] tracking-tight text-white sm:mt-8 sm:text-4xl md:text-5xl lg:text-[3.25rem]"
         >
           Latino Heritage Month{' '}
@@ -107,30 +103,27 @@ function PrideHeroForeground() {
 }
 
 /** Static frame shown whenever WebGL animation is not running. */
-function PrideHeroStaticBackground() {
+function ThreejsHeroStaticBackground() {
   return (
     <div className="absolute inset-0 z-0 bg-black" aria-hidden="true">
-      <picture className="block size-full">
-        <source media={HERO_DESKTOP_MEDIA} srcSet={heroTrailsFull} />
-        <img
-          src={heroTrails}
-          alt=""
-          width={800}
-          height={279}
-          className="size-full object-cover object-center"
-          decoding="async"
-          fetchPriority="high"
-        />
-      </picture>
+      <img
+        src={heroRibbons}
+        alt=""
+        width={1124}
+        height={1064}
+        className="size-full object-cover object-center"
+        decoding="async"
+        fetchPriority="high"
+      />
     </div>
   )
 }
 
 /**
- * Hero section with the animated pride trail WebGL background.
+ * Hero section with the animated holo ribbons WebGL background.
  * Optional `children` render below the built-in foreground card.
  */
-function LandingSectionPride({
+function LandingSectionThreejsHero({
   children,
   className = '',
   showDebugGUI = import.meta.env.DEV,
@@ -166,10 +159,10 @@ function LandingSectionPride({
 
     const onVisibilityChange = () => syncPlayback()
 
-    import('./prideTrailScene').then(({ createPrideTrailScene }) => {
+    import('./threejsHeroScene').then(({ createThreejsHeroScene }) => {
       if (cancelled) return
 
-      scene = createPrideTrailScene(host, { showDebugGUI })
+      scene = createThreejsHeroScene(host, { showDebugGUI })
       sceneRef.current = scene
 
       if (heroEl) {
@@ -199,7 +192,7 @@ function LandingSectionPride({
   return (
     <section
       ref={heroSectionRef}
-      id="hero-pride"
+      id="hero-threejs"
       aria-label="Hero Section"
       className={`relative min-h-[90vh] w-full overflow-hidden bg-black ${className}`}
     >
@@ -210,7 +203,7 @@ function LandingSectionPride({
           aria-hidden="true"
         />
       ) : (
-        <PrideHeroStaticBackground />
+        <ThreejsHeroStaticBackground />
       )}
 
       {canControlPlayback ? (
@@ -237,16 +230,16 @@ function LandingSectionPride({
         </button>
       ) : null}
 
-      <PrideHeroForeground />
+      <ThreejsHeroForeground />
       {children ? <div className="relative z-10">{children}</div> : null}
     </section>
   )
 }
 
-LandingSectionPride.propTypes = {
+LandingSectionThreejsHero.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   showDebugGUI: PropTypes.bool,
 }
 
-export default LandingSectionPride
+export default LandingSectionThreejsHero
