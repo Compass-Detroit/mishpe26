@@ -19,9 +19,31 @@ import { spawn } from 'node:child_process'
 import process from 'node:process'
 
 const PORT = Number(process.env.A11Y_PORT || 3000)
-const TARGET_URL = `http://localhost:${PORT}`
+const ORIGIN = `http://localhost:${PORT}`
 const SERVER_TIMEOUT_MS = 30_000
-const AXE_TIMEOUT_MS = 120_000
+/** Generous: axe drives a real browser per route, so this scales with ROUTES. */
+const AXE_TIMEOUT_MS = 300_000
+/** Time for React.lazy chunks to resolve before axe snapshots the DOM. */
+const LOAD_DELAY_MS = Number(process.env.A11Y_LOAD_DELAY || 3000)
+
+/**
+ * Every route in src/App.jsx that renders distinct UI. Auditing only "/" left
+ * the rest of the site unchecked. Keep in sync when routes change.
+ *
+ * "/previous-events" is omitted: it is a <Navigate replace> to "/past-events",
+ * so it renders nothing of its own. "/not-found" is any unmatched path — with
+ * `serve -s` it returns index.html and React Router renders the 404 page.
+ */
+const ROUTES = process.env.A11Y_ROUTES
+  ? process.env.A11Y_ROUTES.split(',').map((r) => r.trim())
+  : [
+      '/',
+      '/past-events',
+      '/careers-hub',
+      '/connections',
+      '/media',
+      '/not-found',
+    ]
 
 /**
  * Run a package binary through `pnpm exec`. Under pnpm's symlinked layout
@@ -47,7 +69,7 @@ async function waitForServer() {
       throw new Error(`serve exited early with code ${server.exitCode}`)
     }
     try {
-      const res = await fetch(TARGET_URL, { signal: AbortSignal.timeout(2000) })
+      const res = await fetch(ORIGIN, { signal: AbortSignal.timeout(2000) })
       if (res.ok) return
     } catch {
       // Not listening yet — keep polling.
@@ -55,13 +77,20 @@ async function waitForServer() {
     await new Promise((r) => setTimeout(r, 500))
   }
   throw new Error(
-    `server did not respond at ${TARGET_URL} within ${SERVER_TIMEOUT_MS}ms`
+    `server did not respond at ${ORIGIN} within ${SERVER_TIMEOUT_MS}ms`
   )
 }
 
 function runAxe() {
   // -s serves the SPA fallback so client-side routes resolve instead of 404ing.
-  const args = [TARGET_URL, '--exit']
+  const urls = ROUTES.map((route) => new URL(route, ORIGIN).href)
+  console.log(`Auditing ${urls.length} routes: ${ROUTES.join(', ')}`)
+  // Every route except "/" is React.lazy behind a <Suspense> fallback. Without a
+  // delay axe audits that fallback — a bare "Loading…" span with no <main>, no
+  // <h1>, and a skip link pointing at content that has not mounted — and reports
+  // landmark-one-main / page-has-heading-one / skip-link / region on every lazy
+  // route. Those are artifacts of the loading state, not real page defects.
+  const args = [...urls, '--exit', '--load-delay', String(LOAD_DELAY_MS)]
   if (process.env.AXE_CHROMEDRIVER_PATH) {
     args.push('--chromedriver-path', process.env.AXE_CHROMEDRIVER_PATH)
   }

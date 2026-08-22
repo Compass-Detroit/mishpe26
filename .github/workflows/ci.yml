@@ -89,19 +89,16 @@ jobs:
       - name: Install ChromeDriver matching installed Chrome
         uses: nanasess/setup-chromedriver@v2
 
-      - name: Start local server
-        run: |
-          pnpm exec serve dist -s -l 3000 &
-          sleep 5
-
+      # Runs the same script as `pnpm run test:a11y`, so CI and local audit an
+      # identical route list. The script starts and stops its own server, so
+      # there is no separate serve step to keep in sync. It is invoked directly
+      # rather than through the npm script because that would rebuild, throwing
+      # away the artifact downloaded above.
+      #
+      # CI has no browser-driver-manager install, so point axe at the system
+      # chromedriver installed by setup-chromedriver.
       - name: Run accessibility tests
-        run: |
-          timeout 60 pnpm exec axe http://localhost:3000 \
-            --chromedriver-path "$(which chromedriver)" \
-            --exit || {
-            echo "Accessibility tests failed or timed out"
-            exit 1
-          }
+        run: AXE_CHROMEDRIVER_PATH="$(which chromedriver)" node scripts/a11y-test.mjs
 
   security-check:
     name: Security Check
