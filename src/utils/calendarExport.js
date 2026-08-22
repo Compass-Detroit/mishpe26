@@ -110,7 +110,7 @@ export const generateOutlookCalendarLink = (session) => {
     const params = new URLSearchParams({
       path: '/calendar/action/compose',
       rru: 'addevent',
-      subject: event.title || 'Pride Innovation Summit Session',
+      subject: event.title || 'Latino Heritage Month Innovation Summit Session',
       body: event.description || '',
       startdt: startDate.toISOString(),
       enddt: endDate.toISOString(),
@@ -143,7 +143,7 @@ const buildICSContent = (sessions) => {
         `UID:${escapeICS(uid)}`,
         `DTSTAMP:${now}`,
         `SUMMARY:${escapeICS(
-          session.title || 'Pride Innovation Summit Session'
+          session.title || 'Latino Heritage Month Innovation Summit Session'
         )}`,
         `DESCRIPTION:${escapeICS(session.description || '')}`,
         `DTSTART:${start}`,
@@ -159,7 +159,7 @@ const buildICSContent = (sessions) => {
     'VERSION:2.0',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
-    'PRODID:-//Compass Detroit//Pride Innovation Summit 2026//EN',
+    'PRODID:-//Compass Detroit//Latino Heritage Month Innovation Summit 2026//EN',
     ...events,
     'END:VCALENDAR',
   ].join('\r\n')
@@ -185,8 +185,8 @@ export const generateICSFile = (sessions, options = {}) => {
   const extension = options.extension === 'ical' ? 'ical' : 'ics'
   const defaultFilename =
     validCount > 1
-      ? `pride-innovation-summit-2026-full-schedule.${extension}`
-      : `pride-innovation-summit-2026-session.${extension}`
+      ? `lhm-innovation-summit-2026-full-schedule.${extension}`
+      : `lhm-innovation-summit-2026-session.${extension}`
 
   const filename = options.filename || defaultFilename
   const content = buildICSContent(events)

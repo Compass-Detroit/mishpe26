@@ -23,7 +23,7 @@ function OrganizersSection() {
         </p>
         <h2 className="mb-3 w-full text-center font-heading text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
           <span className="bg-gradient-to-r from-iwd-gold-300 via-iwd-gold-400 to-iwd-gold-300 bg-clip-text text-transparent">
-            Detroit Pride Team
+            Latino Heritage Month Team
           </span>
         </h2>
         <div className="mb-6 h-px w-24 bg-gradient-to-r from-transparent via-iwd-gold-400/50 to-transparent sm:w-32" />

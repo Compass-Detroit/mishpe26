@@ -1,12 +1,12 @@
 ---
 name: Feature Request Simple
-about: Suggest an idea for the Detroit Pride Innovation Summit website (IBM HQ)
+about: Suggest an idea for the Latino Heritage Month Innovation Summit website (IBM HQ)
 title: '[FEATURE] '
 labels: enhancement
 assignees: ''
 ---
 
-**Event:** Detroit Pride Innovation Summit · **Venue:** IBM HQ
+**Event:** Latino Heritage Month Innovation Summit · **Venue:** IBM HQ
 
 ## Feature Description
 

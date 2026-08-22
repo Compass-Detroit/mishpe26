@@ -202,7 +202,7 @@ Check Sanity Studio to confirm speakers and headshots appear correctly.
 ```
 ~/
   google-sa.json              ← shared service account key (all events)
-  mishpe26/                  ← Pride Innovation Summit
+  mishpe26/                  ← Latino Heritage Month Innovation Summit
     scripts/sanity-import/.env
   hispanicmi26/               ← Hispanic Heritage Summit
     scripts/sanity-import/.env

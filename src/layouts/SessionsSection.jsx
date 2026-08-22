@@ -145,7 +145,7 @@ const trackDescriptions = {
         className="mx-auto mb-4 text-center text-xl font-normal text-white sm:text-2xl "
       >
         <span className="font-bold">
-          Detroit Pride Innovation Summit Venue Guide
+          Latino Heritage Month Innovation Summit Venue Guide
         </span>
       </h3>
       <p className="mb-6 max-w-4xl text-pretty text-center text-base text-gray-400">
