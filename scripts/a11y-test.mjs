@@ -12,7 +12,7 @@
  * script was stubbed out for. CI has no browser-driver-manager install, so it
  * passes a system chromedriver instead — set AXE_CHROMEDRIVER_PATH for that.
  *
- * Run `npx browser-driver-manager install chrome` if the local pair drifts out
+ * Run `pnpm dlx browser-driver-manager install chrome` if the local pair drifts out
  * of sync with your Chrome.
  */
 import { spawn } from 'node:child_process'
@@ -23,9 +23,13 @@ const TARGET_URL = `http://localhost:${PORT}`
 const SERVER_TIMEOUT_MS = 30_000
 const AXE_TIMEOUT_MS = 120_000
 
-/** Resolve a package binary without assuming node_modules/.bin is on PATH. */
-const bin = (name) =>
-  new URL(`../node_modules/.bin/${name}`, import.meta.url).pathname
+/**
+ * Run a package binary through `pnpm exec`. Under pnpm's symlinked layout
+ * node_modules/.bin is populated for direct dependencies, but pnpm exec
+ * resolves correctly regardless of hoisting and is the supported entry point.
+ */
+const PNPM = process.platform === 'win32' ? 'pnpm.cmd' : 'pnpm'
+const execArgs = (name, args) => ['exec', name, ...args]
 
 let server = null
 
@@ -63,7 +67,7 @@ function runAxe() {
   }
 
   return new Promise((resolve, reject) => {
-    const axe = spawn(bin('axe'), args, { stdio: 'inherit' })
+    const axe = spawn(PNPM, execArgs('axe', args), { stdio: 'inherit' })
     const timer = setTimeout(() => {
       axe.kill('SIGKILL')
       reject(new Error(`axe timed out after ${AXE_TIMEOUT_MS}ms`))
@@ -81,7 +85,7 @@ function runAxe() {
 }
 
 async function main() {
-  server = spawn(bin('serve'), ['dist', '-s', '-l', String(PORT)], {
+  server = spawn(PNPM, execArgs('serve', ['dist', '-s', '-l', String(PORT)]), {
     stdio: ['ignore', 'ignore', 'inherit'],
   })
   server.on('error', (err) => {

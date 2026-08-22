@@ -7,25 +7,30 @@
     "type": "git",
     "url": "https://github.com/Compass-Detroit/mishpe26.git"
   },
+  "packageManager": "pnpm@11.22.0",
+  "engines": {
+    "node": ">=22.13.0"
+  },
   "scripts": {
     "dev": "vite",
-    "dev:cms": "npm run fetch:event-data && npm run dev",
-    "studio:dev": "npm run dev --prefix studio",
+    "dev:cms": "pnpm run fetch:event-data && pnpm run dev",
+    "studio:dev": "pnpm --dir studio run dev",
     "prebuild": "node scripts/fetch-event-data.mjs",
     "fetch:event-data": "node scripts/fetch-event-data.mjs",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "lint:fix": "npm run lint -- --fix",
+    "lint:fix": "pnpm run lint --fix",
     "lint:a11y": "eslint . --ext js,jsx --config .eslintrc.a11y.cjs",
-    "a11y:check": "npm run lint:a11y && npm run test:a11y",
+    "a11y:check": "pnpm run lint:a11y && pnpm run test:a11y",
     "a11y:check:staged": "git diff --cached --name-only --diff-filter=ACMR | grep -E '\\.(js|jsx)$' | xargs eslint --config .eslintrc.a11y.cjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "commitlint": "commitlint --edit",
     "preview": "vite preview",
     "prepare": "husky",
-    "test:a11y": "npm run build && node scripts/a11y-test.mjs",
-    "audit": "npm audit --audit-level moderate",
+    "preinstall": "node scripts/check-node-version.mjs",
+    "test:a11y": "pnpm run build && node scripts/a11y-test.mjs",
+    "audit": "pnpm audit --audit-level moderate",
     "import:speakers": "node scripts/sanity-import/import-speakers.mjs"
   },
   "lint-staged": {
@@ -78,9 +83,6 @@
     "serve": "^14.2.1",
     "tailwindcss": "^3.4.18",
     "vite": "^8.1.4"
-  },
-  "overrides": {
-    "@babel/core": "^7.29.0"
   },
   "description": "Latino Heritage Month Innovation Summit 2026 website"
 }
