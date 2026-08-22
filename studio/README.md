@@ -1,6 +1,6 @@
 # mishpe26 Sanity Studio
 
-TypeScript [Sanity Studio](https://www.sanity.io/docs/sanity-studio) for the [Detroit Pride Innovation Summit](https://pridemi26.vercel.app/) site. It lives in `/studio` beside the Vite/React app and is **not** bundled into the public website.
+TypeScript [Sanity Studio](https://www.sanity.io/docs/sanity-studio) for the [Latino Heritage Month Innovation Summit](https://lhmsummit.com/) site. It lives in `/studio` beside the Vite/React app and is **not** bundled into the public website.
 
 Organizers and developers manage event content here. The public site reads speakers and sessions from Sanity at **build time** (`scripts/fetch-event-data.mjs`). Bulk imports via **n8n** are optional; you can also edit directly in Studio.
 
@@ -91,7 +91,7 @@ Schemas live in `schemaTypes/`:
 
 | Document         | Description                                                                                     |
 | ---------------- | ----------------------------------------------------------------------------------------------- |
-| **`event`**      | One per summit year (e.g. Detroit Pride Innovation Summit 2026). Anchors speakers and sessions. |
+| **`event`**      | One per summit year (e.g. Latino Heritage Month Innovation Summit 2026). Anchors speakers and sessions. |
 | **`speaker`**    | Person: name, bio, org, headshot, badges (WTM/GDE), optional social links.                      |
 | **`session`**    | Talk or panel: title, track, time, room, description, `participants[]` → speaker refs.          |
 | **`teamMember`** | Organizers and dev team: headshot, role, org, bio, `teamGroup` (`compass`, `devteam`, etc.).    |

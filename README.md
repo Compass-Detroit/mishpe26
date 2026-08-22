@@ -1,6 +1,6 @@
-# Detroit Pride Innovation Summit 2026
+# Latino Heritage Month Innovation Summit 2026
 
-The website for the [Detroit Pride Innovation Summit 2026](https://pridemi26.vercel.app/). Built with Vite, React, and Tailwind CSS.
+The website for the [Latino Heritage Month Innovation Summit 2026](https://lhmsummit.com/). Built with Vite, React, and Tailwind CSS.
 
 Organized by **Compass Detroit** in partnership with **GDG Detroit** and community partners (see the Partners section on the site for the full list).
 
@@ -77,8 +77,8 @@ docker run -p 3000:3000 mishpe26
 | `docker build -t mishpe26 .`                             | Build the Docker image                          |
 | `docker run -p 3000:3000 mishpe26`                       | Run the container on port 3000                  |
 | `docker run -d -p 3000:3000 --name mishpe-app mishpe26` | Run container in detached mode with custom name |
-| `docker stop pridemi-app`                                 | Stop the running container                      |
-| `docker rm pridemi-app`                                   | Remove the container                            |
+| `docker stop mishpe-app`                                 | Stop the running container                      |
+| `docker rm mishpe-app`                                   | Remove the container                            |
 | `docker images`                                           | List all Docker images                          |
 | `docker rmi mishpe26`                                    | Remove the Docker image                         |
 
@@ -223,8 +223,8 @@ Excluded from the sitemap: `/playground/*` (internal design previews), `/previou
 npm run build
 # confirm dist/robots.txt and dist/sitemap.xml exist
 
-curl https://pridemi26.vercel.app/robots.txt
-curl https://pridemi26.vercel.app/sitemap.xml
+curl https://lhmsummit.com/robots.txt
+curl https://lhmsummit.com/sitemap.xml
 ```
 
 Test link previews with the [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) or [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/).
