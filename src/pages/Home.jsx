@@ -1,5 +1,5 @@
 import PageLayout from '@/layouts/PageLayout'
-import LandingSectionPride from '@/layouts/LandingSectionPride'
+import LandingSectionThreejsHero from '@/layouts/LandingSectionThreejsHero'
 import LocationSection from '@/layouts/LocationSection'
 import AboutSection from '@/layouts/AboutSection'
 import AttendeeSection from '@/layouts/AttendeeSection'
@@ -25,7 +25,7 @@ function Home() {
         Latino Heritage Month Innovation Summit {currentYear}
       </h1>
 
-      <LandingSectionPride />
+      <LandingSectionThreejsHero />
 
       <div className="bg-iwd-surface-raised relative z-10 py-0 dark:bg-iwd-black-950">
         <LocationSection />

@@ -265,7 +265,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.bg-pride-hero-glass {
+.bg-threejs-hero-glass {
   background: rgba(2, 6, 23, 0.45);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);

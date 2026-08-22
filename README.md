@@ -4,7 +4,7 @@ The website for the [Latino Heritage Month Innovation Summit 2026](https://lhmsu
 
 Organized by **Compass Detroit** in partnership with **GDG Detroit** and community partners (see the Partners section on the site for the full list).
 
-Hero animation is a custom WebGL animation created with Three.js and lil-gui. It is used to create the pride trail effect on the hero section. Author of initial effect attribution: [Sabo Sugi](https://x.com/sabosugi/). Effect enhanced and customized by **[Greg Miller](https://github.com/shrinkray)** for Compass Detroit.
+Hero animation is a custom WebGL animation created with Three.js and lil-gui. It is used to create the holo ribbons effect on the hero section. Author of initial effect attribution: [Sabo Sugi](https://x.com/sabosugi/). Effect enhanced and customized by **[Greg Miller](https://github.com/shrinkray)** for Compass Detroit.
 
 ## Quick Start
 
@@ -72,15 +72,15 @@ docker run -p 3000:3000 mishpe26
 
 ### Docker Commands
 
-| Command                                                   | Description                                     |
-| --------------------------------------------------------- | ----------------------------------------------- |
-| `docker build -t mishpe26 .`                             | Build the Docker image                          |
-| `docker run -p 3000:3000 mishpe26`                       | Run the container on port 3000                  |
+| Command                                                 | Description                                     |
+| ------------------------------------------------------- | ----------------------------------------------- |
+| `docker build -t mishpe26 .`                            | Build the Docker image                          |
+| `docker run -p 3000:3000 mishpe26`                      | Run the container on port 3000                  |
 | `docker run -d -p 3000:3000 --name mishpe-app mishpe26` | Run container in detached mode with custom name |
-| `docker stop mishpe-app`                                 | Stop the running container                      |
-| `docker rm mishpe-app`                                   | Remove the container                            |
-| `docker images`                                           | List all Docker images                          |
-| `docker rmi mishpe26`                                    | Remove the Docker image                         |
+| `docker stop mishpe-app`                                | Stop the running container                      |
+| `docker rm mishpe-app`                                  | Remove the container                            |
+| `docker images`                                         | List all Docker images                          |
+| `docker rmi mishpe26`                                   | Remove the Docker image                         |
 
 ### Environment Variables
 
@@ -391,14 +391,14 @@ The site is deployed on [Vercel](https://vercel.com) and uses Vercel Analytics a
 
 ### Hero background (Three.js)
 
-The landing hero uses a **WebGL pride trail animation** powered by [Three.js](https://threejs.org/) and a custom scene in this repository.
+The landing hero uses a **WebGL holo ribbons animation** powered by [Three.js](https://threejs.org/) and a custom scene in this repository.
 
-| Credit                         | Details                                                                                                                                                                                                                                                                                                                                                               |
-| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Three.js**                   | Copyright © 2010–2026 [three.js authors](https://github.com/mrdoob/three.js). [MIT License](https://github.com/mrdoob/three.js/blob/dev/LICENSE). Used for WebGL rendering, shader materials, and post-processing (`EffectComposer`, `UnrealBloomPass`, `SMAAPass`, and related addons under `three/addons`).                                                        |
-| **Initial pride trail effect** | [Sabo Sugi](https://www.reddit.com/user/CollectionBulky1564/) — original WebGL concept and shaders adapted for this site.                                                                                                                                                                                                                                             |
-| **Site integration**           | [Greg Miller](https://github.com/shrinkray) (Compass Detroit) — React integration, Gilbert Baker rainbow palette, performance and accessibility behavior (static fallback, mobile pause), and scene wiring in `src/layouts/prideTrailScene.js` and `src/layouts/LandingSectionPride.jsx`. Dev-only tuning UI uses [lil-gui](https://github.com/georgealways/lil-gui). |
-| **Static hero fallback**       | When animation is off (mobile viewport, `prefers-reduced-motion`, user pause, or mobile nav over the hero), the site shows poster frames in `src/assets/images/hero/` (`hero-trails.webp`, `hero-trails-800x.webp`, `hero-trails.png`) instead of running the WebGL loop.                                                                                             |
+| Credit                          | Details                                                                                                                                                                                                                                                                                                                                                                  |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Three.js**                    | Copyright © 2010–2026 [three.js authors](https://github.com/mrdoob/three.js). [MIT License](https://github.com/mrdoob/three.js/blob/dev/LICENSE). Used for WebGL rendering and shader materials (`ShaderMaterial` on a full-screen quad) for the raymarched hero scene.                                                                                                 |
+| **Initial holo ribbons effect** | [Sabo Sugi](https://www.reddit.com/user/CollectionBulky1564/) — original WebGL concept and shaders, from [this CodePen](https://codepen.io/sabosugi/pen/vEgGvKR), adapted for this site.                                                                                                                                                                                 |
+| **Site integration**            | [Greg Miller](https://github.com/shrinkray) (Compass Detroit) — React integration, color and geometry tuning, performance and accessibility behavior (static fallback, mobile pause), and scene wiring in `src/layouts/threejsHeroScene.js` and `src/layouts/LandingSectionThreejsHero.jsx`. Dev-only tuning UI uses [lil-gui](https://github.com/georgealways/lil-gui). |
+| **Static hero fallback**        | When animation is off (mobile viewport, `prefers-reduced-motion`, user pause, or mobile nav over the hero), the site shows a poster frame in `src/assets/images/hero/` (`hero-ribbons.webp`) instead of running the WebGL loop.                                                                                                                                          |
 
 Dependency versions: `three`, `lil-gui` (see `package.json`).
 
