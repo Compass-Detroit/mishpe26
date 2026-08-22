@@ -24,7 +24,7 @@
     "commitlint": "commitlint --edit",
     "preview": "vite preview",
     "prepare": "husky",
-    "test:a11y": "npm run build && echo 'Accessibility testing skipped due to ChromeDriver version mismatch'",
+    "test:a11y": "npm run build && node scripts/a11y-test.mjs",
     "audit": "npm audit --audit-level moderate",
     "import:speakers": "node scripts/sanity-import/import-speakers.mjs"
   },
@@ -34,7 +34,7 @@
       "eslint --config .eslintrc.a11y.cjs --fix",
       "prettier --write"
     ],
-    "*.{ts,tsx,md,json,css,scss,yml,yaml,html}": [
+    "*.{mjs,cjs,ts,tsx,md,json,css,scss,yml,yaml,html}": [
       "prettier --write"
     ]
   },
