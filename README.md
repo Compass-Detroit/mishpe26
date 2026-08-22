@@ -10,8 +10,8 @@ Hero animation is a custom WebGL animation created with Three.js and lil-gui. It
 
 ### Prerequisites
 
-- Node.js 22+
-- npm
+- Node.js — the version in `.nvmrc` (`nvm install && nvm use`). `engines.node` requires >=22.13.0 and pnpm enforces it, so an older 22.x will fail at install.
+- pnpm — `corepack enable` picks up the `packageManager` pin automatically, or `npm i -g pnpm`
 
 ### Recommended VS Code Extensions
 
@@ -27,8 +27,8 @@ This project includes VS Code extension recommendations. When you open the proje
 ```bash
 git clone <repo-url>
 cd mishpe26
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
 Navigate to `http://localhost:5173`. Customize the port in `vite.config.js` if needed.
@@ -97,20 +97,22 @@ The **import pipeline** (`scripts/sanity-import/`) requires a `.env` file (gitig
 
 ## Development Scripts
 
-| Command                    | Description                                                       |
-| -------------------------- | ----------------------------------------------------------------- |
-| `npm run dev`              | Start the development server via Vite                             |
-| `npm run dev:cms`          | Fetch latest Sanity content, then start dev server                |
-| `npm run fetch:event-data` | Pull speakers/sessions from Sanity into `speakers.generated.json` |
-| `npm run studio:dev`       | Start local Sanity Studio at `http://localhost:3333`              |
-| `npm run build`            | Fetch from Sanity, then build for production                      |
-| `npm run preview`          | Create a preview of the production build locally                  |
-| `npm run lint`             | Check code for linting errors (includes Tailwind class order)     |
-| `npm run lint:fix`         | Automatically fix linting errors                                  |
-| `npm run format`           | Format code with Prettier                                         |
-| `npm run format:check`     | Check code formatting with Prettier                               |
-| `npm run commitlint`       | Validate commit message format                                    |
-| `npm run import:speakers`  | Run the Google Sheets → Sanity speaker import script              |
+| Command                     | Description                                                       |
+| --------------------------- | ----------------------------------------------------------------- |
+| `pnpm run dev`              | Start the development server via Vite                             |
+| `pnpm run dev:cms`          | Fetch latest Sanity content, then start dev server                |
+| `pnpm run fetch:event-data` | Pull speakers/sessions from Sanity into `speakers.generated.json` |
+| `pnpm run studio:dev`       | Start local Sanity Studio at `http://localhost:3333`              |
+| `pnpm run build`            | Fetch from Sanity, then build for production                      |
+| `pnpm run preview`          | Create a preview of the production build locally                  |
+| `pnpm run lint`             | Check code for linting errors (includes Tailwind class order)     |
+| `pnpm run lint:fix`         | Automatically fix linting errors                                  |
+| `pnpm run format`           | Format code with Prettier                                         |
+| `pnpm run format:check`     | Check code formatting with Prettier                               |
+| `pnpm run commitlint`       | Validate commit message format                                    |
+| `pnpm run a11y:check`       | Lint for a11y issues, then run the axe audit over every route     |
+| `pnpm run audit`            | Report dependency vulnerabilities (CI fails on high/critical)     |
+| `ppnpm run import:speakers` | Run the Google Sheets → Sanity speaker import script              |
 
 ## Project Structure
 
@@ -137,17 +139,17 @@ Speaker and session data lives in **Sanity Studio** (`production` dataset). The 
 ```
 Sanity Studio (local :3333 or pridemi26.sanity.studio)
         ↓
-npm run fetch:event-data  →  speakers.generated.json
+pnpm run fetch:event-data  →  speakers.generated.json
         ↓
-npm run dev  (or Vercel deploy for production)
+pnpm run dev  (or Vercel deploy for production)
 ```
 
 | Studio | URL                                                         | Command                       |
 | ------ | ----------------------------------------------------------- | ----------------------------- |
-| Local  | `http://localhost:3333`                                     | `npm run studio:dev`          |
+| Local  | `http://localhost:3333`                                     | `pnpm run studio:dev`         |
 | Cloud  | [pridemi26.sanity.studio](https://pridemi26.sanity.studio/) | `cd studio && npm run deploy` |
 
-Both studios edit the **same** cloud dataset. After publishing changes, run `npm run dev:cms` to see them on the local site.
+Both studios edit the **same** cloud dataset. After publishing changes, run `pnpm run dev:cms` to see them on the local site.
 
 ### Bulk import (when n8n is available)
 
@@ -168,7 +170,7 @@ Google Drive folder (headshots)
 ### Import script
 
 ```bash
-npm run import:speakers
+pnpm run import:speakers
 ```
 
 Requires `scripts/sanity-import/.env` (gitignored). Copy from `.env.example` and fill in credentials. See `.env.schema` for full documentation of each variable.
@@ -220,7 +222,7 @@ Excluded from the sitemap: `/playground/*` (internal design previews), `/previou
 **Verify after deploy:**
 
 ```bash
-npm run build
+pnpm run build
 # confirm dist/robots.txt and dist/sitemap.xml exist
 
 curl https://lhmsummit.com/robots.txt
@@ -244,19 +246,23 @@ Test link previews with the [Facebook Sharing Debugger](https://developers.faceb
 
 This project uses ESLint and Prettier for code quality and formatting:
 
-- Run `npm run lint` to check for linting issues
-- Run `npm run format:check` to check code formatting
-- Use `npm run lint:fix` and `npm run format` to automatically fix issues
+- Run `pnpm run lint` to check for linting issues
+- Run `pnpm run format:check` to check code formatting
+- Use `pnpm run lint:fix` and `pnpm run format` to automatically fix issues
 
-Run format and lint commands from the **repository root** — CI uses the root `package.json`. The `studio/` folder is a separate app with its own Prettier config; use `npx prettier --write .` inside `studio/` for Studio-only files.
+Run format and lint commands from the **repository root** — CI uses the root `package.json`. The `studio/` folder is a separate app with its own Prettier config; use `npx prettier --write .` inside `studio/` for Studio-only files. `studio/` is a separate npm install with its own lockfile and is deliberately outside the pnpm workspace.
 
 ### Git Hooks
 
 This project uses Husky and lint-staged to automatically enforce code quality:
 
-- **Pre-commit hook** - Automatically runs ESLint and Prettier on staged files before each commit
+- **Pre-commit hook** - Runs ESLint and Prettier on staged files before each commit
+- **Commit-msg hook** - Validates the message against Conventional Commits
+- **Pre-push hook** - Runs the full accessibility check (a11y lint + axe audit over every route)
 - **Automatic formatting** - Code is automatically formatted and linted before commits
 - **No manual intervention** - The hooks will fix issues automatically when possible
+
+lint-staged covers `js`/`jsx` (ESLint + Prettier) and `mjs`, `cjs`, `ts`, `tsx`, `md`, `json`, `css`, `scss`, `yml`, `yaml`, `html` (Prettier only). CI runs `prettier --check .` across the whole repo, so anything outside those patterns can drift out of format without a local gate catching it — extend the patterns rather than relying on CI to notice.
 
 **How it works:**
 
@@ -321,11 +327,15 @@ chore: update dependencies
 
 This project prioritizes accessibility and uses several tools to ensure inclusive design:
 
+- **Automated axe audit** - `pnpm run a11y:check` builds the site, serves it, and runs [axe-core](https://github.com/dequelabs/axe-core) against every route. Enforced by the pre-push hook and by CI, which runs the same script so local and CI coverage cannot drift.
+- **ESLint jsx-a11y** - `pnpm run lint:a11y` catches accessibility problems in JSX before they ship
 - **VS Code axe Accessibility Linter** - Real-time accessibility linting in the editor (when extension is installed)
 - **ESLint Tailwind plugin** - Detects class ordering issues for better maintainability
 - **ResponsiveImage component** - Provides proper alt text fallbacks and modern image formats
 - **Semantic HTML** - Uses proper heading hierarchy and landmark elements
 - **Manual accessibility testing** - Regular testing with browser accessibility tools
+
+The audited routes live in `ROUTES` in `scripts/a11y-test.mjs` — add new routes there as they are created, or they go unchecked. Lazy-loaded routes need the `--load-delay` the script already passes: without it axe snapshots the `<Suspense>` fallback and reports missing landmarks and headings that are artifacts of the loading state, not real defects.
 
 **Accessibility Guidelines**: This project follows WCAG 2.1 guidelines and includes proper ARIA labels, keyboard navigation support, and semantic HTML structure.
 
@@ -364,7 +374,7 @@ This project uses a **manual class ordering** approach for optimal control and r
 ### Building for Production
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 The built files will be in the `dist/` directory, ready for deployment.
@@ -382,7 +392,7 @@ The site is deployed on [Vercel](https://vercel.com) and uses Vercel Analytics a
 **To deploy manually** (e.g. from a fork):
 
 1. Connect the repository to Vercel
-2. Use the default Vite preset (build command: `npm run build`, output directory: `dist/`)
+2. Use the default Vite preset (build command: `pnpm run build`, output directory: `dist/`). Vercel detects `pnpm-lock.yaml` and uses the pnpm version pinned in `packageManager`.
 3. Deploy
 
 **Alternative**: Use [Docker](#docker) for self-hosted deployments.

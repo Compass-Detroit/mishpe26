@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Holo ribbons hero animation** (`src/layouts/threejsHeroScene.js`) — raymarched SDF shader ported from [sabosugi's CodePen](https://codepen.io/sabosugi/pen/vEgGvKR), replacing the pride trail scene. Container-scoped canvas with play/pause and disposal; tuned settings live in `DEFAULT_CONFIG` and the dev-only lil-gui panel exposes them
+- `scripts/a11y-test.mjs` — builds, serves, and runs the axe audit over every route, tearing the server down on every exit path. Wired to `pnpm run test:a11y`, the pre-push hook, and CI
+- `scripts/check-node-version.mjs` — `preinstall` guard that fails below `engines.node` when an older Node is on PATH (git hooks, n8n)
+- `pnpm-workspace.yaml` — pnpm 11 configuration: `overrides`, `allowBuilds`, and `engineStrict`
 - `public/robots.txt` — crawler rules and sitemap reference
 - `public/sitemap.xml` — static sitemap for public routes
 - README: SEO & social sharing section, updated project structure, Studio/n8n doc links
@@ -19,6 +23,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Migrated from npm to pnpm** (`pnpm@11.22.0`, pinned via `packageManager`). Two settings moved to `pnpm-workspace.yaml` because pnpm 11 ignores them silently in `package.json`: the `@babel/core` override, and `allowBuilds` for the four packages with install scripts — `chromedriver` is load-bearing, since its install script downloads the driver the accessibility audit needs. `studio/` stays an independent npm install with its own lockfile
+- Node pinned in one place: `engines.node >=22.13.0` with `engineStrict`, `.nvmrc` at `22.22.2`, and CI reading it via `node-version-file`
+- **Accessibility audit now covers every route** — `/`, `/past-events`, `/careers-hub`, `/connections`, `/media`, and the 404 — instead of only the homepage. CI runs the same script as local so coverage cannot drift
+- `react-router-dom` 6.30.6 → 7.18.2, clearing two moderate advisories (GHSA-wrjc-x8rr-h8h6 open redirect; GHSA-337j-9hxr-rhxg SSR hydration, which did not apply here). Near-drop-in: the app uses only the declarative API
+- Renamed the hero section and its helpers from `pride`/`Pride` to `threejs`/`ThreejsHero`, including `LandingSectionThreejsHero.jsx`, `#hero-threejs`, and `.bg-threejs-hero-glass`
+- CI: `actions/checkout`, `setup-node`, `upload-artifact`, and `download-artifact` bumped to `@v5`, clearing the deprecated-Node-20 warnings; `serve -s` so the SPA fallback resolves client-side routes
+- lint-staged widened beyond `js`/`jsx` to cover `mjs`, `cjs`, `ts`, `tsx`, `md`, `json`, `css`, `scss`, `yml`, `yaml`, and `html`
 - Renamed repository and package from `pridemi26` to `mishpe26` (GitHub: `Compass-Detroit/mishpe26`)
 - **React 19 upgrade**:
   - `react` / `react-dom` 18.2 → 19.2
@@ -35,6 +46,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- **Security audit gate could never fail** — the CI step ran `npm audit --audit-level moderate` with a fallback ending in `exit 0`, which swallowed every severity including the high and critical findings it claimed to catch. Now `pnpm audit --audit-level high`. Enabling it surfaced 16 high-severity advisories, 3 in production dependencies, all cleared by non-breaking transitive bumps
+- **Accessibility check never ran a browser** — `test:a11y` echoed "skipped due to ChromeDriver version mismatch" and exited 0, so the pre-push hook reported success without launching anything. The mismatch came from overriding `--chromedriver-path`; axe resolves its own Chrome-for-Testing pair and works when left alone
+- Lazy-loaded routes reported phantom accessibility violations (`landmark-one-main`, `page-has-heading-one`, `skip-link`, `region`) because axe snapshotted the `<Suspense>` fallback before the chunk resolved. Fixed with `--load-delay`
+- `commit-msg` hook: dropped npm's `--` separator, which pnpm passes through so `--edit` never reaches commitlint, making it lint the entire repo history instead of the incoming message
+- CI Prettier failure on `n8n/README.md` and `studio/README.md` — the `pridemi26` → `mishpe26` rename shortened a string inside markdown tables, misaligning every pipe
+- Removed the unused `/playground/*` route and page, the `hero-trails` poster images (1.96 MB), and the orphaned `lcMap.png`
 - `scripts/sanity-import/import-speakers.mjs` — corrected import paths from `./sanity-client.mjs` and `./google.mjs` to `./lib/sanity-client.mjs` and `./lib/google.mjs` (files live in `lib/` subdirectory)
 - `scripts/sanity-import/lib/google.mjs` — added `supportsAllDrives: true` and `includeItemsFromAllDrives: true` to Drive API calls so the import works with Google Workspace Shared Drives, not just personal Drive
 

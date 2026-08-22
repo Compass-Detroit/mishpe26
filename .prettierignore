@@ -4,7 +4,8 @@ dist-ssr
 .reference
 
 # Lockfiles are generated — reformatting them creates churn and risks corruption
-package-lock.json
+pnpm-lock.yaml
+# studio/ is a separate install that still uses npm — see pnpm-workspace.yaml
 studio/package-lock.json
 
 # Sanity Studio — generated / installed locally

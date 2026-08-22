@@ -19,8 +19,8 @@ const DEFAULT_CONFIG = {
   cameraX: -11.07,
   intensity: 0.25146,
   bgIntensity: 0.0,
-  color1: '#6300db', // primary
-  color2: '#356479', // secondary
+  color1: '#754400', // primary
+  color2: '#616161', // secondary
   bgColor: '#383838', // base background (inert while bgIntensity is 0)
 }
 
