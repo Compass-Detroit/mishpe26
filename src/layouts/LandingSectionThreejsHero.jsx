@@ -21,8 +21,8 @@ function ThreejsHeroForeground() {
       >
         {/* Top metadata */}
         <p className="font-body text-[10px] font-semibold uppercase tracking-[0.35em] text-white/55 sm:text-xs">
-          Detroit &middot; IBM HQ &middot; 2026 &middot; Powered by Compass
-          Detroit &amp; IBM
+          Detroit &middot; Loc &middot; 2026 &middot; Powered by Compass Detroit
+          &amp; Co
         </p>
 
         {/* Main title */}
@@ -71,7 +71,7 @@ function ThreejsHeroForeground() {
         <p className="mt-6 font-body text-[11px] uppercase tracking-[0.2em] text-white/90 sm:text-xs">
           Venue:{' '}
           <span className="inline-block rounded border border-iwd-gold-400 bg-white/[0.04] px-2 py-0.5 font-semibold tracking-[0.15em] text-iwd-gold-300">
-            IBM HQ
+            Company
           </span>
         </p>
 

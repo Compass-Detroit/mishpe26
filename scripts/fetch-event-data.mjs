@@ -14,7 +14,7 @@ const ROOT = path.resolve(__dirname, '..')
 const OUTPUT = path.join(ROOT, 'src/data/2026/speakers.generated.json')
 const OPTIONAL_ENV = path.join(ROOT, 'scripts/sanity-import/.env')
 
-const DEFAULT_PROJECT_ID = 'b18a6pbd'
+const DEFAULT_PROJECT_ID = 'd1h6cagq'
 const DEFAULT_DATASET = 'production'
 const DEFAULT_EVENT_YEAR = 2026
 const DEFAULT_TRACK = 'Level Up'
@@ -234,10 +234,44 @@ async function writeFormattedJson(filePath, data) {
   await writeFile(filePath, formatted, 'utf8')
 }
 
+/**
+ * Number of rows already committed to the generated JSON, or 0 when the file is
+ * missing or unreadable.
+ */
+function committedRowCount() {
+  if (!existsSync(OUTPUT)) return 0
+  try {
+    const parsed = JSON.parse(readFileSync(OUTPUT, 'utf8'))
+    return Array.isArray(parsed) ? parsed.length : 0
+  } catch {
+    return 0
+  }
+}
+
 async function main() {
   loadOptionalEnvFile()
   const rows = await fetchEventSpeakers()
   const output = stripInternalFields(rows)
+
+  /**
+   * Refuse to replace real committed data with an empty result. `prebuild` runs
+   * this on every `vite build`, so an empty dataset — or a query that silently
+   * matches nothing after a schema change — would otherwise blank the speakers
+   * section site-wide. Non-fatal: the build continues against the existing file.
+   */
+  const existingRows = committedRowCount()
+  if (output.length === 0 && existingRows > 0) {
+    console.warn(
+      `fetch-event-data: query returned 0 rows but ${path.relative(
+        ROOT,
+        OUTPUT
+      )} ` +
+        `has ${existingRows}. Keeping the existing file.\n` +
+        `  Publish sessions/speakers for the target event, or set SANITY_PROJECT_ID ` +
+        `/ SANITY_EVENT_YEAR to the intended source.`
+    )
+    return
+  }
 
   await writeFormattedJson(OUTPUT, output)
 
