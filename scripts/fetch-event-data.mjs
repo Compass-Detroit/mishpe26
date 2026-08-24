@@ -18,7 +18,12 @@ const DEFAULT_PROJECT_ID = 'd1h6cagq'
 const DEFAULT_DATASET = 'production'
 const DEFAULT_EVENT_YEAR = 2026
 const DEFAULT_TRACK = 'Level Up'
-const DEFAULT_ROOM = 'TBA'
+/**
+ * Placeholder venue until the Summit location is confirmed. Intentionally not
+ * 'TBA': the site is not published until there is a real location to promote,
+ * so a stale-but-concrete default is preferable to a blank one here.
+ */
+const DEFAULT_ROOM = 'IBM HQ'
 
 const SESSIONS_QUERY = `*[_type == "session" && event->year == $year && published == true] | order(startTime asc, title asc) {
   _id,
