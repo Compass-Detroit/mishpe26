@@ -22,11 +22,11 @@ Heavy lifting lives in **`scripts/sanity-import/import-speakers.mjs`** (versione
 
 ### 1. Sanity
 
-- Project `b18a6pbd`, **`production`** dataset
+- Project `d1h6cagq`, **`production`** dataset
 - **2026 Event** document in Studio (year `2026`)
 - Schema deployed: `cd studio && npx sanity schema deploy`
 - API token with **Editor** (or custom role with write + assets):  
-  [sanity.io/manage/project/b18a6pbd/api](https://www.sanity.io/manage/project/b18a6pbd/api)
+  [sanity.io/manage/project/d1h6cagq/api](https://www.sanity.io/manage/project/d1h6cagq/api)
 
 ### 2. Google Cloud (you have `n8n-Google-Sheets`)
 
@@ -56,7 +56,7 @@ cp scripts/sanity-import/.env.example scripts/sanity-import/.env
 See `scripts/sanity-import/.env.example`. Minimum:
 
 ```bash
-SANITY_PROJECT_ID=b18a6pbd
+SANITY_PROJECT_ID=d1h6cagq
 SANITY_DATASET=production
 SANITY_API_TOKEN=sk...
 SANITY_EVENT_YEAR=2026

@@ -1,4 +1,4 @@
-const DEFAULT_PROJECT_ID = 'b18a6pbd'
+const DEFAULT_PROJECT_ID = 'd1h6cagq'
 const DEFAULT_DATASET = 'production'
 
 function trimEnv(value: string | undefined): string | undefined {
@@ -16,4 +16,4 @@ export const projectId = trimEnv(process.env.SANITY_STUDIO_PROJECT_ID) ?? DEFAUL
  */
 export const dataset = trimEnv(process.env.SANITY_STUDIO_DATASET) ?? DEFAULT_DATASET
 
-export const studioTitle = dataset === 'production' ? 'mishpe26' : `mishpe26 (${dataset})`
+export const studioTitle = dataset === 'production' ? 'LHM Summit' : `LHM Summit (${dataset})`

@@ -137,7 +137,7 @@ Speaker and session data lives in **Sanity Studio** (`production` dataset). The 
 ### Edit in Studio (current workflow)
 
 ```
-Sanity Studio (local :3333 or pridemi26.sanity.studio)
+Sanity Studio (local :3333 or lhmsummit.sanity.studio)
         ↓
 pnpm run fetch:event-data  →  speakers.generated.json
         ↓
@@ -147,7 +147,7 @@ pnpm run dev  (or Vercel deploy for production)
 | Studio | URL                                                         | Command                       |
 | ------ | ----------------------------------------------------------- | ----------------------------- |
 | Local  | `http://localhost:3333`                                     | `pnpm run studio:dev`         |
-| Cloud  | [pridemi26.sanity.studio](https://pridemi26.sanity.studio/) | `cd studio && npm run deploy` |
+| Cloud  | [lhmsummit.sanity.studio](https://lhmsummit.sanity.studio/) | `cd studio && npm run deploy` |
 
 Both studios edit the **same** cloud dataset. After publishing changes, run `pnpm run dev:cms` to see them on the local site.
 

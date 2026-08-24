@@ -3,6 +3,10 @@ dist
 dist-ssr
 .reference
 
+# Installed Claude skills — vendored docs, not repo content
+.agents
+.claude/skills
+
 # Lockfiles are generated — reformatting them creates churn and risks corruption
 pnpm-lock.yaml
 # studio/ is a separate install that still uses npm — see pnpm-workspace.yaml

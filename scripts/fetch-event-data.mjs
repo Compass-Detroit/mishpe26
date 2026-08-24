@@ -14,10 +14,15 @@ const ROOT = path.resolve(__dirname, '..')
 const OUTPUT = path.join(ROOT, 'src/data/2026/speakers.generated.json')
 const OPTIONAL_ENV = path.join(ROOT, 'scripts/sanity-import/.env')
 
-const DEFAULT_PROJECT_ID = 'b18a6pbd'
+const DEFAULT_PROJECT_ID = 'd1h6cagq'
 const DEFAULT_DATASET = 'production'
 const DEFAULT_EVENT_YEAR = 2026
 const DEFAULT_TRACK = 'Level Up'
+/**
+ * Placeholder venue until the Summit location is confirmed. Intentionally not
+ * 'TBA': the site is not published until there is a real location to promote,
+ * so a stale-but-concrete default is preferable to a blank one here.
+ */
 const DEFAULT_ROOM = 'IBM HQ'
 
 const SESSIONS_QUERY = `*[_type == "session" && event->year == $year && published == true] | order(startTime asc, title asc) {
@@ -234,10 +239,50 @@ async function writeFormattedJson(filePath, data) {
   await writeFile(filePath, formatted, 'utf8')
 }
 
+/**
+ * Rows already committed to the generated JSON: a count when the file parses,
+ * 0 when it is absent, or `null` when it exists but cannot be read as an array.
+ *
+ * `null` is deliberately distinct from 0 — an unreadable file may still hold
+ * real data, so it must not be treated as "safe to overwrite".
+ */
+function committedRowCount() {
+  if (!existsSync(OUTPUT)) return 0
+  try {
+    const parsed = JSON.parse(readFileSync(OUTPUT, 'utf8'))
+    return Array.isArray(parsed) ? parsed.length : null
+  } catch {
+    return null
+  }
+}
+
 async function main() {
   loadOptionalEnvFile()
   const rows = await fetchEventSpeakers()
   const output = stripInternalFields(rows)
+
+  /**
+   * Refuse to replace real committed data with an empty result. `prebuild` runs
+   * this on every `vite build`, so an empty dataset — or a query that silently
+   * matches nothing after a schema change — would otherwise blank the speakers
+   * section site-wide. Non-fatal: the build continues against the existing file.
+   */
+  const existingRows = committedRowCount()
+  if (output.length === 0 && existingRows !== 0) {
+    const relative = path.relative(ROOT, OUTPUT)
+    const state =
+      existingRows === null
+        ? `${relative} could not be parsed, so its contents are unknown`
+        : `${relative} has ${existingRows}`
+
+    console.warn(
+      `fetch-event-data: query returned 0 rows but ${state}. ` +
+        `Keeping the existing file.\n` +
+        `  Publish sessions/speakers for the target event, or set SANITY_PROJECT_ID ` +
+        `/ SANITY_EVENT_YEAR to the intended source.`
+    )
+    return
+  }
 
   await writeFormattedJson(OUTPUT, output)
 
