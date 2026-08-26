@@ -11,7 +11,7 @@ import MyScheduleEmptyState from '@/components/sessions/MyScheduleEmptyState'
 import TrackEmptyState from '@/components/sessions/TrackEmptyState'
 
 import { conferenceActivities } from '@/data/2026/conferenceActivities'
-import { trackStageHeading } from '@/data/2026/venues'
+import { trackStageHeading, SCHEDULE_TRACK } from '@/data/2026/venues'
 import { DIRECTION } from '@/constants/directions'
 import { IoChevronDown, IoChevronForward, IoChevronBack } from 'react-icons/io5'
 
@@ -161,7 +161,14 @@ const SessionsSection = ({
   tracks = [],
   defaultExpanded = true,
 }) => {
-  const [activeTab, setActiveTab] = useState(0)
+  const tracksWithoutMap = tracks.filter((t) => t !== 'Map')
+  const tabs = tracks.includes('Map')
+    ? ['Map', 'My Schedule', ...tracksWithoutMap]
+    : ['My Schedule', ...tracks]
+
+  const [activeTab, setActiveTab] = useState(() =>
+    Math.max(0, tabs.indexOf(SCHEDULE_TRACK))
+  )
   const [isExpanded, setIsExpanded] = useState(defaultExpanded)
   const [direction, setDirection] = useState(
     defaultExpanded === true ? DIRECTION.TOP : DIRECTION.BOTTOM
@@ -179,10 +186,6 @@ const SessionsSection = ({
     autoResolveAndAdd,
   } = useSchedule()
 
-  const tracksWithoutMap = tracks.filter((t) => t !== 'Map')
-  const tabs = tracks.includes('Map')
-    ? ['Map', 'My Schedule', ...tracksWithoutMap]
-    : ['My Schedule', ...tracks]
   const currentSession = tabs[activeTab]
 
   const toggleExpanded = () => {
