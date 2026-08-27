@@ -323,7 +323,7 @@ function shouldKeepExisting(filePath, freshCount, existingCount) {
     `fetch-event-data: query returned 0 rows but ${state}. ` +
       `Keeping the existing file.\n` +
       `  Publish content for the target event, or set SANITY_PROJECT_ID ` +
-      `/ SANITY_EVENT_YEAR to the intended source.`
+      `/ SANITY_DATASET / SANITY_EVENT_YEAR to the intended source.`
   )
   return true
 }

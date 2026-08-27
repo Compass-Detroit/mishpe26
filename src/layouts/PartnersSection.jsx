@@ -43,7 +43,7 @@ const PartnerCard = ({ partner, rank }) => {
             loading="lazy"
           />
         ) : (
-          <p className="text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white/90">
+          <p className="text-center text-3xl font-bold tracking-tight text-gray-900">
             {partner.name}
           </p>
         )}
@@ -55,7 +55,7 @@ const PartnerCard = ({ partner, rank }) => {
         </h4>
         {partner.desc && (
           <p
-            className="line-clamp-4 text-center text-base leading-relaxed text-gray-900 dark:text-white/70"
+            className="line-clamp-4 text-center text-base leading-relaxed text-white/70"
             title={
               partner.desc.length > DESC_MAX_LENGTH ? partner.desc : undefined
             }
@@ -86,6 +86,8 @@ const PartnerCard = ({ partner, rank }) => {
   )
 
   const cardStyle = { perspective: '1000px' }
+  // Only promise a description when the card back actually has one.
+  const descHint = partner.desc ? ' (hover or focus for description)' : ''
 
   return partner.url ? (
     <a
@@ -94,7 +96,7 @@ const PartnerCard = ({ partner, rank }) => {
       rel="noopener noreferrer"
       className={CARD_CLASS}
       style={cardStyle}
-      aria-label={`${partner.name} — visit website (hover or focus for description)`}
+      aria-label={`${partner.name} — visit website${descHint}`}
     >
       {cardInner}
     </a>
@@ -103,7 +105,7 @@ const PartnerCard = ({ partner, rank }) => {
       type="button"
       className={`${CARD_CLASS} cursor-default`}
       style={cardStyle}
-      aria-label={`${partner.name} — focus for partner description`}
+      aria-label={`${partner.name}${descHint}`}
     >
       {cardInner}
     </button>
@@ -237,7 +239,7 @@ const PartnersSection = ({ partnersData = {}, year }) => {
             )}
 
             {/* CTA stays the same */}
-            <div className="col-span-1 my-8 mt-16 flex flex-col items-center justify-center space-y-6 text-center text-lg leading-relaxed">
+            <div className="my-8 mt-16 flex flex-col items-center justify-center space-y-6 text-center text-lg leading-relaxed">
               <p className="text-gray-400">
                 We are currently looking for partners for this event.
               </p>
@@ -255,7 +257,7 @@ const PartnersSection = ({ partnersData = {}, year }) => {
             </div>
           </>
         ) : (
-          <div className="col-span-1 my-8 flex flex-col items-center justify-center space-y-6 text-center text-lg leading-relaxed">
+          <div className="my-8 flex flex-col items-center justify-center space-y-6 text-center text-lg leading-relaxed">
             <p className="text-gray-400">
               {year && !isCurrentYear
                 ? `No partner information available for ${year}.`
