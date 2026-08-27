@@ -1,6 +1,7 @@
 /**
- * Fetch published speakers/sessions from Sanity and write frontend-ready JSON.
- * Run before build (or manually via npm run fetch:event-data).
+ * Fetch published speakers/sessions and partners from Sanity and write
+ * frontend-ready JSON. Run before build (or manually via
+ * npm run fetch:event-data).
  */
 import { writeFile } from 'node:fs/promises'
 import { existsSync, readFileSync } from 'node:fs'
@@ -12,6 +13,7 @@ import prettier from 'prettier'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
 const OUTPUT = path.join(ROOT, 'src/data/2026/speakers.generated.json')
+const PARTNERS_OUTPUT = path.join(ROOT, 'src/data/2026/partners.generated.json')
 const OPTIONAL_ENV = path.join(ROOT, 'scripts/sanity-import/.env')
 
 const DEFAULT_PROJECT_ID = 'd1h6cagq'
@@ -57,6 +59,15 @@ const SESSIONS_QUERY = `*[_type == "session" && event->year == $year && publishe
       "avatar": headshot.asset->url
     }
   }
+}`
+
+const PARTNERS_QUERY = `*[_type == "partner" && event->year == $year && published == true] | order(sortOrder asc, name asc) {
+  "id": slug.current,
+  name,
+  partnerGroup,
+  "desc": description,
+  url,
+  "logo": logo.asset->url
 }`
 
 function readEnv(name, fallback) {
@@ -195,22 +206,31 @@ function stripInternalFields(rows) {
   return rows.map(({ _sessionId, _featuredSessionId, ...row }) => row)
 }
 
-export async function fetchEventSpeakers(options = {}) {
-  const projectId =
-    options.projectId ?? readEnv('SANITY_PROJECT_ID', DEFAULT_PROJECT_ID)
-  const dataset = options.dataset ?? readEnv('SANITY_DATASET', DEFAULT_DATASET)
-  const eventYear = Number(
-    options.eventYear ??
-      readEnv('SANITY_EVENT_YEAR', String(DEFAULT_EVENT_YEAR))
-  )
+function resolveSource(options) {
+  return {
+    projectId:
+      options.projectId ?? readEnv('SANITY_PROJECT_ID', DEFAULT_PROJECT_ID),
+    dataset: options.dataset ?? readEnv('SANITY_DATASET', DEFAULT_DATASET),
+    eventYear: Number(
+      options.eventYear ??
+        readEnv('SANITY_EVENT_YEAR', String(DEFAULT_EVENT_YEAR))
+    ),
+  }
+}
 
-  const client = createClient({
+function createSanityClient({ projectId, dataset }) {
+  return createClient({
     projectId,
     dataset,
     apiVersion: '2026-06-01',
     useCdn: false,
     token: process.env.SANITY_READ_TOKEN || undefined,
   })
+}
+
+export async function fetchEventSpeakers(options = {}) {
+  const { projectId, dataset, eventYear } = resolveSource(options)
+  const client = createSanityClient({ projectId, dataset })
 
   const sessions = await client.fetch(SESSIONS_QUERY, { year: eventYear })
 
@@ -229,6 +249,35 @@ export async function fetchEventSpeakers(options = {}) {
   return prioritizeFeaturedSessions(enrichSessionParticipants(rows))
 }
 
+/**
+ * Partners split into the two areas the site renders: sponsors first, then the
+ * community groups that volunteer their efforts. Sort order sets position
+ * within an area; every card in an area is the same size.
+ */
+export async function fetchEventPartners(options = {}) {
+  const { projectId, dataset, eventYear } = resolveSource(options)
+  const client = createSanityClient({ projectId, dataset })
+
+  const rows = await client.fetch(PARTNERS_QUERY, { year: eventYear })
+
+  const grouped = { sponsors: [], community: [] }
+  for (const { id, name, partnerGroup, desc, url, logo } of rows) {
+    if (!id || !name) continue
+
+    const bucket =
+      partnerGroup === 'sponsor' ? grouped.sponsors : grouped.community
+    bucket.push({
+      id,
+      name,
+      logo: logo ?? '',
+      desc: desc ?? '',
+      url: url ?? '',
+    })
+  }
+
+  return grouped
+}
+
 async function writeFormattedJson(filePath, data) {
   const config = await prettier.resolveConfig(filePath)
   const formatted = await prettier.format(JSON.stringify(data), {
@@ -240,49 +289,53 @@ async function writeFormattedJson(filePath, data) {
 }
 
 /**
- * Rows already committed to the generated JSON: a count when the file parses,
- * 0 when it is absent, or `null` when it exists but cannot be read as an array.
+ * Rows already committed to a generated file: a count when the file parses,
+ * 0 when it is absent, or `null` when it exists but cannot be counted.
  *
  * `null` is deliberately distinct from 0 — an unreadable file may still hold
  * real data, so it must not be treated as "safe to overwrite".
  */
-function committedRowCount() {
-  if (!existsSync(OUTPUT)) return 0
+function committedRowCount(filePath, countRows) {
+  if (!existsSync(filePath)) return 0
   try {
-    const parsed = JSON.parse(readFileSync(OUTPUT, 'utf8'))
-    return Array.isArray(parsed) ? parsed.length : null
+    return countRows(JSON.parse(readFileSync(filePath, 'utf8')))
   } catch {
     return null
   }
 }
 
-async function main() {
-  loadOptionalEnvFile()
+/**
+ * Refuse to replace real committed data with an empty result. `prebuild` runs
+ * on every `vite build`, so an empty dataset — or a query that silently matches
+ * nothing after a schema change — would otherwise blank a section site-wide.
+ * Non-fatal: the build continues against the existing file.
+ */
+function shouldKeepExisting(filePath, freshCount, existingCount) {
+  if (freshCount > 0 || existingCount === 0) return false
+
+  const relative = path.relative(ROOT, filePath)
+  const state =
+    existingCount === null
+      ? `${relative} could not be parsed, so its contents are unknown`
+      : `${relative} has ${existingCount}`
+
+  console.warn(
+    `fetch-event-data: query returned 0 rows but ${state}. ` +
+      `Keeping the existing file.\n` +
+      `  Publish content for the target event, or set SANITY_PROJECT_ID ` +
+      `/ SANITY_EVENT_YEAR to the intended source.`
+  )
+  return true
+}
+
+async function writeSpeakers() {
   const rows = await fetchEventSpeakers()
   const output = stripInternalFields(rows)
+  const existing = committedRowCount(OUTPUT, (parsed) =>
+    Array.isArray(parsed) ? parsed.length : null
+  )
 
-  /**
-   * Refuse to replace real committed data with an empty result. `prebuild` runs
-   * this on every `vite build`, so an empty dataset — or a query that silently
-   * matches nothing after a schema change — would otherwise blank the speakers
-   * section site-wide. Non-fatal: the build continues against the existing file.
-   */
-  const existingRows = committedRowCount()
-  if (output.length === 0 && existingRows !== 0) {
-    const relative = path.relative(ROOT, OUTPUT)
-    const state =
-      existingRows === null
-        ? `${relative} could not be parsed, so its contents are unknown`
-        : `${relative} has ${existingRows}`
-
-    console.warn(
-      `fetch-event-data: query returned 0 rows but ${state}. ` +
-        `Keeping the existing file.\n` +
-        `  Publish sessions/speakers for the target event, or set SANITY_PROJECT_ID ` +
-        `/ SANITY_EVENT_YEAR to the intended source.`
-    )
-    return
-  }
+  if (shouldKeepExisting(OUTPUT, output.length, existing)) return
 
   await writeFormattedJson(OUTPUT, output)
 
@@ -292,6 +345,34 @@ async function main() {
       OUTPUT
     )}`
   )
+}
+
+function partnerCount(grouped) {
+  if (!grouped || typeof grouped !== 'object') return null
+  const { sponsors, community } = grouped
+  if (!Array.isArray(sponsors) || !Array.isArray(community)) return null
+  return sponsors.length + community.length
+}
+
+async function writePartners() {
+  const grouped = await fetchEventPartners()
+  const total = partnerCount(grouped)
+  const existing = committedRowCount(PARTNERS_OUTPUT, partnerCount)
+
+  if (shouldKeepExisting(PARTNERS_OUTPUT, total, existing)) return
+
+  await writeFormattedJson(PARTNERS_OUTPUT, grouped)
+
+  console.log(
+    `Wrote ${grouped.sponsors.length} sponsors and ${grouped.community.length} ` +
+      `community groups to ${path.relative(ROOT, PARTNERS_OUTPUT)}`
+  )
+}
+
+async function main() {
+  loadOptionalEnvFile()
+  await writeSpeakers()
+  await writePartners()
 }
 
 const isMain = process.argv[1] === fileURLToPath(import.meta.url)
