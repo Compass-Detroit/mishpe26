@@ -14,9 +14,9 @@ import SectionSkipLink from '@/components/ui/SectionSkipLink'
 import { GOLD_PRIMARY_LIGHT_HOVER } from '@/constants/goldPrimaryButtonLightHover'
 
 // Venue images
-import exteriorView from '@/assets/images/location/wsu-eng-1.jpg'
-import exteriorStreet from '@/assets/images/location/wsu-eng-street.jpg'
-import exteriorPost from '@/assets/images/location/wsu-eng-post.jpg'
+import exteriorView from '@/assets/images/location/wsu-eng-1.webp'
+import exteriorStreet from '@/assets/images/location/wsu-eng-street.webp'
+import exteriorPost from '@/assets/images/location/wsu-eng-post.webp'
 
 const VENUE_IMAGES = [
   {
