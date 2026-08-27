@@ -12,16 +12,16 @@ import * as THREE from 'three'
 const MAX_DPR = 1.25
 
 const DEFAULT_CONFIG = {
-  dpr: 1.0,
-  speed: 0.88,
-  spread: 2.2365,
-  thickness: 1.0,
+  dpr: 0.85,
+  speed: 0.785,
+  spread: 2.5925,
+  thickness: 0.66439,
   cameraX: -11.07,
-  intensity: 0.25146,
+  intensity: 0.14167,
   bgIntensity: 0.0,
-  color1: '#754400', // primary
-  color2: '#616161', // secondary
-  bgColor: '#383838', // base background (inert while bgIntensity is 0)
+  color1: '#ab3b68', // primary
+  color2: '#8696ea', // secondary
+  bgColor: '#2f27a0', // base background (inert while bgIntensity is 0)
 }
 
 const VERTEX_SHADER = `

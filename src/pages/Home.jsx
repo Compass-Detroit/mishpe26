@@ -22,7 +22,7 @@ function Home() {
     <PageLayout>
       <SEOStructuredData speakersData={Speakers2026} />
       <h1 id="main-heading" className="sr-only">
-        Latino Heritage Month Innovation Summit {currentYear}
+        Latin Heritage Month Innovation Summit {currentYear}
       </h1>
 
       <LandingSectionThreejsHero />
@@ -35,12 +35,16 @@ function Home() {
             speakersData={Speakers2026}
             year={2026}
             defaultExpanded={true}
-            tracks={['Map', SCHEDULE_TRACK, SESSION_TRACK]}
+            // Map tab hidden until venue artwork is ready: re-add 'Map' here.
+            tracks={[SCHEDULE_TRACK, SESSION_TRACK]}
           />
         </div>
 
         <div id="speakers">
-          <SpeakersSection speakersData={Speakers2026} defaultExpanded={true} />
+          <SpeakersSection
+            speakersData={Speakers2026}
+            defaultExpanded={false}
+          />
         </div>
 
         <div id="about">

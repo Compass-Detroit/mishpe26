@@ -1,6 +1,6 @@
-const DEFAULT_EVENT_DATE = '2026-03-28'
+const DEFAULT_EVENT_DATE = '2026-09-19'
 const DEFAULT_TIMEZONE_OFFSET = '-04:00'
-const DEFAULT_LOCATION_PREFIX = 'IBM HQ Detroit'
+const DEFAULT_LOCATION_PREFIX = 'WSU Anderson Engineering Building'
 
 // Formats a Date object to YYYYMMDDTHHmmssZ
 const formatDate = (date) =>
@@ -110,7 +110,7 @@ export const generateOutlookCalendarLink = (session) => {
     const params = new URLSearchParams({
       path: '/calendar/action/compose',
       rru: 'addevent',
-      subject: event.title || 'Latino Heritage Month Innovation Summit Session',
+      subject: event.title || 'Latin Heritage Month Innovation Summit Session',
       body: event.description || '',
       startdt: startDate.toISOString(),
       enddt: endDate.toISOString(),
@@ -143,7 +143,7 @@ const buildICSContent = (sessions) => {
         `UID:${escapeICS(uid)}`,
         `DTSTAMP:${now}`,
         `SUMMARY:${escapeICS(
-          session.title || 'Latino Heritage Month Innovation Summit Session'
+          session.title || 'Latin Heritage Month Innovation Summit Session'
         )}`,
         `DESCRIPTION:${escapeICS(session.description || '')}`,
         `DTSTART:${start}`,
@@ -159,7 +159,7 @@ const buildICSContent = (sessions) => {
     'VERSION:2.0',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
-    'PRODID:-//Compass Detroit//Latino Heritage Month Innovation Summit 2026//EN',
+    'PRODID:-//Compass Detroit//Latin Heritage Month Innovation Summit 2026//EN',
     ...events,
     'END:VCALENDAR',
   ].join('\r\n')

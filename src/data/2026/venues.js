@@ -10,7 +10,7 @@ export const SCHEDULE_TRACK = 'Schedule'
 export const SESSION_TRACK = 'Level Up'
 
 export const VENUE_ROOMS = {
-  LEVEL_UP: 'Rooms 2415 & 2416',
+  LEVEL_UP: 'Engineering Building',
   KITCHEN: 'Kitchen',
 }
 
@@ -26,7 +26,7 @@ export function withRoomPrefix(prefix, room) {
   return label ? `${prefix}${label}` : ''
 }
 
-/** Activity cards sometimes prefix the room (e.g. "in IBM HQ"). */
+/** Activity cards sometimes prefix the room (e.g. "in Engineering Building"). */
 export const ACTIVITY_ROOMS = {
   IN_LEVEL_UP: withRoomPrefix('in ', VENUE_ROOMS.LEVEL_UP),
   NEAR_LEVEL_UP: withRoomPrefix('near ', VENUE_ROOMS.LEVEL_UP),

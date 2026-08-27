@@ -1,6 +1,6 @@
-# Contributing to the Latino Heritage Month Innovation Summit Website
+# Contributing to the Latin Heritage Month Innovation Summit Website
 
-Thank you for your interest in contributing to the Latino Heritage Month Innovation Summit (`mishpe26`)! This document provides guidelines and information for contributors.
+Thank you for your interest in contributing to the Latin Heritage Month Innovation Summit (`mishpe26`)! This document provides guidelines and information for contributors.
 
 ## Getting Started
 
@@ -151,7 +151,7 @@ Then create a pull request on GitHub using our PR template.
 
 ## Accessibility Guidelines
 
-We are committed to making the Latino Heritage Month Innovation Summit website accessible to everyone. Please ensure:
+We are committed to making the Latin Heritage Month Innovation Summit website accessible to everyone. Please ensure:
 
 ### Keyboard Navigation
 
@@ -244,7 +244,7 @@ Releases are managed by the maintainers. When your PR is merged:
 
 ## Thank You
 
-Thank you for contributing to the Latino Heritage Month Innovation Summit website! Your contributions help make our event more accessible and engaging for the community.
+Thank you for contributing to the Latin Heritage Month Innovation Summit website! Your contributions help make our event more accessible and engaging for the community.
 
 ---
 

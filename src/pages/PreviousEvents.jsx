@@ -9,6 +9,51 @@ import PageLayout from '@/layouts/PageLayout'
 const pastEvents = [
   {
     id: 1,
+    year: '2026',
+    name: 'Detroit Pride Innovation Summit 2026',
+    date: 'June 2026',
+    location: 'IBM HQ, Detroit',
+    attendees: 'TBD',
+    tagline: 'Building with pride in the tech community',
+    description:
+      'A day of talks, panels, and workshops centering LGBTQ+ technologists and allies, hosted downtown at IBM HQ with a focus on visibility, belonging, and career growth.',
+    url: 'https://bit.ly/pride-summit-26',
+    highlights: ['1 Track', '17 Speakers', '60+ Attendees'],
+    color: '#a855f7',
+    gallerySlug: 'pride-summit-2026',
+  },
+  {
+    id: 2,
+    year: '2026',
+    name: "International Women's Day Innovation Summit 2026",
+    date: 'March 2026',
+    location: 'Little Caesars Arena, Detroit',
+    attendees: 'TBD',
+    tagline: 'Empowering women and allies in tech',
+    description:
+      'Our largest venue yet at Little Caesars Arena, with practitioner-led talks, community spotlights, and mentorship circles advancing women across every discipline in technology.',
+    url: 'https://gdg.community.dev/iwd/',
+    highlights: ['41 Speakers', '6 Tracks', '200+ Attendees'],
+    color: '#3b82f6',
+    gallerySlug: 'iwd-summit-2026',
+  },
+  {
+    id: 3,
+    year: '2026',
+    name: 'BHM Innovation Summit 2026',
+    date: 'February 2026',
+    location: 'DTE Energy, Detroit',
+    attendees: 'TBD',
+    tagline: 'Centering Black technologists and leaders',
+    description:
+      'Hosted at DTE Energy, with keynote talks, career-focused panels, and workforce-oriented workshops built around mentorship and industry readiness.',
+    url: 'https://bhmsummit.com',
+    highlights: ['52 Speakers', '7 Tracks', '200+ Attendees'],
+    color: '#22c55e',
+    gallerySlug: 'bhm-summit-2026',
+  },
+  {
+    id: 4,
     year: '2025',
     name: 'Michigan DevFest 2025',
     date: 'November 2025',
@@ -23,7 +68,7 @@ const pastEvents = [
     gallerySlug: 'michigan-devfest-2025',
   },
   {
-    id: 2,
+    id: 5,
     year: '2025',
     name: "International Women's Day Innovation Summit 2025",
     date: 'March 2025',
@@ -38,7 +83,7 @@ const pastEvents = [
     gallerySlug: 'iwd-summit-2025',
   },
   {
-    id: 3,
+    id: 6,
     year: '2025',
     name: 'BHM Innovation Summit 2025',
     date: 'February 2025',
@@ -53,7 +98,7 @@ const pastEvents = [
     gallerySlug: 'bhm-summit-2025',
   },
   {
-    id: 4,
+    id: 7,
     year: '2024',
     name: 'Michigan DevFest 2024',
     date: 'October 2024',
@@ -68,7 +113,7 @@ const pastEvents = [
     gallerySlug: 'michigan-devfest-2024',
   },
   {
-    id: 5,
+    id: 8,
     year: '2024',
     name: "International Women's Day Innovation Summit 2024",
     date: 'March 2024',
@@ -83,7 +128,7 @@ const pastEvents = [
     gallerySlug: 'iwd-summit-2024',
   },
   {
-    id: 6,
+    id: 9,
     year: '2024',
     name: 'BHM Innovation Summit 2024',
     date: 'February 2024',

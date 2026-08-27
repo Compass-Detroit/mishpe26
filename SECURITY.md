@@ -1,6 +1,6 @@
 # Security Policy
 
-The Latino Heritage Month Innovation Summit website (`mishpe26`) is a static, front-end-only
+The Latin Heritage Month Innovation Summit website (`mishpe26`) is a static, front-end-only
 site deployed on Vercel. It does not collect user accounts or handle payments, so the
 attack surface is small — but we still take security seriously.
 
@@ -40,7 +40,7 @@ When reporting, please include:
 
 In scope:
 
-- The production site at [lhmsummit.com](https://lhmsummit.com/)
+- The production site at [hhmsummit.com](https://hhmsummit.com/)
 - Source code in this repository (including the speaker import scripts under
   `scripts/sanity-import/` and the Sanity Studio in `studio/`)
 

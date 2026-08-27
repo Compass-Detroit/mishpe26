@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lhmsummit.com/sitemap.xml
+Sitemap: https://hhmsummit.com/sitemap.xml

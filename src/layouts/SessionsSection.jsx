@@ -11,7 +11,7 @@ import MyScheduleEmptyState from '@/components/sessions/MyScheduleEmptyState'
 import TrackEmptyState from '@/components/sessions/TrackEmptyState'
 
 import { conferenceActivities } from '@/data/2026/conferenceActivities'
-import { trackStageHeading } from '@/data/2026/venues'
+import { trackStageHeading, SCHEDULE_TRACK } from '@/data/2026/venues'
 import { DIRECTION } from '@/constants/directions'
 import { IoChevronDown, IoChevronForward, IoChevronBack } from 'react-icons/io5'
 
@@ -80,7 +80,7 @@ const trackDescriptions = {
       >
         {trackStageHeading('Level Up')}
       </h3>
-      <p className="mb-6 max-w-4xl text-pretty text-center text-base text-gray-400">
+      <p className="mb-6 max-w-4xl text-pretty text-center text-lg text-gray-400">
         Advance your career and personal growth. From mentorship to leadership,
         explore sessions that help you level up professionally and personally in
         tech.
@@ -145,7 +145,7 @@ const trackDescriptions = {
         className="mx-auto mb-4 text-center text-xl font-normal text-white sm:text-2xl "
       >
         <span className="font-bold">
-          Latino Heritage Month Innovation Summit Venue Guide
+          Latin Heritage Month Innovation Summit Venue Guide
         </span>
       </h3>
       <p className="mb-6 max-w-4xl text-pretty text-center text-base text-gray-400">
@@ -161,7 +161,14 @@ const SessionsSection = ({
   tracks = [],
   defaultExpanded = true,
 }) => {
-  const [activeTab, setActiveTab] = useState(0)
+  const tracksWithoutMap = tracks.filter((t) => t !== 'Map')
+  const tabs = tracks.includes('Map')
+    ? ['Map', 'My Schedule', ...tracksWithoutMap]
+    : ['My Schedule', ...tracks]
+
+  const [activeTab, setActiveTab] = useState(() =>
+    Math.max(0, tabs.indexOf(SCHEDULE_TRACK))
+  )
   const [isExpanded, setIsExpanded] = useState(defaultExpanded)
   const [direction, setDirection] = useState(
     defaultExpanded === true ? DIRECTION.TOP : DIRECTION.BOTTOM
@@ -179,10 +186,6 @@ const SessionsSection = ({
     autoResolveAndAdd,
   } = useSchedule()
 
-  const tracksWithoutMap = tracks.filter((t) => t !== 'Map')
-  const tabs = tracks.includes('Map')
-    ? ['Map', 'My Schedule', ...tracksWithoutMap]
-    : ['My Schedule', ...tracks]
   const currentSession = tabs[activeTab]
 
   const toggleExpanded = () => {

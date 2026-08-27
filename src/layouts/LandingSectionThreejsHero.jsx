@@ -21,8 +21,8 @@ function ThreejsHeroForeground() {
       >
         {/* Top metadata */}
         <p className="font-body text-[10px] font-semibold uppercase tracking-[0.35em] text-white/55 sm:text-xs">
-          Detroit &middot; Loc &middot; 2026 &middot; Powered by Compass Detroit
-          &amp; Co
+          Detroit &middot; WSU &middot; 2026 &middot; Powered by Compass Detroit
+          &amp; Wayne State University
         </p>
 
         {/* Main title */}
@@ -30,7 +30,7 @@ function ThreejsHeroForeground() {
           id="threejs-hero-title"
           className="mt-6 font-heading text-3xl font-black uppercase leading-[1.05] tracking-tight text-white sm:mt-8 sm:text-4xl md:text-5xl lg:text-[3.25rem]"
         >
-          Latino Heritage Month{' '}
+          Latin Heritage Month{' '}
           <span className="mt-2 block font-heading text-xl normal-case text-iwd-gold-400 sm:text-2xl md:text-3xl lg:text-4xl">
             Innovation Summit
           </span>
@@ -48,7 +48,7 @@ function ThreejsHeroForeground() {
             label="Register Now"
             target="_blank"
             rel="noopener noreferrer"
-            ariaLabel="Register for the Latino Heritage Month Innovation Summit (link coming soon)"
+            ariaLabel="Register for the Latin Heritage Month Innovation Summit (link coming soon)"
             className="w-full min-w-48 sm:w-auto"
             icon={<FaArrowRight />}
             iconPosition="right"
@@ -60,7 +60,7 @@ function ThreejsHeroForeground() {
             variant="secondary"
             target="_blank"
             rel="noopener noreferrer"
-            ariaLabel="Become a sponsor for the Latino Heritage Month Innovation Summit"
+            ariaLabel="Become a sponsor for the Latin Heritage Month Innovation Summit"
             className="w-full min-w-48 border-iwd-gold-400/40 text-white sm:w-auto dark:border-iwd-gold-400/40 dark:text-white dark:hover:text-white"
             icon={<FaArrowRight />}
             iconPosition="right"
@@ -71,15 +71,15 @@ function ThreejsHeroForeground() {
         <p className="mt-6 font-body text-[11px] uppercase tracking-[0.2em] text-white/90 sm:text-xs">
           Venue:{' '}
           <span className="inline-block rounded border border-iwd-gold-400 bg-white/[0.04] px-2 py-0.5 font-semibold tracking-[0.15em] text-iwd-gold-300">
-            Company
+            Wayne State University
           </span>
         </p>
 
         {/* Description */}
         <p className="mx-auto mt-6 max-w-xl font-body text-base leading-relaxed text-white">
-          A day of learning, building, and connecting for Latino innovators and
-          allies in Detroit&apos;s tech ecosystem — hosted at IBM HQ with
-          workshops, talks, and community.
+          A day of learning, building, and connecting for Latin innovators and
+          allies in Detroit&apos;s tech ecosystem — hosted at Wayne State&apos;s
+          Anderson Engineering Building with workshops, talks, and community.
         </p>
 
         {/* Footer links */}

@@ -1,12 +1,12 @@
 ---
 name: Accessibility Issue
-about: Report an accessibility issue on the Latino Heritage Month Innovation Summit website (IBM HQ)
+about: Report an accessibility issue on the Latin Heritage Month Innovation Summit website (WSU Anderson Engineering Building)
 title: '[A11Y] '
 labels: accessibility, bug
 assignees: ''
 ---
 
-**Event:** Latino Heritage Month Innovation Summit · **Venue:** IBM HQ
+**Event:** Latin Heritage Month Innovation Summit · **Venue:** WSU Anderson Engineering Building
 
 ## Accessibility Issue Description
 
