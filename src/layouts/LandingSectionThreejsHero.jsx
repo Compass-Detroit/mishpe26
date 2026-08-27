@@ -30,7 +30,7 @@ function ThreejsHeroForeground() {
           id="threejs-hero-title"
           className="mt-6 font-heading text-3xl font-black uppercase leading-[1.05] tracking-tight text-white sm:mt-8 sm:text-4xl md:text-5xl lg:text-[3.25rem]"
         >
-          Latino Heritage Month{' '}
+          Latin Heritage Month{' '}
           <span className="mt-2 block font-heading text-xl normal-case text-iwd-gold-400 sm:text-2xl md:text-3xl lg:text-4xl">
             Innovation Summit
           </span>
@@ -48,7 +48,7 @@ function ThreejsHeroForeground() {
             label="Register Now"
             target="_blank"
             rel="noopener noreferrer"
-            ariaLabel="Register for the Latino Heritage Month Innovation Summit (link coming soon)"
+            ariaLabel="Register for the Latin Heritage Month Innovation Summit (link coming soon)"
             className="w-full min-w-48 sm:w-auto"
             icon={<FaArrowRight />}
             iconPosition="right"
@@ -60,7 +60,7 @@ function ThreejsHeroForeground() {
             variant="secondary"
             target="_blank"
             rel="noopener noreferrer"
-            ariaLabel="Become a sponsor for the Latino Heritage Month Innovation Summit"
+            ariaLabel="Become a sponsor for the Latin Heritage Month Innovation Summit"
             className="w-full min-w-48 border-iwd-gold-400/40 text-white sm:w-auto dark:border-iwd-gold-400/40 dark:text-white dark:hover:text-white"
             icon={<FaArrowRight />}
             iconPosition="right"

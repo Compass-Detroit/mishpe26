@@ -1,12 +1,12 @@
 ---
 name: Feature Request
-about: Suggest an idea for the Latino Heritage Month Innovation Summit website (IBM HQ)
+about: Suggest an idea for the Latin Heritage Month Innovation Summit website (IBM HQ)
 title: '[FEATURE] '
 labels: enhancement
 assignees: ''
 ---
 
-**Event:** Latino Heritage Month Innovation Summit · **Venue:** IBM HQ
+**Event:** Latin Heritage Month Innovation Summit · **Venue:** IBM HQ
 
 ## Feature Description
 

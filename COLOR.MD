@@ -1,6 +1,6 @@
-# Latino Heritage Month Innovation Summit Color System
+# Latin Heritage Month Innovation Summit Color System
 
-This document defines the color palette for the Latino Heritage Month Innovation Summit website.
+This document defines the color palette for the Latin Heritage Month Innovation Summit website.
 
 The palette is inspired by the Women Techmakers brand and implemented as semantic Tailwind tokens under the `iwd` namespace. The site ships four switchable themes controlled via CSS custom properties and a `data-theme` attribute on `<html>`. The themes and their swatches are defined in `src/constants/ui.js`; the default is **Purple** (set in `src/components/ui/ThemeContext.jsx`).
 

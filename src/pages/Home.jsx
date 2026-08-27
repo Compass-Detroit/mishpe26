@@ -22,7 +22,7 @@ function Home() {
     <PageLayout>
       <SEOStructuredData speakersData={Speakers2026} />
       <h1 id="main-heading" className="sr-only">
-        Latino Heritage Month Innovation Summit {currentYear}
+        Latin Heritage Month Innovation Summit {currentYear}
       </h1>
 
       <LandingSectionThreejsHero />

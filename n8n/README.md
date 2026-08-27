@@ -1,4 +1,4 @@
-# n8n import setup — Latino Heritage Month Innovation Summit
+# n8n import setup — Latin Heritage Month Innovation Summit
 
 Orchestrates **Google Sheet + Drive → Sanity → optional Vercel redeploy**.
 

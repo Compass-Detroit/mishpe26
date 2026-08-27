@@ -1,6 +1,6 @@
-# Latino Heritage Month Innovation Summit 2026
+# Latin Heritage Month Innovation Summit 2026
 
-The website for the [Latino Heritage Month Innovation Summit 2026](https://lhmsummit.com/). Built with Vite, React, and Tailwind CSS.
+The website for the [Latin Heritage Month Innovation Summit 2026](https://hhmsummit.com/). Built with Vite, React, and Tailwind CSS.
 
 Organized by **Compass Detroit** in partnership with **GDG Detroit** and community partners (see the Partners section on the site for the full list).
 
@@ -137,7 +137,7 @@ Speaker and session data lives in **Sanity Studio** (`production` dataset). The 
 ### Edit in Studio (current workflow)
 
 ```
-Sanity Studio (local :3333 or lhmsummit.sanity.studio)
+Sanity Studio (local :3333 or hhmsummit.sanity.studio)
         ↓
 pnpm run fetch:event-data  →  speakers.generated.json
         ↓
@@ -147,7 +147,7 @@ pnpm run dev  (or Vercel deploy for production)
 | Studio | URL                                                         | Command                       |
 | ------ | ----------------------------------------------------------- | ----------------------------- |
 | Local  | `http://localhost:3333`                                     | `pnpm run studio:dev`         |
-| Cloud  | [lhmsummit.sanity.studio](https://lhmsummit.sanity.studio/) | `cd studio && npm run deploy` |
+| Cloud  | [hhmsummit.sanity.studio](https://hhmsummit.sanity.studio/) | `cd studio && npm run deploy` |
 
 Both studios edit the **same** cloud dataset. After publishing changes, run `pnpm run dev:cms` to see them on the local site.
 
@@ -225,8 +225,8 @@ Excluded from the sitemap: `/playground/*` (internal design previews), `/previou
 pnpm run build
 # confirm dist/robots.txt and dist/sitemap.xml exist
 
-curl https://lhmsummit.com/robots.txt
-curl https://lhmsummit.com/sitemap.xml
+curl https://hhmsummit.com/robots.txt
+curl https://hhmsummit.com/sitemap.xml
 ```
 
 Test link previews with the [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) or [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/).

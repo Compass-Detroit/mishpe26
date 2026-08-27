@@ -1,6 +1,6 @@
 # Accessibility Guidelines
 
-This document outlines the accessibility standards and practices for the Latino Heritage Month Innovation Summit website. Our goal is to ensure the website is accessible to all users, including those using assistive technologies.
+This document outlines the accessibility standards and practices for the Latin Heritage Month Innovation Summit website. Our goal is to ensure the website is accessible to all users, including those using assistive technologies.
 
 ## Overview
 
