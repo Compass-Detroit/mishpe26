@@ -6,7 +6,6 @@ import SectionSkipLink from '@/components/ui/SectionSkipLink'
 
 import { SpeakerContext } from '@/components/speakers/SpeakerContext'
 
-import { GOLD_PRIMARY_LIGHT_HOVER } from '@/constants/goldPrimaryButtonLightHover'
 import { DIRECTION } from '@/constants/directions'
 import { IoChevronDown } from 'react-icons/io5'
 
@@ -105,14 +104,15 @@ const SpeakersContent = ({ year, defaultExpanded }) => {
   const noSpeakersMessage = (
     <div className="col-span-1 my-4 flex flex-col items-center justify-center space-y-8 text-center text-xl leading-relaxed text-gray-300">
       <p>Ready to give a talk? Apply below!</p>
-      <a
-        href="https://www.papercall.io/midevfest2025"
-        target="_blank"
-        className={`flex items-center rounded-lg border border-iwd-gold-400/30 bg-iwd-gold-400/10 px-8 py-4 text-sm font-semibold uppercase tracking-widest text-iwd-gold-300 shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:cursor-pointer hover:border-iwd-gold-400/50 hover:bg-iwd-gold-400/20 hover:shadow-xl hover:shadow-iwd-gold-500/10 ${GOLD_PRIMARY_LIGHT_HOVER}`}
-        rel="noreferrer"
+      {/* TODO: re-link to the call for speakers once the new CFP is live. */}
+      <button
+        type="button"
+        disabled
+        title="Speaker applications open soon"
+        className="flex cursor-default items-center rounded-lg border border-iwd-gold-400/20 bg-iwd-gold-400/5 px-8 py-4 text-sm font-semibold uppercase tracking-widest text-iwd-gold-300/60 shadow-lg"
       >
-        APPLY TO SPEAK
-      </a>
+        APPLY TO SPEAK &mdash; OPENING SOON
+      </button>
     </div>
   )
   return (
