@@ -57,6 +57,17 @@ export const partner = defineType({
       type: 'image',
       options: {hotspot: true},
       description: 'Transparent PNG or WebP reads best against the light logo plate.',
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alt text',
+          type: 'string',
+          description:
+            'Describes the logo when the image fails to load. The card link is already ' +
+            'labelled with the partner name, so usually just "<Name> logo". Leave blank ' +
+            'only if the logo is purely decorative.',
+        }),
+      ],
     }),
     defineField({
       name: 'description',

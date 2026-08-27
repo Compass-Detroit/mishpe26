@@ -56,7 +56,7 @@ const PartnerCard = ({ partner, cardSize }) => {
         {partner.logo ? (
           <img
             src={partner.logo}
-            alt=""
+            alt={partner.logoAlt ?? ''}
             className={`logo-halo object-contain transition-transform duration-700 group-hover:scale-110 ${cardSize.logo}`}
             loading="lazy"
           />
@@ -132,6 +132,7 @@ PartnerCard.propTypes = {
   partner: PropTypes.shape({
     name: PropTypes.string.isRequired,
     logo: PropTypes.string,
+    logoAlt: PropTypes.string,
     desc: PropTypes.string,
     url: PropTypes.string,
   }).isRequired,
@@ -301,6 +302,7 @@ const partnerListShape = PropTypes.arrayOf(
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     name: PropTypes.string.isRequired,
     logo: PropTypes.string,
+    logoAlt: PropTypes.string,
     desc: PropTypes.string,
     url: PropTypes.string,
   })

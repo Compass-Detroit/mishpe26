@@ -67,7 +67,8 @@ const PARTNERS_QUERY = `*[_type == "partner" && event->year == $year && publishe
   partnerGroup,
   "desc": description,
   url,
-  "logo": logo.asset->url
+  "logo": logo.asset->url,
+  "logoAlt": logo.alt
 }`
 
 function readEnv(name, fallback) {
@@ -263,7 +264,7 @@ export async function fetchEventPartners(options = {}) {
   const grouped = { sponsors: [], community: [] }
   const AREA_BY_GROUP = { sponsor: 'sponsors', community: 'community' }
 
-  for (const { id, name, partnerGroup, desc, url, logo } of rows) {
+  for (const { id, name, partnerGroup, desc, url, logo, logoAlt } of rows) {
     if (!id || !name) continue
 
     const area = AREA_BY_GROUP[partnerGroup]
@@ -280,6 +281,7 @@ export async function fetchEventPartners(options = {}) {
       id,
       name,
       logo: logo ?? '',
+      logoAlt: logoAlt ?? '',
       desc: desc ?? '',
       url: url ?? '',
     })
