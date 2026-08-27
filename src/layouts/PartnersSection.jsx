@@ -15,23 +15,41 @@ function truncateDescription(text, maxLength = DESC_MAX_LENGTH) {
  * community groups four to a row on smaller ones. Position no longer confers
  * prominence, so the only difference between the two is card scale.
  */
-const SPONSOR_RANK = {
+const SPONSOR_CARD = {
   height: 'h-64 sm:h-72',
   logo: 'max-h-48 max-w-[80%]',
 }
 
-const COMMUNITY_RANK = {
+const COMMUNITY_CARD = {
   height: 'h-48 sm:h-56',
   logo: 'max-h-36 max-w-[85%]',
+}
+
+/**
+ * Sanity's `url` type only validates in the Studio, so an API or import write can
+ * persist a javascript:/data: value. Anchors get an http(s) URL or nothing.
+ */
+function safeExternalUrl(url) {
+  if (typeof url !== 'string' || !url) return ''
+  try {
+    const { protocol } = new URL(url)
+    return protocol === 'http:' || protocol === 'https:' ? url : ''
+  } catch {
+    return ''
+  }
 }
 
 const CARD_CLASS =
   'group block w-full rounded-[2rem] border-0 bg-transparent p-0 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-iwd-black-950'
 
-const PartnerCard = ({ partner, rank }) => {
+const PartnerCard = ({ partner, cardSize }) => {
+  const url = safeExternalUrl(partner.url)
+  // Only promise a description when the card back actually has one.
+  const descHint = partner.desc ? ' (hover or focus for description)' : ''
+
   const cardInner = (
     <div
-      className={`relative w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-focus-visible:[transform:rotateY(180deg)] ${rank.height}`}
+      className={`relative w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-focus-visible:[transform:rotateY(180deg)] ${cardSize.height}`}
     >
       {/* ── Front: Large logo ── */}
       <div className="absolute inset-0 flex items-center justify-center rounded-[2rem] border border-stone-300/70 bg-gradient-to-br from-stone-300/90 via-stone-100 to-gray-300/80 p-10 shadow-sm shadow-black/20 [backface-visibility:hidden] light:border-stone-300 light:from-stone-200 light:via-stone-100 light:to-stone-300/90">
@@ -39,7 +57,7 @@ const PartnerCard = ({ partner, rank }) => {
           <img
             src={partner.logo}
             alt=""
-            className={`logo-halo object-contain transition-transform duration-700 group-hover:scale-110 ${rank.logo}`}
+            className={`logo-halo object-contain transition-transform duration-700 group-hover:scale-110 ${cardSize.logo}`}
             loading="lazy"
           />
         ) : (
@@ -55,7 +73,7 @@ const PartnerCard = ({ partner, rank }) => {
         </h4>
         {partner.desc && (
           <p
-            className="line-clamp-4 text-center text-base leading-relaxed text-white/70"
+            className="line-clamp-4 text-center text-base leading-relaxed text-gray-900 dark:text-white/70"
             title={
               partner.desc.length > DESC_MAX_LENGTH ? partner.desc : undefined
             }
@@ -63,7 +81,7 @@ const PartnerCard = ({ partner, rank }) => {
             {truncateDescription(partner.desc)}
           </p>
         )}
-        {partner.url && (
+        {url && (
           <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium uppercase tracking-widest text-iwd-gold-400">
             Visit Site
             <svg
@@ -86,12 +104,10 @@ const PartnerCard = ({ partner, rank }) => {
   )
 
   const cardStyle = { perspective: '1000px' }
-  // Only promise a description when the card back actually has one.
-  const descHint = partner.desc ? ' (hover or focus for description)' : ''
 
-  return partner.url ? (
+  return url ? (
     <a
-      href={partner.url}
+      href={url}
       target="_blank"
       rel="noopener noreferrer"
       className={CARD_CLASS}
@@ -119,7 +135,7 @@ PartnerCard.propTypes = {
     desc: PropTypes.string,
     url: PropTypes.string,
   }).isRequired,
-  rank: PropTypes.shape({
+  cardSize: PropTypes.shape({
     height: PropTypes.string.isRequired,
     logo: PropTypes.string.isRequired,
   }).isRequired,
@@ -153,8 +169,11 @@ const PartnersSection = ({ partnersData = {}, year }) => {
   const community = [
     ...(partnersData.community || []),
     // Legacy shapes: flat/tiered lists all read as community groups.
-    ...(partnersData.partners || []),
+    ...(partnersData.platinum || []),
+    ...(partnersData.diamond || []),
+    ...(partnersData.gold || []),
     ...(partnersData.organizations || []),
+    ...(partnersData.partners || []),
   ].filter(Boolean)
 
   const hasPartners = sponsors.length > 0 || community.length > 0
@@ -211,7 +230,7 @@ const PartnersSection = ({ partnersData = {}, year }) => {
                     <PartnerCard
                       key={sponsor.id ?? sponsor.name}
                       partner={sponsor}
-                      rank={SPONSOR_RANK}
+                      cardSize={SPONSOR_CARD}
                     />
                   ))}
                 </div>
@@ -231,7 +250,7 @@ const PartnersSection = ({ partnersData = {}, year }) => {
                     <PartnerCard
                       key={group.id ?? group.name}
                       partner={group}
-                      rank={COMMUNITY_RANK}
+                      cardSize={COMMUNITY_CARD}
                     />
                   ))}
                 </div>
@@ -292,8 +311,11 @@ PartnersSection.propTypes = {
     sponsors: partnerListShape,
     community: partnerListShape,
     // legacy shapes, folded into the community grid
-    partners: partnerListShape,
+    platinum: partnerListShape,
+    diamond: partnerListShape,
+    gold: partnerListShape,
     organizations: partnerListShape,
+    partners: partnerListShape,
   }),
   year: PropTypes.number.isRequired,
 }

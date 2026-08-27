@@ -77,7 +77,7 @@ const staticPartners = [
     area: COMMUNITY,
     name: 'NSBE Detroit',
     logo: NSBEDetroit,
-    desc: 'Representing Black Engineers in Detroit. NSBE Detroit Professionals strive to increase technical awareness, encourage scholastic achievement, and stimulate enthusiasm in the black engineering community of Detroit. NSBEs mission is to increase the number of culturally responsible Black engineers who excel academically, succeed professionally and positively impact the community. The NSBE Professionals inspire the next generation of technical professionals, and serve as a catalyst for transform.',
+    desc: 'Representing Black Engineers in Detroit. NSBE Detroit Professionals strive to increase technical awareness, encourage scholastic achievement, and stimulate enthusiasm in the black engineering community of Detroit. NSBE’s mission is to increase the number of culturally responsible Black engineers who excel academically, succeed professionally and positively impact the community. The NSBE Professionals inspire the next generation of technical professionals, and serve as a catalyst for transformation.',
     url: 'https://nsbedetroitprofessionals.org/',
   },
   {
@@ -93,7 +93,7 @@ const staticPartners = [
     area: COMMUNITY,
     name: 'Techqueria Detroit',
     logo: Techqueria,
-    desc: 'We’re a vibrant, 25,000-strong community empowering Latiné professionals to thrive in every corner of the tech industry. Techqueria provide mentorship, career development, and advocacy for DEI.',
+    desc: 'We’re a vibrant, 25,000-strong community empowering Latiné professionals to thrive in every corner of the tech industry. Techqueria provides mentorship, career development, and advocacy for DEI.',
     url: 'https://techqueria.org',
   },
   {
@@ -125,7 +125,7 @@ const staticPartners = [
     area: COMMUNITY,
     name: 'Women Techmakers',
     logo: WomenTechmakers,
-    desc: 'Googles Women Techmakers program provides visibility, community, and resources for women in technology.',
+    desc: 'Google’s Women Techmakers program provides visibility, community, and resources for women in technology.',
     url: 'https://www.technovation.org/women-techmakers/',
   },
   {
@@ -145,7 +145,8 @@ function inArea(area) {
 
 /** Sanity wins per area once that area has published documents. */
 function preferGenerated(generated, fallback) {
-  return generated?.length ? generated : fallback
+  if (!Array.isArray(generated) || generated.length === 0) return fallback
+  return generated
 }
 
 export const partnersData = {

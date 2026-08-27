@@ -1,7 +1,7 @@
 /**
  * Fetch published speakers/sessions and partners from Sanity and write
  * frontend-ready JSON. Run before build (or manually via
- * npm run fetch:event-data).
+ * pnpm fetch:event-data).
  */
 import { writeFile } from 'node:fs/promises'
 import { existsSync, readFileSync } from 'node:fs'
@@ -261,12 +261,22 @@ export async function fetchEventPartners(options = {}) {
   const rows = await client.fetch(PARTNERS_QUERY, { year: eventYear })
 
   const grouped = { sponsors: [], community: [] }
+  const AREA_BY_GROUP = { sponsor: 'sponsors', community: 'community' }
+
   for (const { id, name, partnerGroup, desc, url, logo } of rows) {
     if (!id || !name) continue
 
-    const bucket =
-      partnerGroup === 'sponsor' ? grouped.sponsors : grouped.community
-    bucket.push({
+    const area = AREA_BY_GROUP[partnerGroup]
+    if (!area) {
+      console.warn(
+        `fetch-event-data: partner "${name}" has partnerGroup ` +
+          `"${partnerGroup ?? '(unset)'}", which is neither sponsor nor ` +
+          `community. Skipping it rather than guessing an area.`
+      )
+      continue
+    }
+
+    grouped[area].push({
       id,
       name,
       logo: logo ?? '',

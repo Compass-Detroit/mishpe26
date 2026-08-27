@@ -69,6 +69,8 @@ export const partner = defineType({
       name: 'url',
       title: 'Website',
       type: 'url',
+      validation: (rule) => rule.uri({scheme: ['http', 'https']}),
+      description: 'Rendered as the card link, so only http(s) addresses are accepted.',
     }),
     defineField({
       name: 'sortOrder',
