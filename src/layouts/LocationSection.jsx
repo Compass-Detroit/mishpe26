@@ -31,8 +31,8 @@ const VENUE_IMAGES = [
   },
   {
     src: exteriorPost,
-    alt: 'School pillar with Wayne State University logo.',
-    label: '',
+    alt: 'Stone pillar at a campus gateway carrying the Wayne State University seal, marking the founding of the university.',
+    label: 'University Founding Monument',
   },
 ]
 

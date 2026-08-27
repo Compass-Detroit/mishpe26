@@ -26,7 +26,7 @@ export function withRoomPrefix(prefix, room) {
   return label ? `${prefix}${label}` : ''
 }
 
-/** Activity cards sometimes prefix the room (e.g. "in Rooms 2415 & 2416"). */
+/** Activity cards sometimes prefix the room (e.g. "in Engineering Building"). */
 export const ACTIVITY_ROOMS = {
   IN_LEVEL_UP: withRoomPrefix('in ', VENUE_ROOMS.LEVEL_UP),
   NEAR_LEVEL_UP: withRoomPrefix('near ', VENUE_ROOMS.LEVEL_UP),

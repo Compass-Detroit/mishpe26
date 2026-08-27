@@ -77,7 +77,7 @@ function ThreejsHeroForeground() {
 
         {/* Description */}
         <p className="mx-auto mt-6 max-w-xl font-body text-base leading-relaxed text-white">
-          A day of learning, building, and connecting for latin innovators and
+          A day of learning, building, and connecting for Latin innovators and
           allies in Detroit&apos;s tech ecosystem — hosted at Wayne State&apos;s
           Anderson Engineering Building with workshops, talks, and community.
         </p>

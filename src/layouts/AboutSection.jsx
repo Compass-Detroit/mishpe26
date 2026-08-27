@@ -41,7 +41,7 @@ function AboutSection() {
         <p className="text-left font-body text-lg leading-relaxed text-gray-400">
           The Latin Heritage Month Innovation Summit brings together
           technologists, creators, leaders, and allies for a day of learning,
-          building, and empowering the latin community across Detroit&apos;s
+          building, and empowering the Latin community across Detroit&apos;s
           tech ecosystem.
         </p>
         <p className="mt-6 text-left font-body text-lg leading-relaxed text-gray-400">
