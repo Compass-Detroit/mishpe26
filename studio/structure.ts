@@ -1,5 +1,27 @@
 import type {StructureResolver} from 'sanity/structure'
 
+const PARTNER_ORDERING = [
+  {field: 'sortOrder', direction: 'asc' as const},
+  {field: 'name', direction: 'asc' as const},
+]
+
+/**
+ * One list per partner area. Moving an organization between them is the
+ * "Partner group" field, or the "Move to …" document action.
+ */
+function partnerArea(S: Parameters<StructureResolver>[0], title: string, group: string) {
+  return S.listItem()
+    .title(title)
+    .child(
+      S.documentTypeList('partner')
+        .title(title)
+        .filter('_type == "partner" && partnerGroup == $group')
+        .params({group})
+        .initialValueTemplates([])
+        .defaultOrdering(PARTNER_ORDERING)
+    )
+}
+
 export const structure: StructureResolver = (S) =>
   S.list()
     .title('Content')
@@ -19,6 +41,24 @@ export const structure: StructureResolver = (S) =>
           S.documentTypeList('session')
             .title('Sessions')
             .defaultOrdering([{field: 'startTime', direction: 'asc'}])
+        ),
+      S.listItem()
+        .title('Partners')
+        .child(
+          S.list()
+            .title('Partners')
+            .items([
+              partnerArea(S, 'Sponsors', 'sponsor'),
+              partnerArea(S, 'Community groups', 'community'),
+              S.divider(),
+              S.listItem()
+                .title('All partners')
+                .child(
+                  S.documentTypeList('partner')
+                    .title('All partners')
+                    .defaultOrdering(PARTNER_ORDERING)
+                ),
+            ])
         ),
       S.listItem()
         .title('Team')

@@ -1,0 +1,110 @@
+{
+  "sponsors": [
+    {
+      "id": "compass-detroit",
+      "name": "Compass Detroit",
+      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/2de4078ab08b35987d477762e4fe02bd9e53328c-241x149.webp",
+      "logoAlt": "Compass Detroit logo",
+      "desc": "The Collective of Minority Professionals and STEAM Societies (formerly COMPES) was formed in 2000 as an initiative between the NSBE, SHPE, and SWE Detroit professional chapters. The mission of this collaborative partnership is to support the local Detroit community in upskilling, career growth, networking, and to provide access to new opportunities.",
+      "url": "https://compass-detroit.com/"
+    },
+    {
+      "id": "ibm",
+      "name": "IBM",
+      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/a6500d3000b0433f6b5436733d0a634ff58ace3e-2560x1027.webp",
+      "logoAlt": "IBM logo",
+      "desc": "IBM is a global technology company that provides hardware, software, and services to businesses and organizations.",
+      "url": "https://www.ibm.com/us-en"
+    },
+    {
+      "id": "dte",
+      "name": "DTE",
+      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/9efb2b4ee18b8908cea21e077c6e39393ea97c29-400x401.webp",
+      "logoAlt": "DTE logo",
+      "desc": "DTE Energy (NYSE: DTE) is a Detroit-based diversified energy company involved in the development and management of energy-related businesses and services nationwide. Its operating units include an electric company serving 2.3 million customers in Southeast Michigan and a natural gas company serving 1.3 million customers in Michigan. The DTE portfolio also includes non-utility businesses focused on industrial energy services, renewable natural gas, and energy marketing and trading.",
+      "url": "https://www.dteenergy.com/"
+    },
+    {
+      "id": "little-caesars",
+      "name": "Little Caesars",
+      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/4b0e8094d61b3fb351fa1ff1776d6890a58c35ee-993x748.webp",
+      "logoAlt": "Little Caesars logo",
+      "desc": "Little Caesars, headquartered in Detroit, Michigan, was founded by Mike and Marian Ilitch in 1959 and is now the third largest pizza chain in the world with stores in all 50 U.S. states and 27 countries and territories.",
+      "url": "https://littlecaesars.com/en-us/"
+    }
+  ],
+  "community": [
+    {
+      "id": "devscreate313",
+      "name": "DevsCreate313",
+      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/c9ba899f456ad8d32850174c738821469e80435c-618x618.webp",
+      "logoAlt": "DevsCreate313 logo",
+      "desc": "DevsCreate313 is a nonprofit organization dedicated to creating a collaborative tech ecosystem in the Detroit area. We are a community of developers, designers, entrepreneurs, and technologists who are passionate about building the future of technology in Detroit.",
+      "url": "https://devscreate313.org/"
+    },
+    {
+      "id": "nsbe-detroit",
+      "name": "NSBE Detroit",
+      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/d948f50cb717398b83ad356a67d05db1f792496b-401x401.webp",
+      "logoAlt": "NSBE Detroit logo",
+      "desc": "Representing Black Engineers in Detroit. NSBE Detroit Professionals strive to increase technical awareness, encourage scholastic achievement, and stimulate enthusiasm in the black engineering community of Detroit. NSBE’s mission is to increase the number of culturally responsible Black engineers who excel academically, succeed professionally and positively impact the community. The NSBE Professionals inspire the next generation of technical professionals, and serve as a catalyst for transformation.",
+      "url": "https://nsbedetroitprofessionals.org/"
+    },
+    {
+      "id": "shpe-detroit",
+      "name": "SHPE Detroit",
+      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/4d82a4256cd83cc705ad16c429c0b3ffab86eaa3-401x401.webp",
+      "logoAlt": "SHPE Detroit logo",
+      "desc": "SHPE Detroit is transforming lives in Detroit by inspiring and motivating young Hispanic students to excel in STEM education through mentorship and community involvement and enhancing career opportunities for Hispanics by building a strong professional network.",
+      "url": "https://www.shpedetroit.org/"
+    },
+    {
+      "id": "techqueria-detroit",
+      "name": "Techqueria Detroit",
+      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/a1a87153ad38889bce2c8565f23c3439af7dff60-1200x1200.jpg",
+      "logoAlt": "Techqueria Detroit logo",
+      "desc": "We’re a vibrant, 25,000-strong community empowering Latiné professionals to thrive in every corner of the tech industry. Techqueria provides mentorship, career development, and advocacy for DEI.",
+      "url": "https://techqueria.org"
+    },
+    {
+      "id": "gdg-detroit",
+      "name": "GDG Detroit",
+      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/ae14dde5b4d93a5f9723c1559bc1a765f88668f1-400x400.webp",
+      "logoAlt": "GDG Detroit logo",
+      "desc": "The Detroit Google Developers Group is an inclusive group that meets monthly online and in downtown Detroit to help educate and provide networking opportunities for software developers in the Detroit area.",
+      "url": "https://gdg.community.dev/gdg-detroit/"
+    },
+    {
+      "id": "gdg-toledo",
+      "name": "GDG Toledo",
+      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/a82b973d63cc8a6bb0b487ddc605304a92b67086-400x400.webp",
+      "logoAlt": "GDG Toledo logo",
+      "desc": "Google Developer Group Toledo is a community of developers interested in Google technologies.",
+      "url": "https://gdg.community.dev/gdg-toledo/"
+    },
+    {
+      "id": "gdg-windsor",
+      "name": "GDG Windsor",
+      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/7b6ce516cef24e1330ac234ae3a40f71eeca8b02-400x400.webp",
+      "logoAlt": "GDG Windsor logo",
+      "desc": "Google Developer Group Windsor is a community of developers interested in Google technologies.",
+      "url": "https://gdg.community.dev/gdg-windsor/"
+    },
+    {
+      "id": "women-techmakers",
+      "name": "Women Techmakers",
+      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/59bbb0f3b91616d63ee62c1dccdf5b867c799c2f-412x389.webp",
+      "logoAlt": "Women Techmakers logo",
+      "desc": "Google’s Women Techmakers program provides visibility, community, and resources for women in technology.",
+      "url": "https://www.technovation.org/women-techmakers/"
+    },
+    {
+      "id": "jac3d-g33k",
+      "name": "Jac3D G33k",
+      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/643c996ecb8795170bea2ad681c7395c0a66ad09-1024x1024.jpg",
+      "logoAlt": "Jac3D G33k logo",
+      "desc": "A technology and fitness enthusiast dedicated to digital innovation and community building in the Detroit tech space.",
+      "url": "https://www.instagram.com/jac3dg33k"
+    }
+  ]
+}

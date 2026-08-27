@@ -10,19 +10,174 @@ function truncateDescription(text, maxLength = DESC_MAX_LENGTH) {
   return `${text.slice(0, maxLength).trimEnd()}…`
 }
 
+/**
+ * Both areas render an even grid — sponsors three to a row on larger cards,
+ * community groups four to a row on smaller ones. Position no longer confers
+ * prominence, so the only difference between the two is card scale.
+ */
+const SPONSOR_CARD = {
+  height: 'h-64 sm:h-72',
+  logo: 'max-h-48 max-w-[80%]',
+}
+
+const COMMUNITY_CARD = {
+  height: 'h-48 sm:h-56',
+  logo: 'max-h-36 max-w-[85%]',
+}
+
+/**
+ * Sanity's `url` type only validates in the Studio, so an API or import write can
+ * persist a javascript:/data: value. Anchors get an http(s) URL or nothing.
+ */
+function safeExternalUrl(url) {
+  if (typeof url !== 'string' || !url) return ''
+  try {
+    const { protocol } = new URL(url)
+    return protocol === 'http:' || protocol === 'https:' ? url : ''
+  } catch {
+    return ''
+  }
+}
+
+const CARD_CLASS =
+  'group block w-full rounded-[2rem] border-0 bg-transparent p-0 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-iwd-black-950'
+
+const PartnerCard = ({ partner, cardSize }) => {
+  const url = safeExternalUrl(partner.url)
+  // Only promise a description when the card back actually has one.
+  const descHint = partner.desc ? ' (hover or focus for description)' : ''
+
+  const cardInner = (
+    <div
+      className={`relative w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-focus-visible:[transform:rotateY(180deg)] ${cardSize.height}`}
+    >
+      {/* ── Front: Large logo ── */}
+      <div className="absolute inset-0 flex items-center justify-center rounded-[2rem] border border-stone-300/70 bg-gradient-to-br from-stone-300/90 via-stone-100 to-gray-300/80 p-10 shadow-sm shadow-black/20 [backface-visibility:hidden] light:border-stone-300 light:from-stone-200 light:via-stone-100 light:to-stone-300/90">
+        {partner.logo ? (
+          <img
+            src={partner.logo}
+            alt={partner.logoAlt ?? ''}
+            className={`logo-halo object-contain transition-transform duration-700 group-hover:scale-110 ${cardSize.logo}`}
+            loading="lazy"
+          />
+        ) : (
+          <p className="text-center text-3xl font-bold tracking-tight text-gray-900">
+            {partner.name}
+          </p>
+        )}
+      </div>
+      {/* ── Back: Org info ── */}
+      <div className="from-iwd-dark-900 to-iwd-dark-950 absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-iwd-gold-400/20 bg-gradient-to-br p-6 backdrop-blur-xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
+        <h4 className="mb-4 text-2xl font-black tracking-tight text-white">
+          {partner.name}
+        </h4>
+        {partner.desc && (
+          <p
+            className="line-clamp-4 text-center text-base leading-relaxed text-gray-900 dark:text-white/70"
+            title={
+              partner.desc.length > DESC_MAX_LENGTH ? partner.desc : undefined
+            }
+          >
+            {truncateDescription(partner.desc)}
+          </p>
+        )}
+        {url && (
+          <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium uppercase tracking-widest text-iwd-gold-400">
+            Visit Site
+            <svg
+              className="size-3"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+              />
+            </svg>
+          </span>
+        )}
+      </div>
+    </div>
+  )
+
+  const cardStyle = { perspective: '1000px' }
+
+  return url ? (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={CARD_CLASS}
+      style={cardStyle}
+      aria-label={`${partner.name} — visit website${descHint}`}
+    >
+      {cardInner}
+    </a>
+  ) : (
+    <button
+      type="button"
+      className={`${CARD_CLASS} cursor-default`}
+      style={cardStyle}
+      aria-label={`${partner.name}${descHint}`}
+    >
+      {cardInner}
+    </button>
+  )
+}
+
+PartnerCard.propTypes = {
+  partner: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    logo: PropTypes.string,
+    logoAlt: PropTypes.string,
+    desc: PropTypes.string,
+    url: PropTypes.string,
+  }).isRequired,
+  cardSize: PropTypes.shape({
+    height: PropTypes.string.isRequired,
+    logo: PropTypes.string.isRequired,
+  }).isRequired,
+}
+
+const AreaHeading = ({ eyebrow, title, blurb }) => (
+  <div className="mb-10 text-center">
+    <p className="mb-3 font-body text-[10px] font-semibold uppercase tracking-[0.4em] text-iwd-gold-400 sm:text-xs">
+      {eyebrow}
+    </p>
+    <h3 className="font-heading text-2xl font-bold text-white sm:text-3xl">
+      {title}
+    </h3>
+    <div className="mx-auto mt-4 h-px w-16 bg-gradient-to-r from-transparent via-iwd-gold-400/50 to-transparent sm:w-24" />
+    <p className="mx-auto mt-4 max-w-2xl text-balance font-body text-base leading-relaxed text-gray-400">
+      {blurb}
+    </p>
+  </div>
+)
+
+AreaHeading.propTypes = {
+  eyebrow: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  blurb: PropTypes.string.isRequired,
+}
+
 const PartnersSection = ({ partnersData = {}, year }) => {
   const isCurrentYear = year === new Date().getFullYear()
 
-  // Flatten all partners into one list (tiers removed)
-  const allPartners = [
+  const sponsors = (partnersData.sponsors || []).filter(Boolean)
+  const community = [
+    ...(partnersData.community || []),
+    // Legacy shapes: flat/tiered lists all read as community groups.
     ...(partnersData.platinum || []),
     ...(partnersData.diamond || []),
     ...(partnersData.gold || []),
     ...(partnersData.organizations || []),
-    ...(partnersData.partners || []), // optional future field
+    ...(partnersData.partners || []),
   ].filter(Boolean)
 
-  const hasPartners = allPartners.length > 0
+  const hasPartners = sponsors.length > 0 || community.length > 0
 
   return (
     <section
@@ -53,7 +208,7 @@ const PartnersSection = ({ partnersData = {}, year }) => {
       </div>
 
       <div className="mx-auto mt-2 max-w-4xl text-center">
-        <p className="font-body text-lg leading-relaxed text-gray-400 text-balance">
+        <p className="text-balance font-body text-lg leading-relaxed text-gray-400">
           Compass Detroit wouldn&apos;t be possible without the support of our
           amazing partners. Thank you for helping us create an unforgettable
           experience for the tech community.
@@ -63,96 +218,48 @@ const PartnersSection = ({ partnersData = {}, year }) => {
       <div className="mx-auto mt-8 w-full max-w-7xl overflow-hidden transition-all duration-500 ease-in-out sm:mt-10 md:mt-14 lg:mt-16">
         {hasPartners ? (
           <>
-            {/* Single Partners Grid */}
-            <div className="mx-auto mt-12 grid w-full max-w-7xl grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
-              {allPartners.map((partner) => {
-                const cardClass =
-                  'group block w-full rounded-[2rem] border-0 bg-transparent p-0 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-iwd-black-950'
-                const cardStyle = { perspective: '1000px' }
-                const cardInner = (
-                  <div className="relative h-56 w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-focus-visible:[transform:rotateY(180deg)]">
-                    {/* ── Front: Large logo ── */}
-                    <div className="absolute inset-0 flex items-center justify-center rounded-[2rem] border border-stone-300/70 bg-gradient-to-br from-stone-300/90 via-stone-100 to-gray-300/80 p-10 shadow-sm shadow-black/20 [backface-visibility:hidden] light:border-stone-300 light:from-stone-200 light:via-stone-100 light:to-stone-300/90">
-                      {partner.logo ? (
-                        <img
-                          src={partner.logo}
-                          alt=""
-                          className="logo-halo max-h-40 max-w-[85%] object-contain transition-transform duration-700 group-hover:scale-110"
-                          loading="lazy"
-                        />
-                      ) : (
-                        <p className="text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white/90">
-                          {partner.name}
-                        </p>
-                      )}
-                    </div>
-                    {/* ── Back: Org info ── */}
-                    <div className="from-iwd-dark-900 to-iwd-dark-950 absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-iwd-gold-400/20 bg-gradient-to-br p-6 backdrop-blur-xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
-                      <h3 className="mb-4 text-2xl font-black tracking-tight text-white">
-                        {partner.name}
-                      </h3>
-                      {partner.desc && (
-                        <p
-                          className="line-clamp-4 text-center text-base leading-relaxed text-gray-900 dark:text-white/70"
-                          title={
-                            partner.desc.length > DESC_MAX_LENGTH
-                              ? partner.desc
-                              : undefined
-                          }
-                        >
-                          {truncateDescription(partner.desc)}
-                        </p>
-                      )}
-                      {partner.url && (
-                        <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium uppercase tracking-widest text-iwd-gold-400">
-                          Visit Site
-                          <svg
-                            className="size-3"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
-                            />
-                          </svg>
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                )
+            {/* ── Sponsors: even grid, three to a row ── */}
+            {sponsors.length > 0 && (
+              <div className="mb-20">
+                <AreaHeading
+                  eyebrow="Underwriting the Summit"
+                  title="Sponsors"
+                  blurb="Organizations funding the venue, the meals, and the seats that make the day free to attend."
+                />
+                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3">
+                  {sponsors.map((sponsor) => (
+                    <PartnerCard
+                      key={sponsor.id ?? sponsor.name}
+                      partner={sponsor}
+                      cardSize={SPONSOR_CARD}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
 
-                return partner.url ? (
-                  <a
-                    key={partner.id}
-                    href={partner.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={cardClass}
-                    style={cardStyle}
-                    aria-label={`${partner.name} — visit website (hover or focus for description)`}
-                  >
-                    {cardInner}
-                  </a>
-                ) : (
-                  <button
-                    key={partner.id}
-                    type="button"
-                    className={`${cardClass} cursor-default`}
-                    style={cardStyle}
-                    aria-label={`${partner.name} — focus for partner description`}
-                  >
-                    {cardInner}
-                  </button>
-                )
-              })}
-            </div>
+            {/* ── Community groups: even grid, four to a row ── */}
+            {community.length > 0 && (
+              <div>
+                <AreaHeading
+                  eyebrow="Volunteering Their Efforts"
+                  title="Community Groups"
+                  blurb="The collectives and chapters who bring their people, their programming, and their time to the Summit."
+                />
+                <div className="grid w-full grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                  {community.map((group) => (
+                    <PartnerCard
+                      key={group.id ?? group.name}
+                      partner={group}
+                      cardSize={COMMUNITY_CARD}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* CTA stays the same */}
-            <div className="col-span-1 my-8 flex flex-col items-center justify-center space-y-6 text-center text-lg leading-relaxed">
+            <div className="my-8 mt-16 flex flex-col items-center justify-center space-y-6 text-center text-lg leading-relaxed">
               <p className="text-gray-400">
                 We are currently looking for partners for this event.
               </p>
@@ -170,7 +277,7 @@ const PartnersSection = ({ partnersData = {}, year }) => {
             </div>
           </>
         ) : (
-          <div className="col-span-1 my-8 flex flex-col items-center justify-center space-y-6 text-center text-lg leading-relaxed">
+          <div className="my-8 flex flex-col items-center justify-center space-y-6 text-center text-lg leading-relaxed">
             <p className="text-gray-400">
               {year && !isCurrentYear
                 ? `No partner information available for ${year}.`
@@ -190,15 +297,27 @@ const PartnersSection = ({ partnersData = {}, year }) => {
   )
 }
 
+const partnerListShape = PropTypes.arrayOf(
+  PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    name: PropTypes.string.isRequired,
+    logo: PropTypes.string,
+    logoAlt: PropTypes.string,
+    desc: PropTypes.string,
+    url: PropTypes.string,
+  })
+)
+
 PartnersSection.propTypes = {
   partnersData: PropTypes.shape({
-    // old tier fields (still supported)
-    platinum: PropTypes.array,
-    diamond: PropTypes.array,
-    gold: PropTypes.array,
-    organizations: PropTypes.array,
-    // new unified field (optional)
-    partners: PropTypes.array,
+    sponsors: partnerListShape,
+    community: partnerListShape,
+    // legacy shapes, folded into the community grid
+    platinum: partnerListShape,
+    diamond: partnerListShape,
+    gold: partnerListShape,
+    organizations: partnerListShape,
+    partners: partnerListShape,
   }),
   year: PropTypes.number.isRequired,
 }
