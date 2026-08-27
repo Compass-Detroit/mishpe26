@@ -1,4 +1,4 @@
-const DEFAULT_EVENT_DATE = '2026-03-28'
+const DEFAULT_EVENT_DATE = '2026-09-19'
 const DEFAULT_TIMEZONE_OFFSET = '-04:00'
 const DEFAULT_LOCATION_PREFIX = 'WSU Anderson Engineering Building'
 
