@@ -1,12 +1,12 @@
 ---
 name: Bug Report
-about: Report a bug on the Latin Heritage Month Innovation Summit website (IBM HQ)
+about: Report a bug on the Latin Heritage Month Innovation Summit website (WSU Anderson Engineering Building)
 title: '[BUG] '
 labels: bug
 assignees: ''
 ---
 
-**Event:** Latin Heritage Month Innovation Summit · **Venue:** IBM HQ
+**Event:** Latin Heritage Month Innovation Summit · **Venue:** WSU Anderson Engineering Building
 
 ## Bug Description
 
