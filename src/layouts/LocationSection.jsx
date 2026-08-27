@@ -14,38 +14,32 @@ import SectionSkipLink from '@/components/ui/SectionSkipLink'
 import { GOLD_PRIMARY_LIGHT_HOVER } from '@/constants/goldPrimaryButtonLightHover'
 
 // Venue images
-import birdseyeView from '@/assets/images/location/85_500woodward-birdeye.webp'
-import hqEntrance from '@/assets/images/location/85_500woodward-entrance.webp'
-import hqExterior from '@/assets/images/location/85_500woodward-exterior.webp'
-import hqLobby from '@/assets/images/location/85_500woodward-lobby.webp'
+import exteriorView from '@/assets/images/location/wsu-eng-1.jpg'
+import exteriorStreet from '@/assets/images/location/wsu-eng-street.jpg'
+import exteriorPost from '@/assets/images/location/wsu-eng-post.jpg'
 
 const VENUE_IMAGES = [
   {
-    src: birdseyeView,
-    alt: 'Birdseye View of 500 Woodward',
-    label: 'Birdseye View of IBM HQ',
+    src: exteriorView,
+    alt: 'View on campus showing dramatic curve of the building.',
+    label: 'View on Campus',
   },
   {
-    src: hqEntrance,
-    alt: 'Street-level entrance of the 500 Woodward building in downtown Detroit, featuring a stone façade, tall windows, and the main lobby entry where IBM event guests will arrive.',
-    label: 'Main Entrance',
+    src: exteriorStreet,
+    alt: 'Street level entrance to the Wayne State University Engineering Building',
+    label: 'Street Level Entrance',
   },
   {
-    src: hqLobby,
-    alt: 'Interior lobby of the 500 Woodward building in Detroit with high ceilings, marble finishes, modern seating, and a spacious reception area for IBM event attendees.',
-    label: 'Lobby & Atrium',
-  },
-  {
-    src: hqExterior,
-    alt: '500 Woodward Avenue building in downtown Detroit with an American flag in the foreground. The high-rise office tower features a distinctive stepped crown and serves as the Detroit headquarters location for IBM and event operations.',
-    label: 'Architectural Details',
+    src: exteriorPost,
+    alt: 'School pillar with Wayne State University logo.',
+    label: '',
   },
 ]
 
 const AUTOPLAY_INTERVAL = 5000
 
 const VENUE_GOOGLE_MAPS_URL =
-  'https://www.google.com/maps/search/?api=1&query=500+Woodward+Ave,+Detroit,+MI+48226'
+  'https://www.google.com/maps/search/?api=1&query=5050+Anthony+Wayne+Dr,+Detroit,+MI+48202'
 
 function LocationSection() {
   const [activeImg, setActiveImg] = useState(0)
@@ -155,9 +149,11 @@ function LocationSection() {
               </div>
               <h3 className="text-xl font-semibold text-white">Venue</h3>
             </div>
-            <p className="mb-2 text-2xl font-bold text-white">IBM HQ Detroit</p>
+            <p className="mb-2 text-2xl font-bold text-white">
+              WSU James and Patricia Anderson College of Engineering Building
+            </p>
             <p className="mb-4 text-lg text-gray-300">
-              500 Woodward Ave, Detroit, MI 48226
+              5050 Anthony Wayne Drive, Detroit, MI 48202
             </p>
             <div className="flex flex-wrap gap-3">
               <a
@@ -310,10 +306,10 @@ function LocationSection() {
           <div className="w-full lg:w-1/2">
             <div className="bg-iwd-surface-raised relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-white/[0.1] shadow-2xl dark:bg-iwd-black-950/50">
               <div className="absolute right-4 top-4 z-20 rounded-md bg-black/60 px-3 py-1 text-xs font-bold uppercase tracking-widest text-iwd-gold-300">
-                IBM HQ Detroit
+                Anderson Engineering Building
               </div>
               <iframe
-                src="https://www.google.com/maps?q=IBM%20HQ%20Detroit%2C%20500%20Woodward%20Ave%2C%20Detroit%2C%20MI%2048226&output=embed"
+                src="https://www.google.com/maps?q=5050%20Anthony%20Wayne%20Dr%2C%20Detroit%2C%20MI%2048202&output=embed"
                 width="100%"
                 height="100%"
                 style={{
@@ -323,7 +319,7 @@ function LocationSection() {
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="IBM HQ Detroit Venue Map"
+                title="Anderson Engineering Building Venue Map"
                 className="absolute inset-0 size-full"
               />
               <div className="pointer-events-none absolute inset-0 z-10 rounded-3xl ring-1 ring-inset ring-white/10" />
@@ -331,7 +327,7 @@ function LocationSection() {
               {/* Pin Overlay */}
               <div className="pointer-events-none absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center">
                 <div className="mb-2 rounded-full bg-iwd-gold-400/90 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-iwd-black-950 shadow-2xl">
-                  IBM HQ Detroit
+                  Anderson Engineering Building
                 </div>
                 <FaMapPin className="size-10 text-iwd-gold-400 drop-shadow-[0_0_15px_rgba(255,184,0,0.8)]" />
               </div>
@@ -371,11 +367,11 @@ function LocationSection() {
                 </div>
                 <div>
                   <strong className="mb-1 block text-white">
-                    One Detroit Garage (Recommended & Free)
+                    Campus parking
                   </strong>
                   <p className="text-lg leading-relaxed text-gray-400">
-                    Adjacent at 1001 Woodward Ave. Most convenient for a quick
-                    walk to the entrance.
+                    Parking structure and rate details for the Wayne State
+                    campus are being confirmed — check back closer to the event.
                   </p>
                 </div>
               </div>
@@ -386,7 +382,7 @@ function LocationSection() {
           <div className="group rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 backdrop-blur-sm transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.04]">
             <h3 className="mb-3 text-xl font-semibold text-white">Entrance</h3>
             <p className="text-lg leading-relaxed text-gray-400">
-              Enter through the main front doors on Woodward Avenue. Check-in is
+              Enter through the main doors on Anthony Wayne Drive. Check-in is
               located in the main lobby. Have your registration QR code ready.
             </p>
           </div>

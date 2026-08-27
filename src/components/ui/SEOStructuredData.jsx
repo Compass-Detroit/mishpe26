@@ -9,30 +9,30 @@ const SEOStructuredData = memo(({ speakersData = [] }) => {
   const eventData = {
     '@context': 'https://schema.org',
     '@type': 'Event',
-    'name': 'Latino Heritage Month Innovation Summit 2026',
+    'name': 'Latin Heritage Month Innovation Summit 2026',
     'description':
-      'Celebrating innovation, empowerment, and community at the Latino Heritage Month Innovation Summit 2026 in Detroit.',
-    'image': 'https://lhmsummit.com/social-card.jpg',
+      'Celebrating innovation, empowerment, and community at the Latin Heritage Month Innovation Summit 2026 in Detroit.',
+    'image': 'https://hhmsummit.com/social-card.jpg',
     'startDate': '2026-06-20T08:00:00-04:00',
     'endDate': '2026-06-20T17:00:00-04:00',
     'eventStatus': 'https://schema.org/EventScheduled',
     'eventAttendanceMode': 'https://schema.org/OfflineEventAttendanceMode',
     'location': {
       '@type': 'Place',
-      'name': 'IBM HQ Detroit',
+      'name': 'WSU James and Patricia Anderson College of Engineering Building',
       'address': {
         '@type': 'PostalAddress',
-        'streetAddress': '39555 Orchard Hill Pl',
+        'streetAddress': '5050 Anthony Wayne Drive',
         'addressLocality': 'Detroit',
         'addressRegion': 'MI',
-        'postalCode': '48201',
+        'postalCode': '48202',
         'addressCountry': 'US',
       },
     },
     'organizer': {
       '@type': 'Organization',
       'name': 'Compass Detroit / GDG Detroit',
-      'url': 'https://lhmsummit.com/',
+      'url': 'https://hhmsummit.com/',
     },
     'performer': speakersData.map((speaker) => ({
       '@type': 'Person',

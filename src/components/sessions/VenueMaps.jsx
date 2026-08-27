@@ -8,7 +8,7 @@ const AREAS = [
   {
     key: 'classroom',
     label: 'Classroom',
-    sublabel: 'Level Up · Rooms 2415 & 2416',
+    sublabel: 'Level Up · ',
     regionId: 'LEVEL-UP-CLASSROM',
     Icon: FaChalkboardUser,
   },

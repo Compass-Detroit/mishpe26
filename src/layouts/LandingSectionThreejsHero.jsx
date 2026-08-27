@@ -21,8 +21,8 @@ function ThreejsHeroForeground() {
       >
         {/* Top metadata */}
         <p className="font-body text-[10px] font-semibold uppercase tracking-[0.35em] text-white/55 sm:text-xs">
-          Detroit &middot; Loc &middot; 2026 &middot; Powered by Compass Detroit
-          &amp; Co
+          Detroit &middot; WSU &middot; 2026 &middot; Powered by Compass Detroit
+          &amp; Wayne State University
         </p>
 
         {/* Main title */}
@@ -71,15 +71,15 @@ function ThreejsHeroForeground() {
         <p className="mt-6 font-body text-[11px] uppercase tracking-[0.2em] text-white/90 sm:text-xs">
           Venue:{' '}
           <span className="inline-block rounded border border-iwd-gold-400 bg-white/[0.04] px-2 py-0.5 font-semibold tracking-[0.15em] text-iwd-gold-300">
-            Company
+            Wayne State University
           </span>
         </p>
 
         {/* Description */}
         <p className="mx-auto mt-6 max-w-xl font-body text-base leading-relaxed text-white">
-          A day of learning, building, and connecting for Latino innovators and
-          allies in Detroit&apos;s tech ecosystem — hosted at IBM HQ with
-          workshops, talks, and community.
+          A day of learning, building, and connecting for latin innovators and
+          allies in Detroit&apos;s tech ecosystem — hosted at Wayne State&apos;s
+          Anderson Engineering Building with workshops, talks, and community.
         </p>
 
         {/* Footer links */}
