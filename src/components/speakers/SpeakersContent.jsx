@@ -103,12 +103,8 @@ const SpeakersContent = ({ year, defaultExpanded }) => {
   )
 
   const noSpeakersMessage = (
-    <div className="col-span-1 my-4 flex flex-col items-center justify-center space-y-8 text-center text-lg leading-relaxed text-gray-300">
-      <p>
-        We are currently looking for speakers and will update the list once we
-        have more information. If you are interested in speaking, sign up with
-        the link below.
-      </p>
+    <div className="col-span-1 my-4 flex flex-col items-center justify-center space-y-8 text-center text-xl leading-relaxed text-gray-300">
+      <p>Ready to give a talk? Apply below!</p>
       <a
         href="https://www.papercall.io/midevfest2025"
         target="_blank"

@@ -80,7 +80,7 @@ const trackDescriptions = {
       >
         {trackStageHeading('Level Up')}
       </h3>
-      <p className="mb-6 max-w-4xl text-pretty text-center text-base text-gray-400">
+      <p className="mb-6 max-w-4xl text-pretty text-center text-lg text-gray-400">
         Advance your career and personal growth. From mentorship to leadership,
         explore sessions that help you level up professionally and personally in
         tech.
