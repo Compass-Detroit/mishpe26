@@ -91,9 +91,9 @@ export const partner = defineType({
       /**
        * Hidden for anything that is not a sponsor — but only while it is
        * actually empty. A partner demoted from Sponsor keeps whatever tier it
-       * had, and validation (which runs on hidden fields too) would then reject
-       * the document while concealing the one field that could fix it. Keeping
-       * a stale value visible makes the error resolvable.
+       * had, and validation runs on hidden fields too — so the leftover value
+       * would be flagged on a field the form was concealing. Keeping a stale
+       * value visible makes it clearable.
        */
       hidden: ({parent, value}) => parent?.partnerGroup !== 'sponsor' && !value,
       description:
@@ -101,20 +101,37 @@ export const partner = defineType({
         'Gold (4), then the in-kind rows Media (4) and Fuel (4). Unfilled slots render as ' +
         'dashed placeholders, so the tier is also a statement about open inventory. ' +
         'Only sponsors are tiered; community groups and non-sponsors leave this blank.',
-      validation: (rule) =>
+      validation: (rule) => [
+        /**
+         * An error, because the consequence is severe and silent: the tier row
+         * is 1:1 with Sanity, so a sponsor without one is left off the page
+         * entirely. Better to block the publish than to lose a sponsor.
+         */
         rule.custom((value, context) => {
           const group = (context.parent as {partnerGroup?: string} | undefined)?.partnerGroup
-
           if (group === 'sponsor' && !value) {
             return 'Pick a tier for every sponsor — it decides which row the logo lands in.'
           }
-
-          if (group !== 'sponsor' && value) {
-            return 'Only sponsors are tiered. Clear this, or move the partner to the Sponsor group.'
-          }
-
           return true
         }),
+        /**
+         * Only a warning. Switching the group by hand leaves the old tier
+         * behind, and Studio disables Publish on a validation error — as an
+         * error this stranded the very edit the author was making. A leftover
+         * tier cannot reach the page anyway: non-sponsors are dropped outright
+         * and community groups never consult the field. So flag it for tidying
+         * and let the publish through.
+         */
+        rule
+          .custom((value, context) => {
+            const group = (context.parent as {partnerGroup?: string} | undefined)?.partnerGroup
+            if (group !== 'sponsor' && value) {
+              return 'Only sponsors are tiered, so this is ignored. Clear it to keep the record tidy.'
+            }
+            return true
+          })
+          .warning(),
+      ],
     }),
     defineField({
       name: 'logo',
