@@ -274,7 +274,15 @@ const PartnersSection = ({ partnersData = {}, year }) => {
   ].filter(Boolean)
 
   const sponsorsByTier = groupSponsorsByTier(sponsors)
-  const hasPartners = sponsors.length > 0 || community.length > 0
+  /**
+   * Only tiers that have someone in them. The open slots inside a tier still
+   * advertise what is left in that row, but a row with nobody in it advertises
+   * nothing except its own emptiness.
+   */
+  const filledTiers = SPONSOR_TIERS.filter(
+    (tier) => sponsorsByTier[tier.key].length > 0
+  )
+  const hasPartners = filledTiers.length > 0 || community.length > 0
 
   return (
     <section
@@ -315,21 +323,23 @@ const PartnersSection = ({ partnersData = {}, year }) => {
       <div className="mx-auto mt-8 w-full max-w-7xl overflow-hidden transition-all duration-500 ease-in-out sm:mt-10 md:mt-14 lg:mt-16">
         {hasPartners ? (
           <>
-            {/* ── Sponsors: one row per tier, open slots shown as placeholders ── */}
-            <div className="mb-20">
-              <AreaHeading
-                eyebrow="Underwriting the Summit"
-                title="Sponsors"
-                blurb="Organizations funding the venue, the meals, and the seats that make the day free to attend."
-              />
-              {SPONSOR_TIERS.map((tier) => (
-                <SponsorTierRow
-                  key={tier.key}
-                  tier={tier}
-                  sponsors={sponsorsByTier[tier.key]}
+            {/* ── Sponsors: a row per filled tier, open slots as placeholders ── */}
+            {filledTiers.length > 0 && (
+              <div className="mb-20">
+                <AreaHeading
+                  eyebrow="Underwriting the Summit"
+                  title="Sponsors"
+                  blurb="Organizations funding the venue, the meals, and the seats that make the day free to attend."
                 />
-              ))}
-            </div>
+                {filledTiers.map((tier) => (
+                  <SponsorTierRow
+                    key={tier.key}
+                    tier={tier}
+                    sponsors={sponsorsByTier[tier.key]}
+                  />
+                ))}
+              </div>
+            )}
 
             {/* ── Community groups: even grid, four to a row ── */}
             {community.length > 0 && (
