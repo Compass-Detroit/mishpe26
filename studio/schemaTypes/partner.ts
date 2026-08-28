@@ -44,6 +44,16 @@ function sponsorTierLabel(value: string | undefined): string | undefined {
   return SPONSOR_TIER_LABELS[value] ?? value
 }
 
+/**
+ * What the document list shows under the name. A tiered sponsor reads better as
+ * "Diamond" than "Sponsor · Diamond", and a sponsor still missing a tier is
+ * called out, because the tier decides whether it appears on the site at all.
+ */
+function partnerAreaLabel(group: string | undefined, tier: string | undefined): string | undefined {
+  if (group !== 'sponsor') return partnerGroupLabel(group)
+  return sponsorTierLabel(tier) ?? 'Sponsor · no tier'
+}
+
 export const partner = defineType({
   name: 'partner',
   title: 'Partner',
@@ -193,14 +203,7 @@ export const partner = defineType({
     },
     prepare: ({title, group, tier, sortOrder, media, year}) => ({
       title: title ?? 'Unnamed partner',
-      subtitle: [
-        year,
-        // A tiered sponsor reads better as "Diamond" than "Sponsor · Diamond".
-        group === 'sponsor'
-          ? sponsorTierLabel(tier) ?? 'Sponsor · no tier'
-          : partnerGroupLabel(group),
-        `#${sortOrder ?? 0}`,
-      ]
+      subtitle: [year, partnerAreaLabel(group, tier), `#${sortOrder ?? 0}`]
         .filter(Boolean)
         .join(' · '),
       media,
