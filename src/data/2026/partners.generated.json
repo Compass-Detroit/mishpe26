@@ -1,15 +1,6 @@
 {
   "sponsors": [
     {
-      "id": "shpe-detroit",
-      "name": "SHPE Detroit",
-      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/4d82a4256cd83cc705ad16c429c0b3ffab86eaa3-401x401.webp",
-      "logoAlt": "SHPE Detroit logo",
-      "desc": "SHPE Detroit is transforming lives in Detroit by inspiring and motivating young Hispanic students to excel in STEM education through mentorship and community involvement and enhancing career opportunities for Hispanics by building a strong professional network.",
-      "url": "https://www.shpedetroit.org/",
-      "tier": "gold"
-    },
-    {
       "id": "wayne-state-university",
       "name": "Wayne State University",
       "logo": "https://cdn.sanity.io/images/d1h6cagq/production/82a66b1dc3db3e6d2fc7056362170cefc40083bb-960x880.webp",
@@ -17,6 +8,16 @@
       "desc": "Wayne State University is a public research university in Midtown Detroit, tracing its roots to the Detroit Medical College founded in 1868 and taking its current name in 1956. It is Michigan's only urban research university and, with the University of Michigan and Michigan State, one of the three members of the University Research Corridor — carrying out roughly $244 million in annual research each year.",
       "url": "https://wayne.edu/",
       "tier": "diamond"
+    }
+  ],
+  "community": [
+    {
+      "id": "shpe-detroit",
+      "name": "SHPE Detroit",
+      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/4d82a4256cd83cc705ad16c429c0b3ffab86eaa3-401x401.webp",
+      "logoAlt": "SHPE Detroit logo",
+      "desc": "SHPE Detroit is transforming lives in Detroit by inspiring and motivating young Hispanic students to excel in STEM education through mentorship and community involvement and enhancing career opportunities for Hispanics by building a strong professional network.",
+      "url": "https://www.shpedetroit.org/"
     },
     {
       "id": "compass-detroit",
@@ -24,20 +25,8 @@
       "logo": "https://cdn.sanity.io/images/d1h6cagq/production/2de4078ab08b35987d477762e4fe02bd9e53328c-241x149.webp",
       "logoAlt": "Compass Detroit logo",
       "desc": "The Collective of Minority Professionals and STEAM Societies (formerly COMPES) was formed in 2000 as an initiative between the NSBE, SHPE, and SWE Detroit professional chapters. The mission of this collaborative partnership is to support the local Detroit community in upskilling, career growth, networking, and to provide access to new opportunities.",
-      "url": "https://compass-detroit.com/",
-      "tier": "gold"
+      "url": "https://compass-detroit.com/"
     },
-    {
-      "id": "little-caesars",
-      "name": "Little Caesars",
-      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/4b0e8094d61b3fb351fa1ff1776d6890a58c35ee-993x748.webp",
-      "logoAlt": "Little Caesars logo",
-      "desc": "Little Caesars, headquartered in Detroit, Michigan, was founded by Mike and Marian Ilitch in 1959 and is now the third largest pizza chain in the world with stores in all 50 U.S. states and 27 countries and territories.",
-      "url": "https://littlecaesars.com/en-us/",
-      "tier": "gold"
-    }
-  ],
-  "community": [
     {
       "id": "nsbe-detroit",
       "name": "NSBE Detroit",
