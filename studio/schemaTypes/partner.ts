@@ -5,13 +5,36 @@ const PARTNER_GROUP_OPTIONS = [
   {title: 'Community group', value: 'community'},
 ]
 
+/**
+ * Sponsor tier ladder, highest first. Mirrors src/data/sponsorTiers.js on the
+ * frontend, which also owns the slot counts and row shapes. studio/ is an
+ * independent npm install and cannot import from src/, so the keys and titles
+ * live in both places — keep them in sync.
+ */
+const SPONSOR_TIER_OPTIONS = [
+  {title: 'Diamond', value: 'diamond'},
+  {title: 'Platinum', value: 'platinum'},
+  {title: 'Gold', value: 'gold'},
+  {title: 'Media', value: 'media'},
+  {title: 'Fuel', value: 'fuel'},
+]
+
 const PARTNER_GROUP_LABELS: Record<string, string> = Object.fromEntries(
   PARTNER_GROUP_OPTIONS.map(({title, value}) => [value, title])
+)
+
+const SPONSOR_TIER_LABELS: Record<string, string> = Object.fromEntries(
+  SPONSOR_TIER_OPTIONS.map(({title, value}) => [value, title])
 )
 
 function partnerGroupLabel(value: string | undefined): string | undefined {
   if (!value) return undefined
   return PARTNER_GROUP_LABELS[value] ?? value
+}
+
+function sponsorTierLabel(value: string | undefined): string | undefined {
+  if (!value) return undefined
+  return SPONSOR_TIER_LABELS[value] ?? value
 }
 
 export const partner = defineType({
@@ -48,8 +71,35 @@ export const partner = defineType({
       initialValue: 'community',
       validation: (rule) => rule.required(),
       description:
-        'Sponsors are shown first, three to a row on larger cards. Community groups follow, ' +
-        'four to a row. Use the "Move to …" action to switch an organization between them.',
+        'Sponsors are shown first, ranked into tiers. Community groups follow in a single ' +
+        'flat grid, four to a row. Use the "Move to …" action to switch an organization ' +
+        'between them.',
+    }),
+    defineField({
+      name: 'tier',
+      title: 'Sponsor tier',
+      type: 'string',
+      options: {list: SPONSOR_TIER_OPTIONS, layout: 'radio'},
+      hidden: ({parent}) => parent?.partnerGroup !== 'sponsor',
+      description:
+        'Which row this sponsor sits in, highest first: Diamond (1 slot), Platinum (2), ' +
+        'Gold (4), then the in-kind rows Media (4) and Fuel (4). Unfilled slots render as ' +
+        'dashed placeholders, so the tier is also a statement about open inventory. ' +
+        'Community groups are not tiered and can leave this blank.',
+      validation: (rule) =>
+        rule.custom((value, context) => {
+          const group = (context.parent as {partnerGroup?: string} | undefined)?.partnerGroup
+
+          if (group === 'sponsor' && !value) {
+            return 'Pick a tier for every sponsor — it decides which row the logo lands in.'
+          }
+
+          if (group !== 'sponsor' && value) {
+            return 'Only sponsors are tiered. Clear this, or move the partner to the Sponsor group.'
+          }
+
+          return true
+        }),
     }),
     defineField({
       name: 'logo',
@@ -90,7 +140,8 @@ export const partner = defineType({
       initialValue: 0,
       validation: (rule) => rule.integer(),
       description:
-        'Lower numbers appear first within a group. All cards in a group are the same size.',
+        'Lower numbers appear first — within a tier for sponsors, within the grid for ' +
+        'community groups. It does not move a sponsor between tiers; only the tier does that.',
     }),
     defineField({
       name: 'published',
@@ -103,13 +154,23 @@ export const partner = defineType({
     select: {
       title: 'name',
       group: 'partnerGroup',
+      tier: 'tier',
       sortOrder: 'sortOrder',
       media: 'logo',
       year: 'event.year',
     },
-    prepare: ({title, group, sortOrder, media, year}) => ({
+    prepare: ({title, group, tier, sortOrder, media, year}) => ({
       title: title ?? 'Unnamed partner',
-      subtitle: [year, partnerGroupLabel(group), `#${sortOrder ?? 0}`].filter(Boolean).join(' · '),
+      subtitle: [
+        year,
+        // A tiered sponsor reads better as "Diamond" than "Sponsor · Diamond".
+        group === 'sponsor'
+          ? sponsorTierLabel(tier) ?? 'Sponsor · no tier'
+          : partnerGroupLabel(group),
+        `#${sortOrder ?? 0}`,
+      ]
+        .filter(Boolean)
+        .join(' · '),
       media,
     }),
   },

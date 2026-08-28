@@ -1,11 +1,14 @@
 /**
  * Partners for the public site, split into the two areas the section renders:
- * sponsors (three to a row, larger cards) and the community groups that
- * volunteer their efforts (four to a row, below).
+ * sponsors (ranked into tiers) and the community groups that volunteer their
+ * efforts (four to a row, below).
  *
  * Every partner lives in one list and declares its own `area`. To move an
  * organization between the two areas, change that one word — order within the
  * list is the order it renders in.
+ *
+ * Sponsors additionally declare a `tier` from src/data/sponsorTiers.js, which
+ * decides the row. Community groups are not tiered.
  *
  * Sanity is the eventual source — see scripts/fetch-event-data.mjs, which
  * writes partners.generated.json before each build. Until partner documents are
@@ -35,6 +38,7 @@ const staticPartners = [
   {
     id: 1,
     area: SPONSOR,
+    tier: 'platinum',
     name: 'IBM',
     logo: IBM,
     logoAlt: 'IBM logo',
@@ -44,6 +48,7 @@ const staticPartners = [
   {
     id: 2,
     area: SPONSOR,
+    tier: 'gold',
     name: 'DTE',
     logo: DTE,
     logoAlt: 'DTE logo',
@@ -53,6 +58,7 @@ const staticPartners = [
   {
     id: 3,
     area: SPONSOR,
+    tier: 'gold',
     name: 'Little Caesars',
     logo: LitteCaesars,
     logoAlt: 'Little Caesars logo',

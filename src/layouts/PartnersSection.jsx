@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { FaEnvelope } from 'react-icons/fa6'
 import CTAButton from '@/components/ui/CTAButton'
 import SectionSkipLink from '@/components/ui/SectionSkipLink'
+import { SPONSOR_TIERS, groupSponsorsByTier } from '@/data/sponsorTiers'
 
 const DESC_MAX_LENGTH = 100
 
@@ -11,18 +12,40 @@ function truncateDescription(text, maxLength = DESC_MAX_LENGTH) {
 }
 
 /**
- * Both areas render an even grid — sponsors three to a row on larger cards,
- * community groups four to a row on smaller ones. Position no longer confers
- * prominence, so the only difference between the two is card scale.
+ * Sponsors are ranked into tiers (see src/data/sponsorTiers.js); community
+ * groups render as one flat grid, four to a row. Card scale follows the tier
+ * shape: `card` for the wide paid rows, `square` for the smaller in-kind ones.
  */
 const SPONSOR_CARD = {
   height: 'h-64 sm:h-72',
   logo: 'max-h-48 max-w-[80%]',
 }
 
+const SPONSOR_SQUARE_CARD = {
+  height: 'h-48 sm:h-56',
+  logo: 'max-h-32 max-w-[70%]',
+}
+
 const COMMUNITY_CARD = {
   height: 'h-48 sm:h-56',
   logo: 'max-h-36 max-w-[85%]',
+}
+
+const CARD_SIZE_BY_SHAPE = {
+  card: SPONSOR_CARD,
+  square: SPONSOR_SQUARE_CARD,
+}
+
+/**
+ * Tailwind scans source for whole class strings, so the per-tier column counts
+ * are spelled out rather than built from `slots`.
+ */
+const TIER_GRID_CLASS = {
+  diamond: 'grid-cols-1 mx-auto max-w-xl',
+  platinum: 'grid-cols-1 sm:grid-cols-2 mx-auto max-w-4xl',
+  gold: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4',
+  media: 'grid-cols-2 lg:grid-cols-4',
+  fuel: 'grid-cols-2 lg:grid-cols-4',
 }
 
 /**
@@ -142,6 +165,73 @@ PartnerCard.propTypes = {
   }).isRequired,
 }
 
+/**
+ * An unsold slot. Purely an inventory signal, so it is hidden from assistive
+ * tech — SponsorTierRow states the filled/open count once per row instead of
+ * making a screen reader walk a line of identical "empty slot" boxes.
+ */
+const EmptySlot = ({ cardSize }) => (
+  <div
+    className={`flex w-full items-center justify-center rounded-[2rem] border-2 border-dashed border-white/15 bg-white/[0.02] ${cardSize.height}`}
+    aria-hidden="true"
+  >
+    <span className="text-4xl font-light leading-none text-white/25">+</span>
+  </div>
+)
+
+EmptySlot.propTypes = {
+  cardSize: PropTypes.shape({
+    height: PropTypes.string.isRequired,
+  }).isRequired,
+}
+
+/** One tier: heading, then its logos followed by any open slots. */
+const SponsorTierRow = ({ tier, sponsors }) => {
+  const cardSize = CARD_SIZE_BY_SHAPE[tier.shape] ?? SPONSOR_CARD
+  const openSlots = Math.max(0, tier.slots - sponsors.length)
+
+  return (
+    <div className="mb-14 last:mb-0">
+      <div className="mb-6 text-center">
+        <h4 className="font-heading text-lg font-bold uppercase tracking-[0.2em] text-iwd-gold-400 sm:text-xl">
+          {tier.title}
+        </h4>
+        <p className="mx-auto mt-2 max-w-xl text-balance font-body text-sm leading-relaxed text-gray-400">
+          {tier.blurb}
+        </p>
+        <p className="sr-only">
+          {`${tier.title} tier: ${sponsors.length} of ${tier.slots} ${
+            tier.slots === 1 ? 'slot' : 'slots'
+          } filled, ${openSlots} still open.`}
+        </p>
+      </div>
+      <div className={`grid gap-6 sm:gap-8 ${TIER_GRID_CLASS[tier.key] ?? ''}`}>
+        {sponsors.map((sponsor) => (
+          <PartnerCard
+            key={sponsor.id ?? sponsor.name}
+            partner={sponsor}
+            cardSize={cardSize}
+          />
+        ))}
+        {Array.from({ length: openSlots }, (_, index) => (
+          <EmptySlot key={`${tier.key}-open-${index}`} cardSize={cardSize} />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+SponsorTierRow.propTypes = {
+  tier: PropTypes.shape({
+    key: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    slots: PropTypes.number.isRequired,
+    shape: PropTypes.string.isRequired,
+    blurb: PropTypes.string.isRequired,
+  }).isRequired,
+  sponsors: PropTypes.array.isRequired,
+}
+
 const AreaHeading = ({ eyebrow, title, blurb }) => (
   <div className="mb-10 text-center">
     <p className="mb-3 font-body text-[10px] font-semibold uppercase tracking-[0.4em] text-iwd-gold-400 sm:text-xs">
@@ -166,17 +256,24 @@ AreaHeading.propTypes = {
 const PartnersSection = ({ partnersData = {}, year }) => {
   const isCurrentYear = year === new Date().getFullYear()
 
-  const sponsors = (partnersData.sponsors || []).filter(Boolean)
+  const sponsors = [
+    ...(partnersData.sponsors || []),
+    // Legacy shapes: these used to be separate top-level lists folded into the
+    // community grid. Now that the ladder exists they are real sponsor tiers,
+    // so stamp the tier the key already implied.
+    ...(partnersData.diamond || []).map((p) => ({ ...p, tier: 'diamond' })),
+    ...(partnersData.platinum || []).map((p) => ({ ...p, tier: 'platinum' })),
+    ...(partnersData.gold || []).map((p) => ({ ...p, tier: 'gold' })),
+  ].filter(Boolean)
+
   const community = [
     ...(partnersData.community || []),
-    // Legacy shapes: flat/tiered lists all read as community groups.
-    ...(partnersData.platinum || []),
-    ...(partnersData.diamond || []),
-    ...(partnersData.gold || []),
+    // Legacy untiered lists still read as community groups.
     ...(partnersData.organizations || []),
     ...(partnersData.partners || []),
   ].filter(Boolean)
 
+  const sponsorsByTier = groupSponsorsByTier(sponsors)
   const hasPartners = sponsors.length > 0 || community.length > 0
 
   return (
@@ -218,25 +315,21 @@ const PartnersSection = ({ partnersData = {}, year }) => {
       <div className="mx-auto mt-8 w-full max-w-7xl overflow-hidden transition-all duration-500 ease-in-out sm:mt-10 md:mt-14 lg:mt-16">
         {hasPartners ? (
           <>
-            {/* ── Sponsors: even grid, three to a row ── */}
-            {sponsors.length > 0 && (
-              <div className="mb-20">
-                <AreaHeading
-                  eyebrow="Underwriting the Summit"
-                  title="Sponsors"
-                  blurb="Organizations funding the venue, the meals, and the seats that make the day free to attend."
+            {/* ── Sponsors: one row per tier, open slots shown as placeholders ── */}
+            <div className="mb-20">
+              <AreaHeading
+                eyebrow="Underwriting the Summit"
+                title="Sponsors"
+                blurb="Organizations funding the venue, the meals, and the seats that make the day free to attend."
+              />
+              {SPONSOR_TIERS.map((tier) => (
+                <SponsorTierRow
+                  key={tier.key}
+                  tier={tier}
+                  sponsors={sponsorsByTier[tier.key]}
                 />
-                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3">
-                  {sponsors.map((sponsor) => (
-                    <PartnerCard
-                      key={sponsor.id ?? sponsor.name}
-                      partner={sponsor}
-                      cardSize={SPONSOR_CARD}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
+              ))}
+            </div>
 
             {/* ── Community groups: even grid, four to a row ── */}
             {community.length > 0 && (
@@ -305,6 +398,7 @@ const partnerListShape = PropTypes.arrayOf(
     logoAlt: PropTypes.string,
     desc: PropTypes.string,
     url: PropTypes.string,
+    tier: PropTypes.string,
   })
 )
 
@@ -312,10 +406,11 @@ PartnersSection.propTypes = {
   partnersData: PropTypes.shape({
     sponsors: partnerListShape,
     community: partnerListShape,
-    // legacy shapes, folded into the community grid
-    platinum: partnerListShape,
+    // legacy tier lists, folded into the matching sponsor tier
     diamond: partnerListShape,
+    platinum: partnerListShape,
     gold: partnerListShape,
+    // legacy untiered lists, folded into the community grid
     organizations: partnerListShape,
     partners: partnerListShape,
   }),

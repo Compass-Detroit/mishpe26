@@ -9,6 +9,11 @@ import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import { createClient } from '@sanity/client'
 import prettier from 'prettier'
+import {
+  DEFAULT_SPONSOR_TIER,
+  SPONSOR_TIER_KEYS,
+  isSponsorTier,
+} from '../src/data/sponsorTiers.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
@@ -65,6 +70,7 @@ const PARTNERS_QUERY = `*[_type == "partner" && event->year == $year && publishe
   "id": slug.current,
   name,
   partnerGroup,
+  tier,
   "desc": description,
   url,
   "logo": logo.asset->url,
@@ -253,7 +259,12 @@ export async function fetchEventSpeakers(options = {}) {
 /**
  * Partners split into the two areas the site renders: sponsors first, then the
  * community groups that volunteer their efforts. Sort order sets position
- * within an area; every card in an area is the same size.
+ * within an area.
+ *
+ * Sponsors carry a `tier` through to the frontend, which buckets them into the
+ * ladder in src/data/sponsorTiers.js. They stay a flat list here so the shape
+ * of partners.generated.json does not change when a tier is added or renamed.
+ * Community groups are not tiered.
  */
 export async function fetchEventPartners(options = {}) {
   const { projectId, dataset, eventYear } = resolveSource(options)
@@ -264,7 +275,16 @@ export async function fetchEventPartners(options = {}) {
   const grouped = { sponsors: [], community: [] }
   const AREA_BY_GROUP = { sponsor: 'sponsors', community: 'community' }
 
-  for (const { id, name, partnerGroup, desc, url, logo, logoAlt } of rows) {
+  for (const {
+    id,
+    name,
+    partnerGroup,
+    tier,
+    desc,
+    url,
+    logo,
+    logoAlt,
+  } of rows) {
     if (!id || !name) continue
 
     const area = AREA_BY_GROUP[partnerGroup]
@@ -277,14 +297,33 @@ export async function fetchEventPartners(options = {}) {
       continue
     }
 
-    grouped[area].push({
+    const entry = {
       id,
       name,
       logo: logo ?? '',
       logoAlt: logoAlt ?? '',
       desc: desc ?? '',
       url: url ?? '',
-    })
+    }
+
+    if (area === 'sponsors') {
+      // The Studio requires a tier on every sponsor, so a missing one means the
+      // document predates the field or was written through the API. Fall back
+      // rather than skip: a paying sponsor absent from the page is a worse
+      // failure than one in the wrong row.
+      if (!isSponsorTier(tier)) {
+        console.warn(
+          `fetch-event-data: sponsor "${name}" has tier ` +
+            `"${tier ?? '(unset)'}", which is not one of ` +
+            `${SPONSOR_TIER_KEYS.join(', ')}. Falling back to ` +
+            `"${DEFAULT_SPONSOR_TIER}".`
+        )
+      }
+
+      entry.tier = isSponsorTier(tier) ? tier : DEFAULT_SPONSOR_TIER
+    }
+
+    grouped[area].push(entry)
   }
 
   return grouped
