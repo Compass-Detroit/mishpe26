@@ -312,7 +312,8 @@ export async function fetchEventPartners(options = {}) {
       continue
     }
 
-    // Coerced rather than defaulted: `?? ''` passes a non-string through, and
+    // Type-checked, not coerced: anything that is not a string is replaced with
+    // '' rather than stringified. `?? ''` would pass a non-string through, and
     // truncateDescription slices it on the way to the card.
     const entry = {
       id,

@@ -167,8 +167,9 @@ function rows(list) {
 }
 
 /**
- * Sanity is authoritative for BOTH areas whenever the generated file says it
- * came from Sanity — the `source` marker that fetch-event-data writes.
+ * Sanity is authoritative for BOTH areas whenever the generated file carries
+ * the `source` marker that fetch-event-data writes — including when the roster
+ * it carries is empty.
  *
  * The marker is what makes an empty roster trustworthy. Counting rows cannot:
  * an empty list is indistinguishable from a file that was never generated, so
@@ -177,8 +178,16 @@ function rows(list) {
  * them straight back on the page. An organization taken off the list must stay
  * off, including the last one.
  *
- * The static list is therefore a cold start for a checkout whose generated file
- * has never been written — never a way to top up a deliberately empty area.
+ * In practice that leaves the static list nearly unreachable: the generated
+ * file is committed and always marked, so only a checkout where it has been
+ * deleted or hand-stubbed falls through to it. That is deliberate. The
+ * alternative — treating an empty generated file as "not really from Sanity" —
+ * would resurrect this list on a misconfigured build, and the organizations in
+ * it are no longer accurate: IBM and DTE are non-sponsors for 2026 but still
+ * appear here as sponsors. Showing nothing is the safer failure.
+ *
+ * The list is kept only as a seed for a fresh event and should be deleted once
+ * partner content lives entirely in Sanity.
  */
 const isFromSanity = partnersGenerated?.source === 'sanity'
 
