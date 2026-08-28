@@ -35,3 +35,6 @@ scripts/sanity-import/.env
 
 # Skills installed via `npx skills add` — .claude/skills/ symlinks into here
 .agents/
+
+# Sanity CLI project-id cache (written when running the CLI from the repo root)
+/cache/
