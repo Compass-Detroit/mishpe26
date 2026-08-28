@@ -9,6 +9,12 @@ import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import { createClient } from '@sanity/client'
 import prettier from 'prettier'
+/**
+ * Deep relative path rather than the `@/` alias the rest of the codebase uses:
+ * this script is run directly by Node for `prebuild`, and Node resolves neither
+ * jsconfig.json nor vite.config.js aliases. The alias convention applies to
+ * code that goes through the bundler.
+ */
 import { SPONSOR_TIER_KEYS, isSponsorTier } from '../src/data/sponsorTiers.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -306,13 +312,15 @@ export async function fetchEventPartners(options = {}) {
       continue
     }
 
+    // Coerced rather than defaulted: `?? ''` passes a non-string through, and
+    // truncateDescription slices it on the way to the card.
     const entry = {
       id,
       name,
-      logo: logo ?? '',
-      logoAlt: logoAlt ?? '',
-      desc: desc ?? '',
-      url: url ?? '',
+      logo: typeof logo === 'string' ? logo : '',
+      logoAlt: typeof logoAlt === 'string' ? logoAlt : '',
+      desc: typeof desc === 'string' ? desc : '',
+      url: typeof url === 'string' ? url : '',
     }
 
     if (area === 'sponsors') {
@@ -346,7 +354,13 @@ export async function fetchEventPartners(options = {}) {
     )
   }
 
-  return grouped
+  /**
+   * `sourceRows` is what the query returned, before any filtering. It is what
+   * tells an authoritative empty result ("every partner is a non-sponsor")
+   * apart from a suspicious one ("this dataset or year has no partners at
+   * all") — the two are indistinguishable by the size of `grouped`.
+   */
+  return { ...grouped, sourceRows: rows.length }
 }
 
 async function writeFormattedJson(filePath, data) {
@@ -426,16 +440,22 @@ function partnerCount(grouped) {
 }
 
 async function writePartners() {
-  const grouped = await fetchEventPartners()
-  const total = partnerCount(grouped)
+  const { sponsors, community, sourceRows } = await fetchEventPartners()
+  const grouped = { source: 'sanity', sponsors, community }
   const existing = committedRowCount(PARTNERS_OUTPUT, partnerCount)
 
-  if (shouldKeepExisting(PARTNERS_OUTPUT, total, existing)) return
+  /**
+   * Guarded on the query result, not the filtered one. Filtering everything out
+   * is a real answer and must overwrite the file — otherwise marking every
+   * partner a non-sponsor would leave the previous roster on the site, which is
+   * exactly what the non-sponsor group exists to prevent.
+   */
+  if (shouldKeepExisting(PARTNERS_OUTPUT, sourceRows, existing)) return
 
   await writeFormattedJson(PARTNERS_OUTPUT, grouped)
 
   console.log(
-    `Wrote ${grouped.sponsors.length} sponsors and ${grouped.community.length} ` +
+    `Wrote ${sponsors.length} sponsors and ${community.length} ` +
       `community groups to ${path.relative(ROOT, PARTNERS_OUTPUT)}`
   )
 }

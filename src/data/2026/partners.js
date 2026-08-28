@@ -167,23 +167,24 @@ function rows(list) {
 }
 
 /**
- * Sanity is authoritative for BOTH areas as soon as it returns anything at all.
+ * Sanity is authoritative for BOTH areas whenever the generated file says it
+ * came from Sanity — the `source` marker that fetch-event-data writes.
  *
- * The choice that matters here is that an empty sponsors list is a real answer
- * — "nobody is listed as a sponsor this year" — and not a sign of missing data.
- * Falling back per area would betray the non-sponsor group: mark every sponsor
- * as a non-sponsor and the area would empty out, only for the static list below
- * to put all of them straight back on the page. An organization taken off the
- * list must stay off.
+ * The marker is what makes an empty roster trustworthy. Counting rows cannot:
+ * an empty list is indistinguishable from a file that was never generated, so
+ * emptiness would silently fall back and betray the non-sponsor group — mark
+ * every sponsor as a non-sponsor, and the static list below would put all of
+ * them straight back on the page. An organization taken off the list must stay
+ * off, including the last one.
  *
- * The static list is therefore a cold start, used only when Sanity has produced
- * nothing whatsoever — never to top up a deliberately empty area.
+ * The static list is therefore a cold start for a checkout whose generated file
+ * has never been written — never a way to top up a deliberately empty area.
  */
-const generatedSponsors = rows(partnersGenerated.sponsors)
-const generatedCommunity = rows(partnersGenerated.community)
-const hasGeneratedPartners =
-  generatedSponsors.length > 0 || generatedCommunity.length > 0
+const isFromSanity = partnersGenerated?.source === 'sanity'
 
-export const partnersData = hasGeneratedPartners
-  ? { sponsors: generatedSponsors, community: generatedCommunity }
+export const partnersData = isFromSanity
+  ? {
+      sponsors: rows(partnersGenerated.sponsors),
+      community: rows(partnersGenerated.community),
+    }
   : { sponsors: inArea(SPONSOR), community: inArea(COMMUNITY) }

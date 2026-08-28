@@ -119,9 +119,24 @@ export const partner = defineType({
          */
         rule.custom((value, context) => {
           const group = (context.parent as {partnerGroup?: string} | undefined)?.partnerGroup
-          if (group === 'sponsor' && !value) {
+          if (group !== 'sponsor') return true
+
+          if (!value) {
             return 'Pick a tier for every sponsor — it decides which row the logo lands in.'
           }
+
+          /**
+           * `options.list` only constrains the radio in the Studio, so an
+           * import or API write can persist a tier outside the ladder. The
+           * frontend drops what it does not recognise, which would take the
+           * sponsor off the page — check membership here, where it is still
+           * fixable.
+           */
+          if (!SPONSOR_TIER_OPTIONS.some((option) => option.value === value)) {
+            const known = SPONSOR_TIER_OPTIONS.map((option) => option.value).join(', ')
+            return `"${value}" is not a sponsor tier. Use one of: ${known}.`
+          }
+
           return true
         }),
         /**

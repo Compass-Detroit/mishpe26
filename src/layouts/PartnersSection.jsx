@@ -172,10 +172,12 @@ PartnerCard.propTypes = {
  */
 const EmptySlot = ({ cardSize }) => (
   <div
-    className={`flex w-full items-center justify-center rounded-[2rem] border-2 border-dashed border-white/15 bg-white/[0.02] ${cardSize.height}`}
+    className={`flex w-full items-center justify-center rounded-[2rem] border-2 border-dashed border-white/15 bg-white/[0.02] light:border-stone-400/60 light:bg-stone-900/[0.03] ${cardSize.height}`}
     aria-hidden="true"
   >
-    <span className="text-4xl font-light leading-none text-white/25">+</span>
+    <span className="text-4xl font-light leading-none text-white/25 light:text-stone-500">
+      +
+    </span>
   </div>
 )
 
