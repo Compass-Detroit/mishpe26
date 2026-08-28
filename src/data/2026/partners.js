@@ -1,11 +1,14 @@
 /**
  * Partners for the public site, split into the two areas the section renders:
- * sponsors (three to a row, larger cards) and the community groups that
- * volunteer their efforts (four to a row, below).
+ * sponsors (ranked into tiers) and the community groups that volunteer their
+ * efforts (four to a row, below).
  *
  * Every partner lives in one list and declares its own `area`. To move an
  * organization between the two areas, change that one word — order within the
  * list is the order it renders in.
+ *
+ * Sponsors additionally declare a `tier` from src/data/sponsorTiers.js, which
+ * decides the row. Community groups are not tiered.
  *
  * Sanity is the eventual source — see scripts/fetch-event-data.mjs, which
  * writes partners.generated.json before each build. Until partner documents are
@@ -35,6 +38,7 @@ const staticPartners = [
   {
     id: 1,
     area: SPONSOR,
+    tier: 'platinum',
     name: 'IBM',
     logo: IBM,
     logoAlt: 'IBM logo',
@@ -44,6 +48,7 @@ const staticPartners = [
   {
     id: 2,
     area: SPONSOR,
+    tier: 'gold',
     name: 'DTE',
     logo: DTE,
     logoAlt: 'DTE logo',
@@ -53,6 +58,7 @@ const staticPartners = [
   {
     id: 3,
     area: SPONSOR,
+    tier: 'gold',
     name: 'Little Caesars',
     logo: LitteCaesars,
     logoAlt: 'Little Caesars logo',
@@ -156,13 +162,38 @@ function inArea(area) {
   return staticPartners.filter((partner) => partner.area === area)
 }
 
-/** Sanity wins per area once that area has published documents. */
-function preferGenerated(generated, fallback) {
-  if (!Array.isArray(generated) || generated.length === 0) return fallback
-  return generated
+function rows(list) {
+  return Array.isArray(list) ? list : []
 }
 
-export const partnersData = {
-  sponsors: preferGenerated(partnersGenerated.sponsors, inArea(SPONSOR)),
-  community: preferGenerated(partnersGenerated.community, inArea(COMMUNITY)),
-}
+/**
+ * Sanity is authoritative for BOTH areas whenever the generated file carries
+ * the `source` marker that fetch-event-data writes — including when the roster
+ * it carries is empty.
+ *
+ * The marker is what makes an empty roster trustworthy. Counting rows cannot:
+ * an empty list is indistinguishable from a file that was never generated, so
+ * emptiness would silently fall back and betray the non-sponsor group — mark
+ * every sponsor as a non-sponsor, and the static list below would put all of
+ * them straight back on the page. An organization taken off the list must stay
+ * off, including the last one.
+ *
+ * In practice that leaves the static list nearly unreachable: the generated
+ * file is committed and always marked, so only a checkout where it has been
+ * deleted or hand-stubbed falls through to it. That is deliberate. The
+ * alternative — treating an empty generated file as "not really from Sanity" —
+ * would resurrect this list on a misconfigured build, and the organizations in
+ * it are no longer accurate: IBM and DTE are non-sponsors for 2026 but still
+ * appear here as sponsors. Showing nothing is the safer failure.
+ *
+ * The list is kept only as a seed for a fresh event and should be deleted once
+ * partner content lives entirely in Sanity.
+ */
+const isFromSanity = partnersGenerated?.source === 'sanity'
+
+export const partnersData = isFromSanity
+  ? {
+      sponsors: rows(partnersGenerated.sponsors),
+      community: rows(partnersGenerated.community),
+    }
+  : { sponsors: inArea(SPONSOR), community: inArea(COMMUNITY) }

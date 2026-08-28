@@ -9,6 +9,13 @@ import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import { createClient } from '@sanity/client'
 import prettier from 'prettier'
+/**
+ * Deep relative path rather than the `@/` alias the rest of the codebase uses:
+ * this script is run directly by Node for `prebuild`, and Node resolves neither
+ * jsconfig.json nor vite.config.js aliases. The alias convention applies to
+ * code that goes through the bundler.
+ */
+import { SPONSOR_TIER_KEYS, isSponsorTier } from '../src/data/sponsorTiers.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
@@ -65,6 +72,7 @@ const PARTNERS_QUERY = `*[_type == "partner" && event->year == $year && publishe
   "id": slug.current,
   name,
   partnerGroup,
+  tier,
   "desc": description,
   url,
   "logo": logo.asset->url,
@@ -253,7 +261,13 @@ export async function fetchEventSpeakers(options = {}) {
 /**
  * Partners split into the two areas the site renders: sponsors first, then the
  * community groups that volunteer their efforts. Sort order sets position
- * within an area; every card in an area is the same size.
+ * within an area.
+ *
+ * Sponsors carry a `tier` through to the frontend, which buckets them into the
+ * ladder in src/data/sponsorTiers.js. They stay a flat list here so the shape
+ * of partners.generated.json does not change when a tier is added or renamed.
+ * Community groups are not tiered. Partners in the `nonSponsor` group are kept
+ * in Sanity but written to neither area.
  */
 export async function fetchEventPartners(options = {}) {
   const { projectId, dataset, eventYear } = resolveSource(options)
@@ -263,31 +277,91 @@ export async function fetchEventPartners(options = {}) {
 
   const grouped = { sponsors: [], community: [] }
   const AREA_BY_GROUP = { sponsor: 'sponsors', community: 'community' }
+  /**
+   * A deliberate "keep the record, show nothing" state, as opposed to a group
+   * we do not recognise. Dropped without a warning — it is the author saying
+   * this organization is not with us this year, not a data problem.
+   */
+  const NOT_LISTED = 'nonSponsor'
+  let notListed = 0
 
-  for (const { id, name, partnerGroup, desc, url, logo, logoAlt } of rows) {
+  for (const {
+    id,
+    name,
+    partnerGroup,
+    tier,
+    desc,
+    url,
+    logo,
+    logoAlt,
+  } of rows) {
     if (!id || !name) continue
+
+    if (partnerGroup === NOT_LISTED) {
+      notListed += 1
+      continue
+    }
 
     const area = AREA_BY_GROUP[partnerGroup]
     if (!area) {
       console.warn(
         `fetch-event-data: partner "${name}" has partnerGroup ` +
-          `"${partnerGroup ?? '(unset)'}", which is neither sponsor nor ` +
-          `community. Skipping it rather than guessing an area.`
+          `"${partnerGroup ?? '(unset)'}", which is not one of sponsor, ` +
+          `community or ${NOT_LISTED}. Skipping it rather than guessing an area.`
       )
       continue
     }
 
-    grouped[area].push({
+    // Type-checked, not coerced: anything that is not a string is replaced with
+    // '' rather than stringified. `?? ''` would pass a non-string through, and
+    // truncateDescription slices it on the way to the card.
+    const entry = {
       id,
       name,
-      logo: logo ?? '',
-      logoAlt: logoAlt ?? '',
-      desc: desc ?? '',
-      url: url ?? '',
-    })
+      logo: typeof logo === 'string' ? logo : '',
+      logoAlt: typeof logoAlt === 'string' ? logoAlt : '',
+      desc: typeof desc === 'string' ? desc : '',
+      url: typeof url === 'string' ? url : '',
+    }
+
+    if (area === 'sponsors') {
+      /**
+       * The tier row is 1:1 with Sanity, so there is no default to fall back
+       * on — placing an untiered sponsor in a row would assert a level nobody
+       * agreed to. The Studio requires a tier on every sponsor, so this only
+       * catches documents written before the field existed. Named loudly,
+       * because the consequence is a sponsor missing from the page.
+       */
+      if (!isSponsorTier(tier)) {
+        console.warn(
+          `fetch-event-data: sponsor "${name}" has tier ` +
+            `"${tier ?? '(unset)'}", which is not one of ` +
+            `${SPONSOR_TIER_KEYS.join(', ')}. LEAVING IT OFF THE SITE — ` +
+            `set a tier on this partner in the Studio and publish.`
+        )
+        continue
+      }
+
+      entry.tier = tier
+    }
+
+    grouped[area].push(entry)
   }
 
-  return grouped
+  if (notListed > 0) {
+    console.log(
+      `fetch-event-data: ${notListed} partner(s) marked non-sponsor and left ` +
+        `off the site.`
+    )
+  }
+
+  /**
+   * `sourceRows` is what the query returned, before any filtering. It is what
+   * tells an authoritative empty result ("every partner is a non-sponsor")
+   * apart from a suspicious one ("this dataset or year has no partners at
+   * all") — the two are indistinguishable by the size of `grouped`.
+   */
+  return { ...grouped, sourceRows: rows.length }
 }
 
 async function writeFormattedJson(filePath, data) {
@@ -367,16 +441,22 @@ function partnerCount(grouped) {
 }
 
 async function writePartners() {
-  const grouped = await fetchEventPartners()
-  const total = partnerCount(grouped)
+  const { sponsors, community, sourceRows } = await fetchEventPartners()
+  const grouped = { source: 'sanity', sponsors, community }
   const existing = committedRowCount(PARTNERS_OUTPUT, partnerCount)
 
-  if (shouldKeepExisting(PARTNERS_OUTPUT, total, existing)) return
+  /**
+   * Guarded on the query result, not the filtered one. Filtering everything out
+   * is a real answer and must overwrite the file — otherwise marking every
+   * partner a non-sponsor would leave the previous roster on the site, which is
+   * exactly what the non-sponsor group exists to prevent.
+   */
+  if (shouldKeepExisting(PARTNERS_OUTPUT, sourceRows, existing)) return
 
   await writeFormattedJson(PARTNERS_OUTPUT, grouped)
 
   console.log(
-    `Wrote ${grouped.sponsors.length} sponsors and ${grouped.community.length} ` +
+    `Wrote ${sponsors.length} sponsors and ${community.length} ` +
       `community groups to ${path.relative(ROOT, PARTNERS_OUTPUT)}`
   )
 }

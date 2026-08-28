@@ -7,7 +7,8 @@ const PARTNER_ORDERING = [
 
 /**
  * One list per partner area. Moving an organization between them is the
- * "Partner group" field, or the "Move to …" document action.
+ * "Partner group" field, or the "Move to …" document action. The non-sponsor
+ * list holds organizations kept on file but not shown on the site this year.
  */
 function partnerArea(S: Parameters<StructureResolver>[0], title: string, group: string) {
   return S.listItem()
@@ -50,6 +51,8 @@ export const structure: StructureResolver = (S) =>
             .items([
               partnerArea(S, 'Sponsors', 'sponsor'),
               partnerArea(S, 'Community groups', 'community'),
+              S.divider(),
+              partnerArea(S, 'Non-sponsors (not listed)', 'nonSponsor'),
               S.divider(),
               S.listItem()
                 .title('All partners')
