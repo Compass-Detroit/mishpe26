@@ -1,6 +1,24 @@
 {
   "sponsors": [
     {
+      "id": "shpe-detroit",
+      "name": "SHPE Detroit",
+      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/4d82a4256cd83cc705ad16c429c0b3ffab86eaa3-401x401.webp",
+      "logoAlt": "SHPE Detroit logo",
+      "desc": "SHPE Detroit is transforming lives in Detroit by inspiring and motivating young Hispanic students to excel in STEM education through mentorship and community involvement and enhancing career opportunities for Hispanics by building a strong professional network.",
+      "url": "https://www.shpedetroit.org/",
+      "tier": "gold"
+    },
+    {
+      "id": "wayne-state-university",
+      "name": "Wayne State University",
+      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/82a66b1dc3db3e6d2fc7056362170cefc40083bb-960x880.webp",
+      "logoAlt": "Wayne State University logo",
+      "desc": "Wayne State University is a public research university in Midtown Detroit, tracing its roots to the Detroit Medical College founded in 1868 and taking its current name in 1956. It is Michigan's only urban research university and, with the University of Michigan and Michigan State, one of the three members of the University Research Corridor — carrying out roughly $244 million in annual research each year.",
+      "url": "https://wayne.edu/",
+      "tier": "diamond"
+    },
+    {
       "id": "compass-detroit",
       "name": "Compass Detroit",
       "logo": "https://cdn.sanity.io/images/d1h6cagq/production/2de4078ab08b35987d477762e4fe02bd9e53328c-241x149.webp",
@@ -21,14 +39,6 @@
   ],
   "community": [
     {
-      "id": "devscreate313",
-      "name": "DevsCreate313",
-      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/c9ba899f456ad8d32850174c738821469e80435c-618x618.webp",
-      "logoAlt": "DevsCreate313 logo",
-      "desc": "DevsCreate313 is a nonprofit organization dedicated to creating a collaborative tech ecosystem in the Detroit area. We are a community of developers, designers, entrepreneurs, and technologists who are passionate about building the future of technology in Detroit.",
-      "url": "https://devscreate313.org/"
-    },
-    {
       "id": "nsbe-detroit",
       "name": "NSBE Detroit",
       "logo": "https://cdn.sanity.io/images/d1h6cagq/production/d948f50cb717398b83ad356a67d05db1f792496b-401x401.webp",
@@ -37,12 +47,12 @@
       "url": "https://nsbedetroitprofessionals.org/"
     },
     {
-      "id": "shpe-detroit",
-      "name": "SHPE Detroit",
-      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/4d82a4256cd83cc705ad16c429c0b3ffab86eaa3-401x401.webp",
-      "logoAlt": "SHPE Detroit logo",
-      "desc": "SHPE Detroit is transforming lives in Detroit by inspiring and motivating young Hispanic students to excel in STEM education through mentorship and community involvement and enhancing career opportunities for Hispanics by building a strong professional network.",
-      "url": "https://www.shpedetroit.org/"
+      "id": "devscreate313",
+      "name": "DevsCreate313",
+      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/c9ba899f456ad8d32850174c738821469e80435c-618x618.webp",
+      "logoAlt": "DevsCreate313 logo",
+      "desc": "DevsCreate313 is a nonprofit organization dedicated to creating a collaborative tech ecosystem in the Detroit area. We are a community of developers, designers, entrepreneurs, and technologists who are passionate about building the future of technology in Detroit.",
+      "url": "https://devscreate313.org/"
     },
     {
       "id": "techqueria-detroit",
