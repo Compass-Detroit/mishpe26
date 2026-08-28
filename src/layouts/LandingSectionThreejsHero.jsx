@@ -43,17 +43,12 @@ function ThreejsHeroForeground() {
 
         {/* Primary CTAs */}
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">
-          <CTAButton
-            href="https://bit.ly/pride-summit-26"
-            label="Register Now"
-            target="_blank"
-            rel="noopener noreferrer"
-            ariaLabel="Register for the Latin Heritage Month Innovation Summit (link coming soon)"
-            className="w-full min-w-48 sm:w-auto"
-            icon={<FaArrowRight />}
-            iconPosition="right"
-          />
-
+          {/*
+            No Register CTA until the event exists on the registration
+            platform. The "Registration opens soon" line above carries the
+            status; a button needs a destination, and the only URL to hand was
+            the previous event's.
+          */}
           <CTAButton
             href="mailto:sponsors@compassdetroit.org"
             label="Become a Sponsor"
