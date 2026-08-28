@@ -9,9 +9,14 @@ const TARGET_LABELS: Record<string, string> = {
 }
 
 /**
- * One-click swap between the two partner areas. It patches `partnerGroup` and
- * leaves the change as a draft, so the move reaches the site the same way every
- * other edit does — on publish.
+ * One-click swap between the two listed partner areas. It patches
+ * `partnerGroup` and leaves the change as a draft, so the move reaches the site
+ * the same way every other edit does — on publish.
+ *
+ * There is deliberately no one-click route to `nonSponsor`: un-listing an
+ * organization is worth the two clicks on the "Partner group" radio. A partner
+ * already sitting in `nonSponsor` targets Sponsor here, which reads as
+ * restoring it.
  */
 export const movePartnerArea: DocumentActionComponent = (props: DocumentActionProps) => {
   const {id, type, draft, published, onComplete} = props
@@ -24,7 +29,13 @@ export const movePartnerArea: DocumentActionComponent = (props: DocumentActionPr
     label: TARGET_LABELS[target],
     disabled: !doc,
     onHandle: () => {
-      patch.execute([{set: {partnerGroup: target}}])
+      // Only sponsors hold a tier, so moving out of Sponsor drops it in the
+      // same patch. Leaving it behind would fail validation on a field the
+      // form hides once the move lands.
+      patch.execute([
+        {set: {partnerGroup: target}},
+        ...(target === 'sponsor' ? [] : [{unset: ['tier']}]),
+      ])
       onComplete()
     },
   }

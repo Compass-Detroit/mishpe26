@@ -196,7 +196,7 @@ const SponsorTierRow = ({ tier, sponsors }) => {
         <h4 className="font-heading text-lg font-bold uppercase tracking-[0.2em] text-iwd-gold-400 sm:text-xl">
           {tier.title}
         </h4>
-        <p className="mx-auto mt-2 max-w-xl text-balance font-body text-sm leading-relaxed text-gray-400">
+        <p className="mx-auto mt-2 max-w-xl text-balance font-body text-lg leading-relaxed text-gray-400">
           {tier.blurb}
         </p>
         <p className="sr-only">

@@ -1,8 +1,15 @@
 import {defineField, defineType} from 'sanity'
 
+/**
+ * Which area of the site a partner renders in — or, for `nonSponsor`, that it
+ * renders nowhere. Keeping a not-listed organization as a real document (rather
+ * than deleting it or unpublishing it) preserves its logo, copy and slug for the
+ * year it comes back.
+ */
 const PARTNER_GROUP_OPTIONS = [
   {title: 'Sponsor', value: 'sponsor'},
   {title: 'Community group', value: 'community'},
+  {title: 'Non-sponsor', value: 'nonSponsor'},
 ]
 
 /**
@@ -72,20 +79,28 @@ export const partner = defineType({
       validation: (rule) => rule.required(),
       description:
         'Sponsors are shown first, ranked into tiers. Community groups follow in a single ' +
-        'flat grid, four to a row. Use the "Move to …" action to switch an organization ' +
-        'between them.',
+        'flat grid, four to a row. Non-sponsors appear nowhere on the site — use it for an ' +
+        'organization that is not with us this year but whose details are worth keeping. ' +
+        'Use the "Move to …" action to switch an organization between areas.',
     }),
     defineField({
       name: 'tier',
       title: 'Sponsor tier',
       type: 'string',
       options: {list: SPONSOR_TIER_OPTIONS, layout: 'radio'},
-      hidden: ({parent}) => parent?.partnerGroup !== 'sponsor',
+      /**
+       * Hidden for anything that is not a sponsor — but only while it is
+       * actually empty. A partner demoted from Sponsor keeps whatever tier it
+       * had, and validation (which runs on hidden fields too) would then reject
+       * the document while concealing the one field that could fix it. Keeping
+       * a stale value visible makes the error resolvable.
+       */
+      hidden: ({parent, value}) => parent?.partnerGroup !== 'sponsor' && !value,
       description:
         'Which row this sponsor sits in, highest first: Diamond (1 slot), Platinum (2), ' +
         'Gold (4), then the in-kind rows Media (4) and Fuel (4). Unfilled slots render as ' +
         'dashed placeholders, so the tier is also a statement about open inventory. ' +
-        'Community groups are not tiered and can leave this blank.',
+        'Only sponsors are tiered; community groups and non-sponsors leave this blank.',
       validation: (rule) =>
         rule.custom((value, context) => {
           const group = (context.parent as {partnerGroup?: string} | undefined)?.partnerGroup

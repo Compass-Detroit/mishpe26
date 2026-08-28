@@ -10,24 +10,6 @@
       "tier": "gold"
     },
     {
-      "id": "ibm",
-      "name": "IBM",
-      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/a6500d3000b0433f6b5436733d0a634ff58ace3e-2560x1027.webp",
-      "logoAlt": "IBM logo",
-      "desc": "IBM is a global technology company that provides hardware, software, and services to businesses and organizations.",
-      "url": "https://www.ibm.com/us-en",
-      "tier": "gold"
-    },
-    {
-      "id": "dte",
-      "name": "DTE",
-      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/9efb2b4ee18b8908cea21e077c6e39393ea97c29-400x401.webp",
-      "logoAlt": "DTE logo",
-      "desc": "DTE Energy (NYSE: DTE) is a Detroit-based diversified energy company involved in the development and management of energy-related businesses and services nationwide. Its operating units include an electric company serving 2.3 million customers in Southeast Michigan and a natural gas company serving 1.3 million customers in Michigan. The DTE portfolio also includes non-utility businesses focused on industrial energy services, renewable natural gas, and energy marketing and trading.",
-      "url": "https://www.dteenergy.com/",
-      "tier": "gold"
-    },
-    {
       "id": "little-caesars",
       "name": "Little Caesars",
       "logo": "https://cdn.sanity.io/images/d1h6cagq/production/4b0e8094d61b3fb351fa1ff1776d6890a58c35ee-993x748.webp",

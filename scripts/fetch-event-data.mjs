@@ -9,11 +9,7 @@ import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import { createClient } from '@sanity/client'
 import prettier from 'prettier'
-import {
-  DEFAULT_SPONSOR_TIER,
-  SPONSOR_TIER_KEYS,
-  isSponsorTier,
-} from '../src/data/sponsorTiers.js'
+import { SPONSOR_TIER_KEYS, isSponsorTier } from '../src/data/sponsorTiers.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
@@ -264,7 +260,8 @@ export async function fetchEventSpeakers(options = {}) {
  * Sponsors carry a `tier` through to the frontend, which buckets them into the
  * ladder in src/data/sponsorTiers.js. They stay a flat list here so the shape
  * of partners.generated.json does not change when a tier is added or renamed.
- * Community groups are not tiered.
+ * Community groups are not tiered. Partners in the `nonSponsor` group are kept
+ * in Sanity but written to neither area.
  */
 export async function fetchEventPartners(options = {}) {
   const { projectId, dataset, eventYear } = resolveSource(options)
@@ -274,6 +271,13 @@ export async function fetchEventPartners(options = {}) {
 
   const grouped = { sponsors: [], community: [] }
   const AREA_BY_GROUP = { sponsor: 'sponsors', community: 'community' }
+  /**
+   * A deliberate "keep the record, show nothing" state, as opposed to a group
+   * we do not recognise. Dropped without a warning — it is the author saying
+   * this organization is not with us this year, not a data problem.
+   */
+  const NOT_LISTED = 'nonSponsor'
+  let notListed = 0
 
   for (const {
     id,
@@ -287,12 +291,17 @@ export async function fetchEventPartners(options = {}) {
   } of rows) {
     if (!id || !name) continue
 
+    if (partnerGroup === NOT_LISTED) {
+      notListed += 1
+      continue
+    }
+
     const area = AREA_BY_GROUP[partnerGroup]
     if (!area) {
       console.warn(
         `fetch-event-data: partner "${name}" has partnerGroup ` +
-          `"${partnerGroup ?? '(unset)'}", which is neither sponsor nor ` +
-          `community. Skipping it rather than guessing an area.`
+          `"${partnerGroup ?? '(unset)'}", which is not one of sponsor, ` +
+          `community or ${NOT_LISTED}. Skipping it rather than guessing an area.`
       )
       continue
     }
@@ -307,23 +316,34 @@ export async function fetchEventPartners(options = {}) {
     }
 
     if (area === 'sponsors') {
-      // The Studio requires a tier on every sponsor, so a missing one means the
-      // document predates the field or was written through the API. Fall back
-      // rather than skip: a paying sponsor absent from the page is a worse
-      // failure than one in the wrong row.
+      /**
+       * The tier row is 1:1 with Sanity, so there is no default to fall back
+       * on — placing an untiered sponsor in a row would assert a level nobody
+       * agreed to. The Studio requires a tier on every sponsor, so this only
+       * catches documents written before the field existed. Named loudly,
+       * because the consequence is a sponsor missing from the page.
+       */
       if (!isSponsorTier(tier)) {
         console.warn(
           `fetch-event-data: sponsor "${name}" has tier ` +
             `"${tier ?? '(unset)'}", which is not one of ` +
-            `${SPONSOR_TIER_KEYS.join(', ')}. Falling back to ` +
-            `"${DEFAULT_SPONSOR_TIER}".`
+            `${SPONSOR_TIER_KEYS.join(', ')}. LEAVING IT OFF THE SITE — ` +
+            `set a tier on this partner in the Studio and publish.`
         )
+        continue
       }
 
-      entry.tier = isSponsorTier(tier) ? tier : DEFAULT_SPONSOR_TIER
+      entry.tier = tier
     }
 
     grouped[area].push(entry)
+  }
+
+  if (notListed > 0) {
+    console.log(
+      `fetch-event-data: ${notListed} partner(s) marked non-sponsor and left ` +
+        `off the site.`
+    )
   }
 
   return grouped

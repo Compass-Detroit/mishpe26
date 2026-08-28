@@ -162,13 +162,28 @@ function inArea(area) {
   return staticPartners.filter((partner) => partner.area === area)
 }
 
-/** Sanity wins per area once that area has published documents. */
-function preferGenerated(generated, fallback) {
-  if (!Array.isArray(generated) || generated.length === 0) return fallback
-  return generated
+function rows(list) {
+  return Array.isArray(list) ? list : []
 }
 
-export const partnersData = {
-  sponsors: preferGenerated(partnersGenerated.sponsors, inArea(SPONSOR)),
-  community: preferGenerated(partnersGenerated.community, inArea(COMMUNITY)),
-}
+/**
+ * Sanity is authoritative for BOTH areas as soon as it returns anything at all.
+ *
+ * The choice that matters here is that an empty sponsors list is a real answer
+ * — "nobody is listed as a sponsor this year" — and not a sign of missing data.
+ * Falling back per area would betray the non-sponsor group: mark every sponsor
+ * as a non-sponsor and the area would empty out, only for the static list below
+ * to put all of them straight back on the page. An organization taken off the
+ * list must stay off.
+ *
+ * The static list is therefore a cold start, used only when Sanity has produced
+ * nothing whatsoever — never to top up a deliberately empty area.
+ */
+const generatedSponsors = rows(partnersGenerated.sponsors)
+const generatedCommunity = rows(partnersGenerated.community)
+const hasGeneratedPartners =
+  generatedSponsors.length > 0 || generatedCommunity.length > 0
+
+export const partnersData = hasGeneratedPartners
+  ? { sponsors: generatedSponsors, community: generatedCommunity }
+  : { sponsors: inArea(SPONSOR), community: inArea(COMMUNITY) }

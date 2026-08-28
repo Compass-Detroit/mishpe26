@@ -61,27 +61,26 @@ export const SPONSOR_TIERS = [
 
 export const SPONSOR_TIER_KEYS = SPONSOR_TIERS.map((tier) => tier.key)
 
-/**
- * Tier used when a sponsor reaches the site without a usable one. Sponsors are
- * never dropped for a bad tier — a paying partner missing from the page is a
- * worse failure than one in the wrong row.
- */
-export const DEFAULT_SPONSOR_TIER = 'gold'
-
 export function isSponsorTier(value) {
   return SPONSOR_TIER_KEYS.includes(value)
 }
 
-/** Bucket a flat sponsor list into the ladder, preserving incoming order. */
+/**
+ * Bucket a flat sponsor list into the ladder, preserving incoming order.
+ *
+ * The mapping is 1:1 with Sanity: a sponsor appears in the row its `tier` names
+ * and nowhere else. There is deliberately no default tier — inventing one would
+ * put an organization in a row nobody agreed to, which is a claim the site is
+ * not entitled to make. A sponsor without a valid tier is left out; the Studio
+ * requires a tier on every sponsor, so this only catches documents written
+ * before the field existed, and fetch-event-data warns by name when it happens.
+ */
 export function groupSponsorsByTier(sponsors = []) {
   const byTier = Object.fromEntries(SPONSOR_TIER_KEYS.map((key) => [key, []]))
 
   for (const sponsor of sponsors) {
-    if (!sponsor) continue
-    const tier = isSponsorTier(sponsor.tier)
-      ? sponsor.tier
-      : DEFAULT_SPONSOR_TIER
-    byTier[tier].push(sponsor)
+    if (!sponsor || !isSponsorTier(sponsor.tier)) continue
+    byTier[sponsor.tier].push(sponsor)
   }
 
   return byTier
