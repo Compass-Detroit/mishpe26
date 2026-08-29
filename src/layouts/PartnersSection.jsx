@@ -390,7 +390,7 @@ const PartnersSection = ({ partnersData = {}, year }) => {
             </p>
             {year && isCurrentYear && (
               <CTAButton
-                href="mailto:sponsors@compassdetroit.org"
+                href="mailto:whatupdoe@compass-detroit.com"
                 label="Become a Partner"
                 target="_self"
               />
