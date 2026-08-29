@@ -200,3 +200,17 @@ export const teamData = [
     avatar: GregMiller,
   },
 ]
+
+/**
+ * NOT YET READ FROM SANITY — deliberately.
+ *
+ * scripts/sanity-import/import-team.mjs migrates this list into `teamMember`
+ * documents, and fetch-event-data.mjs already writes team.generated.json. The
+ * read is not switched over until that import has actually run: the generated
+ * file carries a `source` marker that makes an empty roster authoritative, so
+ * pointing at it while Sanity holds zero team documents would empty the team
+ * section rather than fall back here.
+ *
+ * Flip this to team.generated.json once the documents exist, in the same way
+ * partners.js does, and delete the list above.
+ */
