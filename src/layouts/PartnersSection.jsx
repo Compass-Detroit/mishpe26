@@ -91,12 +91,12 @@ const PartnerCard = ({ partner, cardSize }) => {
       </div>
       {/* ── Back: Org info ── */}
       <div className="from-iwd-dark-900 to-iwd-dark-950 absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-iwd-gold-400/20 bg-gradient-to-br p-6 backdrop-blur-xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
-        <h4 className="mb-4 text-2xl font-black tracking-tight text-white">
+        <h4 className="mb-4 text-center text-2xl font-black tracking-tight text-white">
           {partner.name}
         </h4>
         {partner.desc && (
           <p
-            className="line-clamp-4 text-center text-base leading-relaxed text-gray-900 dark:text-white/70"
+            className="line-clamp-4 text-base leading-relaxed text-gray-900 dark:text-white/70"
             title={
               partner.desc.length > DESC_MAX_LENGTH ? partner.desc : undefined
             }

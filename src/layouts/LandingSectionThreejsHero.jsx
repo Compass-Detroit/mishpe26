@@ -22,7 +22,7 @@ function ThreejsHeroForeground() {
         {/* Top metadata */}
         <p className="font-body text-[10px] font-semibold uppercase tracking-[0.35em] text-white/55 sm:text-xs">
           Detroit &middot; WSU &middot; 2026 &middot; Powered by Compass Detroit
-          &amp; Wayne State University
+          &amp; Wayne State University College of Engineering
         </p>
 
         {/* Main title */}
@@ -38,30 +38,42 @@ function ThreejsHeroForeground() {
 
         {/* Subheading */}
         <p className="mt-5 font-body text-xs font-semibold uppercase tracking-[0.3em] text-iwd-gold-300/90 sm:text-sm">
-          Registration opens soon
+          Register Now
         </p>
 
         {/* Primary CTAs */}
-        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">
+        <div className="mt-8 flex flex-col flex-wrap items-center justify-center gap-4 md:flex-row md:gap-5">
           <CTAButton
             href="https://bit.ly/lhm-summit-26"
             label="Register Now"
             target="_blank"
             rel="noopener noreferrer"
             ariaLabel="Register for the Latin Heritage Month Innovation Summit"
-            className="w-full min-w-48 sm:w-auto"
+            className="w-full min-w-48 md:w-auto"
+            icon={<FaArrowRight />}
+            iconPosition="right"
+          />
+
+          <CTAButton
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdJNLfqyVB-5-g-7VDWP0OhV6Z3FhZej5kVJkA-csPi3YTnTw/viewform"
+            label="Become a Speaker"
+            variant="secondary"
+            target="_blank"
+            rel="noopener noreferrer"
+            ariaLabel="Become a speaker for the Latin Heritage Month Innovation Summit"
+            className="w-full min-w-48 border-iwd-gold-400/40 text-white md:w-auto dark:border-iwd-gold-400/40 dark:text-white dark:hover:text-white"
             icon={<FaArrowRight />}
             iconPosition="right"
           />
 
           <CTAButton
             href="mailto:whatupdoe@compass-detroit.com"
-            label="Become a Sponsor"
+            label="Sponsor the Summit"
             variant="secondary"
             target="_blank"
             rel="noopener noreferrer"
-            ariaLabel="Become a sponsor for the Latin Heritage Month Innovation Summit"
-            className="w-full min-w-48 border-iwd-gold-400/40 text-white sm:w-auto dark:border-iwd-gold-400/40 dark:text-white dark:hover:text-white"
+            ariaLabel="Sponsor the Latin Heritage Month Innovation Summit"
+            className="w-full min-w-48 border-iwd-gold-400/40 text-white md:w-auto dark:border-iwd-gold-400/40 dark:text-white dark:hover:text-white"
             icon={<FaArrowRight />}
             iconPosition="right"
           />
@@ -71,15 +83,16 @@ function ThreejsHeroForeground() {
         <p className="mt-6 font-body text-[11px] uppercase tracking-[0.2em] text-white/90 sm:text-xs">
           Venue:{' '}
           <span className="inline-block rounded border border-iwd-gold-400 bg-white/[0.04] px-2 py-0.5 font-semibold tracking-[0.15em] text-iwd-gold-300">
-            Wayne State University
+            WSU James and Patricia Anderson College of Engineering Building
           </span>
         </p>
 
         {/* Description */}
         <p className="mx-auto mt-6 max-w-xl font-body text-base leading-relaxed text-white">
           A day of learning, building, and connecting for Latin innovators and
-          allies in Detroit&apos;s tech ecosystem — hosted at Wayne State&apos;s
-          Anderson Engineering Building with workshops, talks, and community.
+          allies in Detroit&apos;s tech ecosystem — hosted at the WSU James and
+          Patricia Anderson College of Engineering Building, 5050 Anthony Wayne
+          Drive, with workshops, talks, and community.
         </p>
 
         {/* Footer links */}
