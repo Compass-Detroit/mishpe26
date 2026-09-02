@@ -6,8 +6,8 @@
       "name": "Wayne State University",
       "logo": "https://cdn.sanity.io/images/d1h6cagq/production/82a66b1dc3db3e6d2fc7056362170cefc40083bb-960x880.webp",
       "logoAlt": "Wayne State University logo",
-      "desc": "Wayne State University is a public research university in Midtown Detroit, tracing its roots to the Detroit Medical College founded in 1868 and taking its current name in 1956. It is Michigan's only urban research university and, with the University of Michigan and Michigan State, one of the three members of the University Research Corridor — carrying out roughly $244 million in annual research each year.",
-      "url": "https://wayne.edu/",
+      "desc": "The Wayne State University College of Engineering sits at the center of Detroit, a few blocks from the industry that made the city — and it trains engineers accordingly. Its programs span biomedical, chemical, civil and environmental, computer science, electrical and computer, industrial and systems, and mechanical engineering, with graduate and research work tied closely to the mobility, manufacturing, and health-care employers in the region. The college draws one of the more diverse engineering student bodies in Michigan, many of them first-generation and commuting from the neighborhoods around campus, and it leans into that: co-ops and industry partnerships are the norm rather than the exception, and students tend to have real project work behind them before they graduate. Its home, the Anderson Engineering Building, gives the college modern teaching labs and collaborative space in the heart of the WSU campus — and makes it a fitting host for a summit about who gets to build what comes next.",
+      "url": "https://engineering.wayne.edu/academics/programs",
       "tier": "diamond"
     }
   ],
@@ -43,6 +43,22 @@
       "logoAlt": "DevsCreate313 logo",
       "desc": "DevsCreate313 is a nonprofit organization dedicated to creating a collaborative tech ecosystem in the Detroit area. We are a community of developers, designers, entrepreneurs, and technologists who are passionate about building the future of technology in Detroit.",
       "url": "https://devscreate313.org/"
+    },
+    {
+      "id": "gm-cares",
+      "name": "GM Cares",
+      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/99d8877f2579cd98c1faf825cde356775a68c6d3-318x111.png",
+      "logoAlt": "GM Cares logo",
+      "desc": "GM Cares is General Motors' employee-driven volunteerism and global giving program that empowers workers to support local community causes. STEAM Education: Supporting multidisciplinary skill development and student tutoring. Road Safety: Improving vehicle access and safe driving habits. Community Impact: Organizing grassroots service projects, matching employee donations, and participating in initiatives like local food bank volunteering and disaster relief.",
+      "url": "https://www.gm.com/impact/corporate-giving"
+    },
+    {
+      "id": "gm-latino-network",
+      "name": "GM Latino Network",
+      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/d6355fdf20108f5529073b7e7f252859d8638802-250x270.avif",
+      "logoAlt": "GM Latino Network logo",
+      "desc": "The GM Latino Network is an employee resource group (ERG) at General Motors designed to connect Latino employees and promote awareness of Latino culture. Mission: Provide professional networking opportunities, support career growth, and spread cultural awareness within the company. Activities: Host community and educational events, such as STEM networking workshops for local students, and engage in community outreach.",
+      "url": "https://www.facebook.com/groups/8543138557/"
     },
     {
       "id": "techqueria-detroit",
