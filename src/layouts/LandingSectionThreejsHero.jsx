@@ -42,14 +42,14 @@ function ThreejsHeroForeground() {
         </p>
 
         {/* Primary CTAs */}
-        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">
+        <div className="mt-8 flex flex-col flex-wrap items-center justify-center gap-4 md:flex-row md:gap-5">
           <CTAButton
             href="https://bit.ly/lhm-summit-26"
             label="Register Now"
             target="_blank"
             rel="noopener noreferrer"
             ariaLabel="Register for the Latin Heritage Month Innovation Summit"
-            className="w-full min-w-48 sm:w-auto"
+            className="w-full min-w-48 md:w-auto"
             icon={<FaArrowRight />}
             iconPosition="right"
           />
@@ -61,7 +61,7 @@ function ThreejsHeroForeground() {
             target="_blank"
             rel="noopener noreferrer"
             ariaLabel="Become a speaker for the Latin Heritage Month Innovation Summit"
-            className="w-full min-w-48 border-iwd-gold-400/40 text-white sm:w-auto dark:border-iwd-gold-400/40 dark:text-white dark:hover:text-white"
+            className="w-full min-w-48 border-iwd-gold-400/40 text-white md:w-auto dark:border-iwd-gold-400/40 dark:text-white dark:hover:text-white"
             icon={<FaArrowRight />}
             iconPosition="right"
           />
@@ -73,7 +73,7 @@ function ThreejsHeroForeground() {
             target="_blank"
             rel="noopener noreferrer"
             ariaLabel="Sponsor the Latin Heritage Month Innovation Summit"
-            className="w-full min-w-48 border-iwd-gold-400/40 text-white sm:w-auto dark:border-iwd-gold-400/40 dark:text-white dark:hover:text-white"
+            className="w-full min-w-48 border-iwd-gold-400/40 text-white md:w-auto dark:border-iwd-gold-400/40 dark:text-white dark:hover:text-white"
             icon={<FaArrowRight />}
             iconPosition="right"
           />
@@ -83,15 +83,16 @@ function ThreejsHeroForeground() {
         <p className="mt-6 font-body text-[11px] uppercase tracking-[0.2em] text-white/90 sm:text-xs">
           Venue:{' '}
           <span className="inline-block rounded border border-iwd-gold-400 bg-white/[0.04] px-2 py-0.5 font-semibold tracking-[0.15em] text-iwd-gold-300">
-            Wayne State University
+            WSU James and Patricia Anderson College of Engineering Building
           </span>
         </p>
 
         {/* Description */}
         <p className="mx-auto mt-6 max-w-xl font-body text-base leading-relaxed text-white">
           A day of learning, building, and connecting for Latin innovators and
-          allies in Detroit&apos;s tech ecosystem — hosted at Wayne State&apos;s
-          Anderson Engineering Building with workshops, talks, and community.
+          allies in Detroit&apos;s tech ecosystem — hosted at the WSU James and
+          Patricia Anderson College of Engineering Building, 5050 Anthony Wayne
+          Drive, with workshops, talks, and community.
         </p>
 
         {/* Footer links */}
