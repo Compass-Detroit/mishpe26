@@ -22,7 +22,7 @@ function ThreejsHeroForeground() {
         {/* Top metadata */}
         <p className="font-body text-[10px] font-semibold uppercase tracking-[0.35em] text-white/55 sm:text-xs">
           Detroit &middot; WSU &middot; 2026 &middot; Powered by Compass Detroit
-          &amp; Wayne State University
+          &amp; Wayne State University College of Engineering
         </p>
 
         {/* Main title */}
@@ -38,7 +38,7 @@ function ThreejsHeroForeground() {
 
         {/* Subheading */}
         <p className="mt-5 font-body text-xs font-semibold uppercase tracking-[0.3em] text-iwd-gold-300/90 sm:text-sm">
-          Registration opens soon
+          Register Now
         </p>
 
         {/* Primary CTAs */}
@@ -55,12 +55,24 @@ function ThreejsHeroForeground() {
           />
 
           <CTAButton
-            href="mailto:whatupdoe@compass-detroit.com"
-            label="Become a Sponsor"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdJNLfqyVB-5-g-7VDWP0OhV6Z3FhZej5kVJkA-csPi3YTnTw/viewform"
+            label="Become a Speaker"
             variant="secondary"
             target="_blank"
             rel="noopener noreferrer"
-            ariaLabel="Become a sponsor for the Latin Heritage Month Innovation Summit"
+            ariaLabel="Become a speaker for the Latin Heritage Month Innovation Summit"
+            className="w-full min-w-48 border-iwd-gold-400/40 text-white sm:w-auto dark:border-iwd-gold-400/40 dark:text-white dark:hover:text-white"
+            icon={<FaArrowRight />}
+            iconPosition="right"
+          />
+
+          <CTAButton
+            href="mailto:whatupdoe@compass-detroit.com"
+            label="Sponsor the Summit"
+            variant="secondary"
+            target="_blank"
+            rel="noopener noreferrer"
+            ariaLabel="Sponsor the Latin Heritage Month Innovation Summit"
             className="w-full min-w-48 border-iwd-gold-400/40 text-white sm:w-auto dark:border-iwd-gold-400/40 dark:text-white dark:hover:text-white"
             icon={<FaArrowRight />}
             iconPosition="right"
