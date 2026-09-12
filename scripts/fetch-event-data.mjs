@@ -29,11 +29,15 @@ const DEFAULT_DATASET = 'production'
 const DEFAULT_EVENT_YEAR = 2026
 const DEFAULT_TRACK = 'Level Up'
 /**
- * Placeholder venue until the Summit location is confirmed. Intentionally not
- * 'TBA': the site is not published until there is a real location to promote,
- * so a stale-but-concrete default is preferable to a blank one here.
+ * Fallback for a session with no room set in Sanity. Empty on purpose: the
+ * building is confirmed but the room inside it is not (no venue map yet), and
+ * every consumer already degrades to building granularity on a blank room --
+ * the card's room chip hides itself, and calendarExport falls back to
+ * DEFAULT_LOCATION_PREFIX instead of appending a room. Naming a room here
+ * would assert a location nobody has confirmed; naming the building would
+ * render as 'WSU Anderson Engineering Building - Engineering Building'.
  */
-const DEFAULT_ROOM = 'IBM HQ'
+const DEFAULT_ROOM = ''
 
 const SESSIONS_QUERY = `*[_type == "session" && event->year == $year && published == true] | order(startTime asc, title asc) {
   _id,
