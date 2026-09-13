@@ -190,7 +190,7 @@ function SessionCard({
           <div className="flex w-full min-w-0 flex-col items-start gap-5 text-left lg:flex-row lg:items-center">
             {participants?.length > 0 && (
               <div
-                className={`flex shrink-0 flex-col gap-2 ${
+                className={`flex shrink-0 flex-row flex-wrap items-center gap-2 ${
                   participants.length > 2 ? 'order-2 lg:order-1' : ''
                 }`}
               >
