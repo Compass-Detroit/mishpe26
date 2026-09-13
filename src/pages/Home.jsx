@@ -41,10 +41,7 @@ function Home() {
         </div>
 
         <div id="speakers">
-          <SpeakersSection
-            speakersData={Speakers2026}
-            defaultExpanded={false}
-          />
+          <SpeakersSection speakersData={Speakers2026} defaultExpanded={true} />
         </div>
 
         <div id="about">
