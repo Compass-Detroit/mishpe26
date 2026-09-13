@@ -1,1 +1,314 @@
-[]
+[
+  {
+    "id": 377718030,
+    "name": "William Bowen",
+    "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/02e28fbf828403c989cf6e49eb961423a751e8c0-691x921.jpg",
+    "bio": "I currently wear multiple professional hats as an IT specialist and a fitness instructor / enthusiast. On the IT side I have the responsibility for managing service orders, telecommunication contracts and services, along with support for iOS devices. I also have experience teaching networks, network security and software development. This work branches off to work I do with the National Society of Black Engineers (NSBE) and the Cyber Patriot program, which includes talks and tutorials on technology and computers. As a fitness enthusiast I have taught multiple boot camp classes that incorporate both strength and cardio training at different locations. This has led me to compete in multiple powerlifting meets with UPA and USAPL as well as physique with NPC. At this time I am also looking at different applications that incorporate fitness.",
+    "organization": "US Army",
+    "position": "IT Specialist",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
+    "session": {
+      "title": "Getting Started with Project NOMAD",
+      "abstract": "",
+      "description": "In an increasingly connected world, dependence on cloud infrastructure poses significant challenges during network blackouts, off-grid expeditions, remote work operations, and in environments with limited broadband access. Project NOMAD is a free, open-source, offline-first knowledge and education server designed to provide total digital autonomy and strict privacy.  This session introduces Project NOMAD, exploring how it turns standard hardware into a self-contained, air-gapped knowledge vault. Attendees will learn about its core architecture, practical use cases—ranging from emergency preparedness, remote medical references, and offline mapping to STEM education—and how to deploy local, private Retrieval-Augmented Generation (RAG) AI without sending data to the cloud.",
+      "tags": ["Innovation", "In-person"],
+      "track": "Level Up",
+      "time": "11:00",
+      "room": "Main Room",
+      "sessionDuration": 30,
+      "speakers": ["William Bowen"],
+      "moderators": [],
+      "panelists": ["William Bowen"],
+      "participants": [
+        {
+          "name": "William Bowen",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/02e28fbf828403c989cf6e49eb961423a751e8c0-691x921.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/william-bowen-a7216610/"
+  },
+  {
+    "id": 2133071304,
+    "name": "Julea Ferrara",
+    "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/17b1d69751e9c66241ffdb97117f6dc0c9833f98-300x400.jpg",
+    "bio": "Julea Ferrara - Compass Detroit - TQ Organizer",
+    "organization": "J. Ferrara Consulting Solutions",
+    "position": "Founder / CEO",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
+    "session": {
+      "title": "Designing Our Stories: Technology, Culture & the Power of the Latino Narrative",
+      "abstract": "",
+      "description": "Technology doesn't just build products. It shapes how people experience, understand, and share the world.\n\nFor Latino communities in Detroit and throughout Michigan, storytelling is an essential part of preserving culture, building identity, creating connection, and making our contributions visible. From the stories we tell about our families and neighborhoods to the digital platforms, brands, products, and technologies we create, design and storytelling are deeply connected.\n\nThis session explores how Latino communities can use storytelling and technology to move from being represented by others to designing and sharing our own narratives.\n\nThe conversation will explore:\n\n- How culture influences the way we design technology and experiences\n- Why storytelling is a form of technology and community infrastructure\n- How Latino stories are represented, preserved, and sometimes overlooked\n- The role of UX, design, AI, media, and digital platforms in shaping cultural narratives\n- How entrepreneurs, technologists, designers, and community leaders can tell stories with greater intention\n- How Detroit's Latino communities can use technology to document and amplify stories across generations\n- What happens when we design technology with culture in mind, rather than designing culture out of technology\n\nThe big question: what changes when we stop asking technology to tell our stories, and start designing the technology, experiences, and platforms that let us tell them ourselves?",
+      "tags": ["Level Up", "In-person"],
+      "track": "Level Up",
+      "time": "09:00",
+      "room": "Main Room",
+      "sessionDuration": 30,
+      "speakers": ["Julea Ferrara"],
+      "moderators": [],
+      "panelists": ["Julea Ferrara"],
+      "participants": [
+        {
+          "name": "Julea Ferrara",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/17b1d69751e9c66241ffdb97117f6dc0c9833f98-300x400.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
+    }
+  },
+  {
+    "id": 1363757462,
+    "name": "Umelo Onyejiaka",
+    "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/c53224aad09a8e1b418a56d399de0eb6c1a5bc90-1170x1397.jpg",
+    "bio": "Umelo Onyejiaka is a cloud and DevOps engineer, community builder, and the founder of DevOps Detroit. He holds multiple industry certifications including AWS Certified Solutions Architect – Professional, AWS Certified DevOps Engineer – Professional, Certified Kubernetes Administrator (CKA), and Terraform Associate. Beyond certifications, Umelo's work focuses on how people actually grow skills in the real world. He believes meaningful skill development happens faster and more sustainably in community through shared learning, mentorship, and exposure rather than in isolation. Through DevOps Detroit, he creates spaces where individuals can build practical technical skills, gain confidence, and see what's possible by learning alongside others on similar journeys. His approach centers on the idea that when people grow together, the entire ecosystem benefits.",
+    "organization": "DevOps Detroit",
+    "position": "Cloud Solutions Engineer",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
+    "session": {
+      "title": "AI Won't Replace Community: Why We Still Need to Learn Together",
+      "abstract": "",
+      "description": "AI is changing how we learn. Today, anyone can use AI to explain a technical concept, troubleshoot a problem, build a learning plan, or develop a new skill faster than ever before. But easier access to information doesn’t eliminate our need for each other.\n\nThis session explores why community remains essential in an AI-driven world. AI can provide answers, but community provides mentorship, accountability, shared experiences, collaboration, and access to opportunities that technology alone cannot replicate. We’ll explore how AI can strengthen—not replace—community-based learning and why the future of education and professional development should combine powerful AI tools with meaningful human connection.\n\nAttendees will leave with a new perspective on AI: not as a replacement for learning together, but as a tool that can help communities learn, build, and grow together.",
+      "tags": ["AI Foundations", "In-person"],
+      "track": "Level Up",
+      "time": "09:30",
+      "room": "Main Room",
+      "sessionDuration": 30,
+      "speakers": ["Umelo Onyejiaka"],
+      "moderators": [],
+      "panelists": ["Umelo Onyejiaka"],
+      "participants": [
+        {
+          "name": "Umelo Onyejiaka",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/c53224aad09a8e1b418a56d399de0eb6c1a5bc90-1170x1397.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/umelo-onyejiaka-84213524b"
+  },
+  {
+    "id": 1995700221,
+    "name": "Kelli Williams",
+    "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/05b398ca53038e1f600d7222369acfd265f31646-1133x1549.jpg",
+    "bio": "Kelli Nicole is a former registered nurse, entrepreneur, workforce innovator, and AI strategist whose work sits at the intersection of technology, resilience, workforce development, and access.\n\nAfter 15 years in nursing across cardiac ICU, emergency care, travel nursing, and the Michigan Department of Corrections, Kelli stepped into an entirely different world: construction. She trained through an apprenticeship program, worked in underground plumbing, and later traveled as a catastrophe project manager supporting large commercial projects after major hurricanes. Those experiences shaped the way she sees work, systems, and the people too often overlooked inside both.\n\nShe later founded her own cleaning company and began solving one of the hardest problems facing small businesses: how to create better-paying, sustainable jobs while still making the numbers work. Using AI, automation, workforce programs, and creative funding strategies, Kelli developed a U.S. Department of Labor apprenticeship program and helped structure workforce development strategies connected to more than $456,000 in grant funding.\n\nThen life forced an unexpected reset.\n\nAfter a serious car accident and traumatic brain injury, Kelli began relying heavily on AI to organize information, communicate, think through problems, and rebuild systems around her life and work. What began as a survival tool became something much bigger: a framework for using technology as a practical extension of human capacity.\n\nToday, Kelli speaks about AI, automation, second-brain systems, workforce innovation, and what happens when emerging technology is placed in the hands of people who have historically been left out of the conversation.\n\nHer work is rooted in Detroit and shaped by generations of family history spanning the Canary Islands, Spanish colonial Texas, and Michigan. That history reinforces the mission behind her work today: helping people use technology not simply to become more productive, but to solve real problems, create opportunity, and build something better.\n\nKelli’s message is simple: you do not need to be a technologist to use technology powerfully. You need a problem worth solving — and the willingness to build differently.",
+    "organization": "Insight Health Systems",
+    "position": "Physician Liaison",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
+    "session": {
+      "title": "HumanOS: Build Systems That Multiply Your Productivity Across Life, Business & Strategy",
+      "abstract": "",
+      "description": "AI is moving fast, but access to it does not automatically create opportunity. Knowing how to use these tools intentionally does.\n\nIn this interactive session, Kelli Nicole shares how she began using AI as her HumanOS- after a traumatic brain injury changed the way she processed information, organized ideas, and worked. What started as a personal adaptation evolved into a practical system for entrepreneurship, workforce development, automation, communication, and problem-solving.\n\nParticipants will learn how to move beyond basic prompting and begin building an AI-supported system that helps them capture knowledge, organize information, identify problems worth solving, and turn ideas into action. The session also explores how these skills can help people traditionally excluded from emerging technology build confidence, career readiness, and economic opportunity.\n\nAttendees will leave with a simple framework they can immediately use to begin building their own  — without needing a technical background.",
+      "tags": ["Build with AI", "In-person"],
+      "track": "Level Up",
+      "time": "10:00",
+      "room": "Main Room",
+      "sessionDuration": 30,
+      "speakers": ["Kelli Williams"],
+      "moderators": [],
+      "panelists": ["Kelli Williams"],
+      "participants": [
+        {
+          "name": "Kelli Williams",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/05b398ca53038e1f600d7222369acfd265f31646-1133x1549.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
+    }
+  },
+  {
+    "id": 170536064,
+    "name": "Greg Miller",
+    "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/36ae76cd7ecc2296eb55988fe9aece2443ca2d4b-291x389.jpg",
+    "bio": "Greg Miller is the owner of Shrinkray Interactive, LLC, a web development studio focused on fixing broken sites, building accessible experiences, and designing custom interfaces that make complex data and workflows easy to use. He's built and maintained event sites for organizations like Compass Detroit, including Michigan DevFest and the Black History Month Summit, and speaks regularly at local networking events on making technical work approachable for non-technical audiences.",
+    "organization": "Shrinkray Interactive",
+    "position": "UX Engineer | Founder",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
+    "session": {
+      "title": "The 80/20 of Accessibility: Small Fixes, Big Impact",
+      "abstract": "",
+      "description": "\"The 80/20 of Accessibility: Small Fixes, Big Impact\" walks through the small number of fixes that solve most accessibility problems on the web — no WCAG memorization required. Using real screen reader demos, with audience participation, this talk breaks down high-impact issues and gives students practical, five-minute habits they can start using immediately, whether they're building their first project or their fiftieth. You don't need to be an expert to catch 80% of the problems — you need a checklist.",
+      "tags": ["Innovation", "In-person"],
+      "track": "Level Up",
+      "time": "10:30",
+      "room": "Main Room",
+      "sessionDuration": 30,
+      "speakers": ["Greg Miller"],
+      "moderators": [],
+      "panelists": ["Greg Miller"],
+      "participants": [
+        {
+          "name": "Greg Miller",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/36ae76cd7ecc2296eb55988fe9aece2443ca2d4b-291x389.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
+    }
+  },
+  {
+    "id": 1293748638,
+    "name": "William Bowen",
+    "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/02e28fbf828403c989cf6e49eb961423a751e8c0-691x921.jpg",
+    "bio": "I currently wear multiple professional hats as an IT specialist and a fitness instructor / enthusiast. On the IT side I have the responsibility for managing service orders, telecommunication contracts and services, along with support for iOS devices. I also have experience teaching networks, network security and software development. This work branches off to work I do with the National Society of Black Engineers (NSBE) and the Cyber Patriot program, which includes talks and tutorials on technology and computers. As a fitness enthusiast I have taught multiple boot camp classes that incorporate both strength and cardio training at different locations. This has led me to compete in multiple powerlifting meets with UPA and USAPL as well as physique with NPC. At this time I am also looking at different applications that incorporate fitness.",
+    "organization": "US Army",
+    "position": "IT Specialist",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
+    "session": {
+      "title": "Fitness Yoga",
+      "abstract": "",
+      "description": "This fitness yoga class blends traditional yoga poses with strength training and cardiovascular movements for a balanced, full-body workout. Participants will improve flexibility, build lean muscle, and boost endurance through flowing sequences, bodyweight exercises, and dynamic movement. The class is designed to enhance both physical strength and mindfulness, leaving you energized, focused, and refreshed.",
+      "tags": ["Level Up"],
+      "track": "Level Up",
+      "time": "08:15",
+      "room": "",
+      "sessionDuration": 30,
+      "speakers": ["William Bowen"],
+      "moderators": [],
+      "panelists": ["William Bowen"],
+      "participants": [
+        {
+          "name": "William Bowen",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/02e28fbf828403c989cf6e49eb961423a751e8c0-691x921.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/william-bowen-a7216610/"
+  },
+  {
+    "id": 87237069,
+    "name": "Andre Arbelaez",
+    "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/8473a7b9d70131521f2d28fb475e45bca73cfb9f-1134x1512.jpg",
+    "bio": "Andre also is National Leader in the Hispanic community as the President & CEO of the Hispanic C-Suite Corporate Council (HC3), a non-profit organization, to increase the number of successful Hispanic executives for companies and executives in the Entertainment, Sports, and Technology sectors.  He is a member of the Board of Directors of the Michigan Council of Women in Technology (MCWT), the Michigan Science Center, while serving as Chairperson of the Advisory Board for Oakland University’s Decision and Information Sciences Department.  Andre was the former President of the Hispanic Information Technology Council (HITEC).",
+    "organization": "Hispanic C-Suite Corporate Council",
+    "position": "President & CEO",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
+    "session": {
+      "title": "Hispanic Leadership in Technology",
+      "abstract": "",
+      "description": "Inspirational engagement demonstrating the \"you can see it, you can be it\" mindset with the top Hispanic IT executives from around the country.",
+      "tags": ["Leadership", "In-person"],
+      "track": "Level Up",
+      "time": "11:30",
+      "room": "Main Room",
+      "sessionDuration": 30,
+      "speakers": ["Andre Arbelaez"],
+      "moderators": [],
+      "panelists": ["Andre Arbelaez"],
+      "participants": [
+        {
+          "name": "Andre Arbelaez",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/8473a7b9d70131521f2d28fb475e45bca73cfb9f-1134x1512.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
+    }
+  },
+  {
+    "id": 1792384470,
+    "name": "Julea Ferrara",
+    "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/17b1d69751e9c66241ffdb97117f6dc0c9833f98-300x400.jpg",
+    "bio": "Julea Ferrara - Compass Detroit - TQ Organizer",
+    "organization": "J. Ferrara Consulting Solutions",
+    "position": "Founder / CEO",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": true,
+    "sortOrder": 0,
+    "session": {
+      "title": "Beyond Representation: Building Detroit's Latino Tech & Innovation Ecosystem",
+      "abstract": "",
+      "description": "What would Detroit's technology ecosystem look like if Latino talent were not simply represented in it, but helping design it?\n\nDetroit's Latino technology ecosystem is not one organization, one industry, or one pathway. It is a network of students, technologists, entrepreneurs, designers, engineers, creatives, corporate leaders and community builders creating new pathways into Michigan's innovation economy.\n\nThis conversation brings together leaders from SHPE Detroit, Techqueria Detroit, Latino Voices in Tech and Detroit Month of Design to explore what happens when these communities stop operating in parallel and start building together.\n\nModerated by Julea Ferrara, the panel examines where Latino talent and innovation are already showing up across Detroit, and the gaps that keep talent, opportunity, capital and leadership disconnected. It asks what corporations and startups could do differently to engage Latino technologists and entrepreneurs, how Detroit can build pathways from student to professional to entrepreneur to leader to investor, and what emerging technologies — AI in particular — mean for Latino communities and the region's future workforce.",
+      "tags": ["Panel", "In-person"],
+      "track": "Level Up",
+      "time": "13:00",
+      "room": "Main Room",
+      "sessionDuration": 60,
+      "speakers": ["Julea Ferrara", "Ricardo Tapia Vargas"],
+      "moderators": ["Julea Ferrara"],
+      "panelists": ["Ricardo Tapia Vargas"],
+      "participants": [
+        {
+          "name": "Julea Ferrara",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/17b1d69751e9c66241ffdb97117f6dc0c9833f98-300x400.jpg",
+          "isModerator": true,
+          "sortOrder": 0
+        },
+        {
+          "name": "Ricardo Tapia Vargas",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/90f0a62bbed0ef7ecc15e3e28c34c76d433d6cf1-471x713.png",
+          "isModerator": false,
+          "sortOrder": 1
+        }
+      ]
+    }
+  },
+  {
+    "id": 363601822,
+    "name": "Ricardo Tapia Vargas",
+    "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/90f0a62bbed0ef7ecc15e3e28c34c76d433d6cf1-471x713.png",
+    "bio": "Ricardo is a Controls Engineer at Ford Motor Company and a recent Electrical Engineering graduate from the University of Detroit Mercy’s College of Engineering & Science. At Detroit Mercy, he served as President and Vice President of the SHPE UDM Student Chapter, led an 11-student senior design team competing in the Intelligent Ground Vehicle Competition, and was inducted into IEEE-Eta Kappa Nu (IEEE-HKN), the honor society of IEEE. A first-generation college graduate, Ricardo now serves as Co-Director of Future Engineers for SHPE Detroit, continuing his commitment to supporting the next generation of engineers.",
+    "organization": "Ford",
+    "position": "Manufacturing FCG: Controls Engineering",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 1,
+    "session": {
+      "title": "Beyond Representation: Building Detroit's Latino Tech & Innovation Ecosystem",
+      "abstract": "",
+      "description": "What would Detroit's technology ecosystem look like if Latino talent were not simply represented in it, but helping design it?\n\nDetroit's Latino technology ecosystem is not one organization, one industry, or one pathway. It is a network of students, technologists, entrepreneurs, designers, engineers, creatives, corporate leaders and community builders creating new pathways into Michigan's innovation economy.\n\nThis conversation brings together leaders from SHPE Detroit, Techqueria Detroit, Latino Voices in Tech and Detroit Month of Design to explore what happens when these communities stop operating in parallel and start building together.\n\nModerated by Julea Ferrara, the panel examines where Latino talent and innovation are already showing up across Detroit, and the gaps that keep talent, opportunity, capital and leadership disconnected. It asks what corporations and startups could do differently to engage Latino technologists and entrepreneurs, how Detroit can build pathways from student to professional to entrepreneur to leader to investor, and what emerging technologies — AI in particular — mean for Latino communities and the region's future workforce.",
+      "tags": ["Panel", "In-person"],
+      "track": "Level Up",
+      "time": "13:00",
+      "room": "Main Room",
+      "sessionDuration": 60,
+      "speakers": ["Julea Ferrara", "Ricardo Tapia Vargas"],
+      "moderators": ["Julea Ferrara"],
+      "panelists": ["Ricardo Tapia Vargas"],
+      "participants": [
+        {
+          "name": "Julea Ferrara",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/17b1d69751e9c66241ffdb97117f6dc0c9833f98-300x400.jpg",
+          "isModerator": true,
+          "sortOrder": 0
+        },
+        {
+          "name": "Ricardo Tapia Vargas",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/90f0a62bbed0ef7ecc15e3e28c34c76d433d6cf1-471x713.png",
+          "isModerator": false,
+          "sortOrder": 1
+        }
+      ]
+    }
+  }
+]
