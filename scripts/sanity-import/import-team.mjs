@@ -16,7 +16,7 @@
  *   node scripts/sanity-import/import-team.mjs --dry-run
  *   node scripts/sanity-import/import-team.mjs
  *
- * Requires SANITY_WRITE_TOKEN for a real run. Documents use a stable
+ * Requires SANITY_API_TOKEN for a real run. Documents use a stable
  * `team-<slug>` id, so re-running updates in place rather than duplicating.
  */
 import { readFile } from 'node:fs/promises'
@@ -87,6 +87,23 @@ export async function readTeamRoster(modulePath = TEAM_MODULE) {
   return module.teamData
 }
 
+/**
+ * team.js stores commit counts inconsistently -- most are null, but at least
+ * one is the string '150'. The Studio field is a number, so a bare typeof
+ * check silently drops the only roster entry that has a count, taking its
+ * Core Contributor badge with it.
+ */
+function normalizeCommits(value) {
+  if (typeof value === 'number') return Number.isFinite(value) ? value : null
+
+  if (typeof value === 'string' && value.trim() !== '') {
+    const parsed = Number(value)
+    return Number.isFinite(parsed) ? parsed : null
+  }
+
+  return null
+}
+
 /** Shape one static record into a teamMember document. */
 export function toTeamMemberDoc(member, { eventYear, imageField }) {
   const slug = slugify(member.name)
@@ -124,7 +141,8 @@ export function toTeamMemberDoc(member, { eventYear, imageField }) {
   if (member.linkedin) doc.linkedIn = member.linkedin
   if (member.twitter) doc.twitter = member.twitter
   if (member.github) doc.github = member.github
-  if (typeof member.commits === 'number') doc.commits = member.commits
+  const commits = normalizeCommits(member.commits)
+  if (commits !== null) doc.commits = commits
   if (member.avatar) doc.headshotFilename = path.basename(member.avatar)
   if (imageField) doc.headshot = imageField
 
@@ -140,10 +158,10 @@ async function main() {
 
   let client = null
   if (!dryRun) {
-    const token = process.env.SANITY_WRITE_TOKEN
+    const token = process.env.SANITY_API_TOKEN
     if (!token) {
       throw new Error(
-        'SANITY_WRITE_TOKEN is required for a real run. Re-run with --dry-run ' +
+        'SANITY_API_TOKEN is required for a real run. Re-run with --dry-run ' +
           'to preview without it.'
       )
     }
@@ -213,6 +231,29 @@ async function main() {
   console.log(
     `Wrote ${written} teamMember documents to ${PROJECT_ID}/${DATASET}`
   )
+
+  /*
+   * Document ids derive from the member's name, so renaming someone writes a
+   * new document and leaves the old one published -- TEAM_QUERY would return
+   * both. Removing someone from team.js leaves their document behind
+   * entirely. Mirror import-speakers.mjs: unpublish anything scoped to this
+   * event that the current roster no longer covers, rather than deleting it,
+   * so the record survives for a later event or an undo.
+   */
+  const keepIds = docs.map((doc) => doc._id)
+  const staleIds = await client.fetch(
+    `*[_type == "teamMember" && event._ref == $eventId && !(_id in $ids)]._id`,
+    { eventId: `event-${EVENT_YEAR}`, ids: keepIds }
+  )
+
+  if (staleIds.length > 0) {
+    await client.mutate(
+      staleIds.map((id) => ({ patch: { id, set: { published: false } } }))
+    )
+    console.log(
+      `Unpublished ${staleIds.length} teamMember document(s) no longer in team.js`
+    )
+  }
 }
 
 const isMainModule = process.argv[1] === fileURLToPath(import.meta.url)
