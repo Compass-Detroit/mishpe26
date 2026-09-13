@@ -103,16 +103,7 @@ const SpeakersContent = ({ year, defaultExpanded }) => {
 
   const noSpeakersMessage = (
     <div className="col-span-1 my-4 flex flex-col items-center justify-center space-y-8 text-center text-xl leading-relaxed text-gray-300">
-      <p>Ready to give a talk? Apply below!</p>
-      {/* TODO: re-link to the call for speakers once the new CFP is live. */}
-      <button
-        type="button"
-        disabled
-        title="Speaker applications open soon"
-        className="flex cursor-default items-center rounded-lg border border-iwd-gold-400/20 bg-iwd-gold-400/5 px-8 py-4 text-sm font-semibold uppercase tracking-widest text-iwd-gold-300/60 shadow-lg"
-      >
-        APPLY TO SPEAK &mdash; OPENING SOON
-      </button>
+      <p>Speakers for the {year} summit will be announced soon.</p>
     </div>
   )
   return (

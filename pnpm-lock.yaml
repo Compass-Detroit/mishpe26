@@ -7,6 +7,9 @@ settings:
 overrides:
   '@babel/core': ^7.29.0
   browserslist: ^4.28.8
+  fast-uri: ^3.1.6
+  js-yaml: ^4.3.2
+  svgo: ^3.3.5
 
 importers:
 
@@ -1577,8 +1580,8 @@ packages:
     resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
     engines: {node: '>= 8.10.0'}
 
-  chromedriver@152.0.2:
-    resolution: {integrity: sha512-w/trjzSjQC8vHHwl4e+WXBGPRN3XnrsY14q/FdxCY8GtTUIlB+wH1gn/Kz3CHpdmbsouUEGal6E8bjEEz72pZg==}
+  chromedriver@153.0.0:
+    resolution: {integrity: sha512-FZUJuwmmttB3g4u8u3sYjFcWINNf8kh8xRiH6BNd9MRoGuJrBPt1N/qcHQqN2pdew1Omi1U6Y2L+S4pRSIbqTg==}
     engines: {node: '>=22'}
     hasBin: true
 
@@ -2062,8 +2065,8 @@ packages:
   fast-levenshtein@2.0.6:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
 
-  fast-uri@3.1.5:
-    resolution: {integrity: sha512-gHwA1O9LDIcKunMKhObS/HimwtehO1nPUECKAu5TpKgaO19fcWEl4bliWe1jWxVFvIXztJjjQ4L8XQ1EU9f7Jw==}
+  fast-uri@3.1.7:
+    resolution: {integrity: sha512-dOvZVzjdZdz7phd9v6jCbwxrBW3fK6n8Rc0CtdmM4bumzMnxywBYhuph6J819RRw/ku+rLbelwfMunktuzVVHg==}
 
   fastq@1.15.0:
     resolution: {integrity: sha512-wBrocU2LCXXa+lWBt8RoIRD89Fi8OdABODa/kEnyeyjS5aZO5/GNvI5sEINADqP/h8M29UHTHUb53sUu5Ihqdw==}
@@ -2541,8 +2544,8 @@ packages:
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
 
-  js-yaml@4.3.1:
-    resolution: {integrity: sha512-CY6crGq313MX8GkwvB7tzgp99vjQxY1++5y10/BKN/GUfHqWaOGQMNZkBvqSzsZKWk/ijwHlWzzkLulsGHhjWQ==}
+  js-yaml@4.3.2:
+    resolution: {integrity: sha512-SFNOvSJ+Dgf/9An904Yx+CgSlIPCkIpao4qo51lpee25TIRejdH3rhR4EZMGoNx3/TP3O+wzWuiTFl4sqbltzA==}
     hasBin: true
 
   jsesc@3.1.0:
@@ -3497,8 +3500,8 @@ packages:
   svg-parser@2.0.4:
     resolution: {integrity: sha512-e4hG1hRwoOdRb37cIMSgzNsxyzKfayW6VOflrwvR+/bzrkyxY/31WkbgnQpgtrNp1SdpJvpUAGTa/ZoiPNDuRQ==}
 
-  svgo@3.3.4:
-    resolution: {integrity: sha512-GsNRis4e8jxn2Y9ENz/8lbJ93CstG8svtMnuRaHbiF2LTJ5tK0/q3t/URPq9Zc7zVWBJnNnJMIp6bevK7bSmNg==}
+  svgo@3.3.5:
+    resolution: {integrity: sha512-8SQMzdrvWaD8deUmrnYB+ASyxBVgWUOilg+A75nE/76WdLpj6LopCwiAVvkzkcqy/9b7t2Mg7faFLjg0ZRcZ3w==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -3782,7 +3785,7 @@ snapshots:
     dependencies:
       '@axe-core/webdriverjs': 4.13.0(selenium-webdriver@4.44.0)
       axe-core: 4.13.0
-      chromedriver: 152.0.2(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0)
+      chromedriver: 153.0.0(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0)
       colors: 1.4.0
       commander: 9.5.0
       dotenv: 17.4.2
@@ -4757,7 +4760,7 @@ snapshots:
       globals: 13.24.0
       ignore: 5.3.2
       import-fresh: 3.3.0
-      js-yaml: 4.3.1
+      js-yaml: 4.3.2
       minimatch: 3.1.5
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
@@ -4975,7 +4978,7 @@ snapshots:
       '@svgr/core': 8.1.0(supports-color@7.2.0)(typescript@5.9.2)
       cosmiconfig: 8.3.6(typescript@5.9.2)
       deepmerge: 4.3.1
-      svgo: 3.3.4
+      svgo: 3.3.5
     transitivePeerDependencies:
       - typescript
 
@@ -5071,7 +5074,7 @@ snapshots:
   ajv@8.18.0:
     dependencies:
       fast-deep-equal: 3.1.3
-      fast-uri: 3.1.5
+      fast-uri: 3.1.7
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
@@ -5337,7 +5340,7 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  chromedriver@152.0.2(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0):
+  chromedriver@153.0.0(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0):
     dependencies:
       '@testim/chrome-version': 1.1.4
       adm-zip: 0.6.0
@@ -5458,7 +5461,7 @@ snapshots:
   cosmiconfig@8.3.6(typescript@5.9.2):
     dependencies:
       import-fresh: 3.3.0
-      js-yaml: 4.3.1
+      js-yaml: 4.3.2
       parse-json: 5.2.0
       path-type: 4.0.0
     optionalDependencies:
@@ -5468,7 +5471,7 @@ snapshots:
     dependencies:
       env-paths: 2.2.1
       import-fresh: 3.3.0
-      js-yaml: 4.3.1
+      js-yaml: 4.3.2
       parse-json: 5.2.0
     optionalDependencies:
       typescript: 5.9.2
@@ -5896,7 +5899,7 @@ snapshots:
       imurmurhash: 0.1.4
       is-glob: 4.0.3
       is-path-inside: 3.0.3
-      js-yaml: 4.3.1
+      js-yaml: 4.3.2
       json-stable-stringify-without-jsonify: 1.0.1
       levn: 0.4.1
       lodash.merge: 4.6.2
@@ -5964,7 +5967,7 @@ snapshots:
 
   fast-levenshtein@2.0.6: {}
 
-  fast-uri@3.1.5: {}
+  fast-uri@3.1.7: {}
 
   fastq@1.15.0:
     dependencies:
@@ -6488,7 +6491,7 @@ snapshots:
 
   js-tokens@4.0.0: {}
 
-  js-yaml@4.3.1:
+  js-yaml@4.3.2:
     dependencies:
       argparse: 2.0.1
 
@@ -7475,7 +7478,7 @@ snapshots:
 
   svg-parser@2.0.4: {}
 
-  svgo@3.3.4:
+  svgo@3.3.5:
     dependencies:
       commander: 7.2.0
       css-select: 5.2.2

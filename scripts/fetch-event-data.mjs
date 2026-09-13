@@ -21,6 +21,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
 const OUTPUT = path.join(ROOT, 'src/data/2026/speakers.generated.json')
 const PARTNERS_OUTPUT = path.join(ROOT, 'src/data/2026/partners.generated.json')
+const TEAM_OUTPUT = path.join(ROOT, 'src/data/2026/team.generated.json')
 const OPTIONAL_ENV = path.join(ROOT, 'scripts/sanity-import/.env')
 
 const DEFAULT_PROJECT_ID = 'd1h6cagq'
@@ -28,11 +29,15 @@ const DEFAULT_DATASET = 'production'
 const DEFAULT_EVENT_YEAR = 2026
 const DEFAULT_TRACK = 'Level Up'
 /**
- * Placeholder venue until the Summit location is confirmed. Intentionally not
- * 'TBA': the site is not published until there is a real location to promote,
- * so a stale-but-concrete default is preferable to a blank one here.
+ * Fallback for a session with no room set in Sanity. Empty on purpose: the
+ * building is confirmed but the room inside it is not (no venue map yet), and
+ * every consumer already degrades to building granularity on a blank room --
+ * the card's room chip hides itself, and calendarExport falls back to
+ * DEFAULT_LOCATION_PREFIX instead of appending a room. Naming a room here
+ * would assert a location nobody has confirmed; naming the building would
+ * render as 'WSU Anderson Engineering Building - Engineering Building'.
  */
-const DEFAULT_ROOM = 'IBM HQ'
+const DEFAULT_ROOM = ''
 
 const SESSIONS_QUERY = `*[_type == "session" && event->year == $year && published == true] | order(startTime asc, title asc) {
   _id,
@@ -77,6 +82,21 @@ const PARTNERS_QUERY = `*[_type == "partner" && event->year == $year && publishe
   url,
   "logo": logo.asset->url,
   "logoAlt": logo.alt
+}`
+
+const TEAM_QUERY = `*[_type == "teamMember" && event->year == $year && published == true] | order(sortOrder asc, name asc) {
+  "id": slug.current,
+  name,
+  "team": teamGroup,
+  role,
+  organization,
+  university,
+  bio,
+  "linkedin": linkedIn,
+  twitter,
+  github,
+  commits,
+  "avatar": headshot.asset->url
 }`
 
 function readEnv(name, fallback) {
@@ -364,6 +384,44 @@ export async function fetchEventPartners(options = {}) {
   return { ...grouped, sourceRows: rows.length }
 }
 
+/**
+ * Team members for the public site. Field names are mapped to what the layouts
+ * already consume (`team`, `avatar`, `linkedin`) rather than renaming those in
+ * four components — the Studio's naming and the site's naming differ, and this
+ * is the one place that has to know both.
+ */
+export async function fetchEventTeam(options = {}) {
+  const { projectId, dataset, eventYear } = resolveSource(options)
+  const client = createSanityClient({ projectId, dataset })
+
+  const rows = await client.fetch(TEAM_QUERY, { year: eventYear })
+
+  const members = []
+  for (const row of rows) {
+    if (!row?.id || !row.name) continue
+
+    const member = {
+      id: row.id,
+      name: row.name,
+      team: row.team ?? '',
+      role: typeof row.role === 'string' ? row.role : '',
+      organization:
+        typeof row.organization === 'string' ? row.organization : '',
+      university: typeof row.university === 'string' ? row.university : '',
+      bio: typeof row.bio === 'string' ? row.bio : '',
+      linkedin: typeof row.linkedin === 'string' ? row.linkedin : '',
+      twitter: typeof row.twitter === 'string' ? row.twitter : '',
+      github: typeof row.github === 'string' ? row.github : '',
+      avatar: typeof row.avatar === 'string' ? row.avatar : '',
+      commits: typeof row.commits === 'number' ? row.commits : null,
+    }
+
+    members.push(member)
+  }
+
+  return { members, sourceRows: rows.length }
+}
+
 async function writeFormattedJson(filePath, data) {
   const config = await prettier.resolveConfig(filePath)
   const formatted = await prettier.format(JSON.stringify(data), {
@@ -461,10 +519,35 @@ async function writePartners() {
   )
 }
 
+function teamCount(generated) {
+  if (!generated || typeof generated !== 'object') return null
+  return Array.isArray(generated.members) ? generated.members.length : null
+}
+
+async function writeTeam() {
+  const { members, sourceRows } = await fetchEventTeam()
+  const generated = { source: 'sanity', members }
+  const existing = committedRowCount(TEAM_OUTPUT, teamCount)
+
+  // Same rule as partners: guard on what the query returned, so an
+  // authoritative empty roster still overwrites the file.
+  if (shouldKeepExisting(TEAM_OUTPUT, sourceRows, existing)) return
+
+  await writeFormattedJson(TEAM_OUTPUT, generated)
+
+  console.log(
+    `Wrote ${members.length} team members to ${path.relative(
+      ROOT,
+      TEAM_OUTPUT
+    )}`
+  )
+}
+
 async function main() {
   loadOptionalEnvFile()
   await writeSpeakers()
   await writePartners()
+  await writeTeam()
 }
 
 const isMain = process.argv[1] === fileURLToPath(import.meta.url)

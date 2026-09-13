@@ -290,7 +290,10 @@ function SpeakerDetails({
 
   return (
     <div className="bg-iwd-surface-raised relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-3xl shadow-2xl ring-1 ring-white/10 dark:bg-iwd-black-950">
-      <div className="relative px-8 py-12 text-white" style={heroStyle}>
+      <div
+        className="relative overflow-hidden px-8 py-12 text-white"
+        style={heroStyle}
+      >
         <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-white/10 to-transparent mix-blend-soft-light"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/20 to-transparent"></div>
 

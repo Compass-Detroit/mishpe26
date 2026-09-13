@@ -55,18 +55,6 @@ function ThreejsHeroForeground() {
           />
 
           <CTAButton
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdJNLfqyVB-5-g-7VDWP0OhV6Z3FhZej5kVJkA-csPi3YTnTw/viewform"
-            label="Become a Speaker"
-            variant="secondary"
-            target="_blank"
-            rel="noopener noreferrer"
-            ariaLabel="Become a speaker for the Latin Heritage Month Innovation Summit"
-            className="w-full min-w-48 border-iwd-gold-400/40 text-white md:w-auto dark:border-iwd-gold-400/40 dark:text-white dark:hover:text-white"
-            icon={<FaArrowRight />}
-            iconPosition="right"
-          />
-
-          <CTAButton
             href="mailto:whatupdoe@compass-detroit.com"
             label="Sponsor the Summit"
             variant="secondary"
