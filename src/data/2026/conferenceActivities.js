@@ -58,7 +58,7 @@ export const conferenceActivities = [
     title: 'Sessions',
     content: null,
     time: '13:00',
-    timeEnd: '16:00',
+    timeEnd: '14:00',
     room: VENUE_ROOMS.LEVEL_UP,
   },
   {
@@ -66,8 +66,8 @@ export const conferenceActivities = [
     track: SCHEDULE_TRACK,
     title: 'Closing Remarks & Prizes',
     content: null,
-    time: '16:00',
-    timeEnd: '16:30',
+    time: '15:30',
+    timeEnd: '16:00',
     room: null,
   },
   {
@@ -75,8 +75,8 @@ export const conferenceActivities = [
     track: SCHEDULE_TRACK,
     title: 'Techie Hour & Networking',
     content: null,
-    time: '16:30',
-    timeEnd: '18:00',
+    time: '16:00',
+    timeEnd: '17:00',
     room: null,
   },
 ]
