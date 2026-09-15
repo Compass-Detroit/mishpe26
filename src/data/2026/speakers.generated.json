@@ -245,9 +245,9 @@
     "isModerator": true,
     "sortOrder": 0,
     "session": {
-      "title": "Beyond Representation: Building Detroit's Latino Tech & Innovation Ecosystem",
+      "title": "Detroit Latin Heritage Month Innovation Summit Panel Discussion",
       "abstract": "",
-      "description": "What would Detroit's technology ecosystem look like if Latino talent were not simply represented in it, but helping design it?\n\nDetroit's Latino technology ecosystem is not one organization, one industry, or one pathway. It is a network of students, technologists, entrepreneurs, designers, engineers, creatives, corporate leaders and community builders creating new pathways into Michigan's innovation economy.\n\nThis conversation brings together leaders from SHPE Detroit, Techqueria Detroit, Latino Voices in Tech and Detroit Month of Design to explore what happens when these communities stop operating in parallel and start building together.\n\nModerated by Julea Ferrara, the panel examines where Latino talent and innovation are already showing up across Detroit, and the gaps that keep talent, opportunity, capital and leadership disconnected. It asks what corporations and startups could do differently to engage Latino technologists and entrepreneurs, how Detroit can build pathways from student to professional to entrepreneur to leader to investor, and what emerging technologies — AI in particular — mean for Latino communities and the region's future workforce.",
+      "description": "Connect with leaders across Detroit’s design, engineering, and tech ecosystems for a panel focused on innovation, talent pathways, and cross-sector growth. Panelists unite to discuss career mobility, community architecture, and creative collaboration across industry boundaries.\n\nFeatured Perspectives\n⚬\tSHPE Detroit: Outlines the STEM talent pipeline, bridging students and professionals with corporate pathways in engineering.\n⚬\tTechqueria Detroit: Centers Latino/a/e technologists, advancing career mobility, workplace belonging, and professional community.\n⚬\tLatino Voices in Tech: Champions ecosystem visibility, representation, and advocacy through the power of storytelling.\n⚬\tDetroit Month of Design: Explores the intersection of design, placemaking, creativity, and cross-sector innovation.\n⚬\tCompass: Details innovation architecture, linking enterprise networks, startup founders, and local community initiatives.",
       "tags": ["Panel", "In-person"],
       "track": "Level Up",
       "time": "13:00",
@@ -284,9 +284,9 @@
     "isModerator": false,
     "sortOrder": 1,
     "session": {
-      "title": "Beyond Representation: Building Detroit's Latino Tech & Innovation Ecosystem",
+      "title": "Detroit Latin Heritage Month Innovation Summit Panel Discussion",
       "abstract": "",
-      "description": "What would Detroit's technology ecosystem look like if Latino talent were not simply represented in it, but helping design it?\n\nDetroit's Latino technology ecosystem is not one organization, one industry, or one pathway. It is a network of students, technologists, entrepreneurs, designers, engineers, creatives, corporate leaders and community builders creating new pathways into Michigan's innovation economy.\n\nThis conversation brings together leaders from SHPE Detroit, Techqueria Detroit, Latino Voices in Tech and Detroit Month of Design to explore what happens when these communities stop operating in parallel and start building together.\n\nModerated by Julea Ferrara, the panel examines where Latino talent and innovation are already showing up across Detroit, and the gaps that keep talent, opportunity, capital and leadership disconnected. It asks what corporations and startups could do differently to engage Latino technologists and entrepreneurs, how Detroit can build pathways from student to professional to entrepreneur to leader to investor, and what emerging technologies — AI in particular — mean for Latino communities and the region's future workforce.",
+      "description": "Connect with leaders across Detroit’s design, engineering, and tech ecosystems for a panel focused on innovation, talent pathways, and cross-sector growth. Panelists unite to discuss career mobility, community architecture, and creative collaboration across industry boundaries.\n\nFeatured Perspectives\n⚬\tSHPE Detroit: Outlines the STEM talent pipeline, bridging students and professionals with corporate pathways in engineering.\n⚬\tTechqueria Detroit: Centers Latino/a/e technologists, advancing career mobility, workplace belonging, and professional community.\n⚬\tLatino Voices in Tech: Champions ecosystem visibility, representation, and advocacy through the power of storytelling.\n⚬\tDetroit Month of Design: Explores the intersection of design, placemaking, creativity, and cross-sector innovation.\n⚬\tCompass: Details innovation architecture, linking enterprise networks, startup founders, and local community initiatives.",
       "tags": ["Panel", "In-person"],
       "track": "Level Up",
       "time": "13:00",
@@ -307,6 +307,39 @@
           "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/90f0a62bbed0ef7ecc15e3e28c34c76d433d6cf1-471x713.png",
           "isModerator": false,
           "sortOrder": 1
+        }
+      ]
+    }
+  },
+  {
+    "id": 1001125532,
+    "name": "SHPE Detroit",
+    "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/b4ac13262059c2f3857fad8f263e05917cb09bfd-2667x4252.jpg",
+    "bio": "The Society of Hispanic Professional Engineers (SHPE) Detroit Professional Chapter empowers Hispanic students and professionals across Southeast Michigan to realize their full potential in STEM. Through targeted youth outreach, student mentorship, and a regional network of engineering professionals, SHPE Detroit builds pathways that advance technical careers and foster community impact.",
+    "organization": "SHPE Detroit",
+    "position": "Team",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
+    "session": {
+      "title": "Engineering Loteria",
+      "abstract": "",
+      "description": "Celebrate Hispanic Heritage Month through an interactive, culturally rooted spin on the classic game of chance. Replace the traditional chalupa and catrín with engineering icons, software terms, hardware components, and technical milestones. Attendees network, test their STEM trivia, and compete for prizes in a lively community atmosphere.\n⚬\tInteractive Gameplay: Custom Lotería cards spotlight engineering concepts, technical tools, and historic Hispanic innovators.\n⚬\tCommunity Connection: Connect students, seasoned technologists, and industry leaders across disciplines.\n⚬\tPrizes and Trivia: Earn recognition and take home gear while celebrating culture, craft, and technical problem-solving.",
+      "tags": ["STEM Pipeline", "Tech Trivia", "Diversity", ""],
+      "track": "Level Up",
+      "time": "14:00",
+      "room": "Main Room",
+      "sessionDuration": 60,
+      "speakers": ["SHPE Detroit"],
+      "moderators": [],
+      "panelists": ["SHPE Detroit"],
+      "participants": [
+        {
+          "name": "SHPE Detroit",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/b4ac13262059c2f3857fad8f263e05917cb09bfd-2667x4252.jpg",
+          "isModerator": false,
+          "sortOrder": 0
         }
       ]
     }
