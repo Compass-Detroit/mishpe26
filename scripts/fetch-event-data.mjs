@@ -133,6 +133,20 @@ function stableSpeakerSessionId(speakerSlug, sessionSlug) {
   return Math.abs(hash) || 1
 }
 
+/**
+ * Session tags drive the Topics chips and the schedule row's type label, so a
+ * blank entry from Sanity would render an empty chip. Keep trimmed labels only,
+ * and fall back to the track when nothing usable is left.
+ */
+function normalizeTags(tags) {
+  const labels = Array.isArray(tags)
+    ? tags
+        .map((tag) => (typeof tag === 'string' ? tag.trim() : ''))
+        .filter(Boolean)
+    : []
+  return labels.length ? labels : [DEFAULT_TRACK]
+}
+
 function buildRow(session, participant) {
   const speaker = participant.speaker
   if (!speaker?.published) return null
@@ -156,7 +170,7 @@ function buildRow(session, participant) {
       title: session.title,
       abstract: session.abstract ?? '',
       description: session.description ?? session.abstract ?? '',
-      tags: session.tags?.length ? session.tags : [DEFAULT_TRACK],
+      tags: normalizeTags(session.tags),
       track: session.track || DEFAULT_TRACK,
       time: session.startTime || 'TBA',
       room: session.room || DEFAULT_ROOM,
