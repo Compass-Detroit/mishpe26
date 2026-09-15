@@ -1,39 +1,5 @@
 [
   {
-    "id": 377718030,
-    "name": "William Bowen",
-    "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/02e28fbf828403c989cf6e49eb961423a751e8c0-691x921.jpg",
-    "bio": "I currently wear multiple professional hats as an IT specialist and a fitness instructor / enthusiast. On the IT side I have the responsibility for managing service orders, telecommunication contracts and services, along with support for iOS devices. I also have experience teaching networks, network security and software development. This work branches off to work I do with the National Society of Black Engineers (NSBE) and the Cyber Patriot program, which includes talks and tutorials on technology and computers. As a fitness enthusiast I have taught multiple boot camp classes that incorporate both strength and cardio training at different locations. This has led me to compete in multiple powerlifting meets with UPA and USAPL as well as physique with NPC. At this time I am also looking at different applications that incorporate fitness.",
-    "organization": "US Army",
-    "position": "IT Specialist",
-    "isWTM": false,
-    "isGDE": false,
-    "isModerator": false,
-    "sortOrder": 0,
-    "session": {
-      "title": "Getting Started with Project NOMAD",
-      "abstract": "",
-      "description": "In an increasingly connected world, dependence on cloud infrastructure poses significant challenges during network blackouts, off-grid expeditions, remote work operations, and in environments with limited broadband access. Project NOMAD is a free, open-source, offline-first knowledge and education server designed to provide total digital autonomy and strict privacy.  This session introduces Project NOMAD, exploring how it turns standard hardware into a self-contained, air-gapped knowledge vault. Attendees will learn about its core architecture, practical use cases—ranging from emergency preparedness, remote medical references, and offline mapping to STEM education—and how to deploy local, private Retrieval-Augmented Generation (RAG) AI without sending data to the cloud.",
-      "tags": ["Innovation", "In-person"],
-      "track": "Level Up",
-      "time": "11:00",
-      "room": "Main Room",
-      "sessionDuration": 30,
-      "speakers": ["William Bowen"],
-      "moderators": [],
-      "panelists": ["William Bowen"],
-      "participants": [
-        {
-          "name": "William Bowen",
-          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/02e28fbf828403c989cf6e49eb961423a751e8c0-691x921.jpg",
-          "isModerator": false,
-          "sortOrder": 0
-        }
-      ]
-    },
-    "linkedIn": "https://www.linkedin.com/in/william-bowen-a7216610/"
-  },
-  {
     "id": 2133071304,
     "name": "Julea Ferrara",
     "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/17b1d69751e9c66241ffdb97117f6dc0c9833f98-300x400.jpg",
@@ -167,7 +133,7 @@
     }
   },
   {
-    "id": 1293748638,
+    "id": 377718030,
     "name": "William Bowen",
     "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/02e28fbf828403c989cf6e49eb961423a751e8c0-691x921.jpg",
     "bio": "I currently wear multiple professional hats as an IT specialist and a fitness instructor / enthusiast. On the IT side I have the responsibility for managing service orders, telecommunication contracts and services, along with support for iOS devices. I also have experience teaching networks, network security and software development. This work branches off to work I do with the National Society of Black Engineers (NSBE) and the Cyber Patriot program, which includes talks and tutorials on technology and computers. As a fitness enthusiast I have taught multiple boot camp classes that incorporate both strength and cardio training at different locations. This has led me to compete in multiple powerlifting meets with UPA and USAPL as well as physique with NPC. At this time I am also looking at different applications that incorporate fitness.",
@@ -178,13 +144,13 @@
     "isModerator": false,
     "sortOrder": 0,
     "session": {
-      "title": "Fitness Yoga",
+      "title": "Getting Started with Project NOMAD",
       "abstract": "",
-      "description": "This fitness yoga class blends traditional yoga poses with strength training and cardiovascular movements for a balanced, full-body workout. Participants will improve flexibility, build lean muscle, and boost endurance through flowing sequences, bodyweight exercises, and dynamic movement. The class is designed to enhance both physical strength and mindfulness, leaving you energized, focused, and refreshed.",
-      "tags": ["Level Up"],
+      "description": "In an increasingly connected world, dependence on cloud infrastructure poses significant challenges during network blackouts, off-grid expeditions, remote work operations, and in environments with limited broadband access. Project NOMAD is a free, open-source, offline-first knowledge and education server designed to provide total digital autonomy and strict privacy.  This session introduces Project NOMAD, exploring how it turns standard hardware into a self-contained, air-gapped knowledge vault. Attendees will learn about its core architecture, practical use cases—ranging from emergency preparedness, remote medical references, and offline mapping to STEM education—and how to deploy local, private Retrieval-Augmented Generation (RAG) AI without sending data to the cloud.",
+      "tags": ["Innovation", "In-person"],
       "track": "Level Up",
-      "time": "08:15",
-      "room": "",
+      "time": "11:00",
+      "room": "Main Room",
       "sessionDuration": 30,
       "speakers": ["William Bowen"],
       "moderators": [],
@@ -245,9 +211,9 @@
     "isModerator": true,
     "sortOrder": 0,
     "session": {
-      "title": "Beyond Representation: Building Detroit's Latino Tech & Innovation Ecosystem",
+      "title": "Detroit Latin Heritage Month Innovation Summit Panel Discussion",
       "abstract": "",
-      "description": "What would Detroit's technology ecosystem look like if Latino talent were not simply represented in it, but helping design it?\n\nDetroit's Latino technology ecosystem is not one organization, one industry, or one pathway. It is a network of students, technologists, entrepreneurs, designers, engineers, creatives, corporate leaders and community builders creating new pathways into Michigan's innovation economy.\n\nThis conversation brings together leaders from SHPE Detroit, Techqueria Detroit, Latino Voices in Tech and Detroit Month of Design to explore what happens when these communities stop operating in parallel and start building together.\n\nModerated by Julea Ferrara, the panel examines where Latino talent and innovation are already showing up across Detroit, and the gaps that keep talent, opportunity, capital and leadership disconnected. It asks what corporations and startups could do differently to engage Latino technologists and entrepreneurs, how Detroit can build pathways from student to professional to entrepreneur to leader to investor, and what emerging technologies — AI in particular — mean for Latino communities and the region's future workforce.",
+      "description": "Connect with leaders across Detroit’s design, engineering, and tech ecosystems for a panel focused on innovation, talent pathways, and cross-sector growth. Panelists unite to discuss career mobility, community architecture, and creative collaboration across industry boundaries.\n\nFeatured Perspectives\n⚬\tSHPE Detroit: Outlines the STEM talent pipeline, bridging students and professionals with corporate pathways in engineering.\n⚬\tTechqueria Detroit: Centers Latino/a/e technologists, advancing career mobility, workplace belonging, and professional community.\n⚬\tLatino Voices in Tech: Champions ecosystem visibility, representation, and advocacy through the power of storytelling.\n⚬\tDetroit Month of Design: Explores the intersection of design, placemaking, creativity, and cross-sector innovation.\n⚬\tCompass: Details innovation architecture, linking enterprise networks, startup founders, and local community initiatives.",
       "tags": ["Panel", "In-person"],
       "track": "Level Up",
       "time": "13:00",
@@ -284,9 +250,9 @@
     "isModerator": false,
     "sortOrder": 1,
     "session": {
-      "title": "Beyond Representation: Building Detroit's Latino Tech & Innovation Ecosystem",
+      "title": "Detroit Latin Heritage Month Innovation Summit Panel Discussion",
       "abstract": "",
-      "description": "What would Detroit's technology ecosystem look like if Latino talent were not simply represented in it, but helping design it?\n\nDetroit's Latino technology ecosystem is not one organization, one industry, or one pathway. It is a network of students, technologists, entrepreneurs, designers, engineers, creatives, corporate leaders and community builders creating new pathways into Michigan's innovation economy.\n\nThis conversation brings together leaders from SHPE Detroit, Techqueria Detroit, Latino Voices in Tech and Detroit Month of Design to explore what happens when these communities stop operating in parallel and start building together.\n\nModerated by Julea Ferrara, the panel examines where Latino talent and innovation are already showing up across Detroit, and the gaps that keep talent, opportunity, capital and leadership disconnected. It asks what corporations and startups could do differently to engage Latino technologists and entrepreneurs, how Detroit can build pathways from student to professional to entrepreneur to leader to investor, and what emerging technologies — AI in particular — mean for Latino communities and the region's future workforce.",
+      "description": "Connect with leaders across Detroit’s design, engineering, and tech ecosystems for a panel focused on innovation, talent pathways, and cross-sector growth. Panelists unite to discuss career mobility, community architecture, and creative collaboration across industry boundaries.\n\nFeatured Perspectives\n⚬\tSHPE Detroit: Outlines the STEM talent pipeline, bridging students and professionals with corporate pathways in engineering.\n⚬\tTechqueria Detroit: Centers Latino/a/e technologists, advancing career mobility, workplace belonging, and professional community.\n⚬\tLatino Voices in Tech: Champions ecosystem visibility, representation, and advocacy through the power of storytelling.\n⚬\tDetroit Month of Design: Explores the intersection of design, placemaking, creativity, and cross-sector innovation.\n⚬\tCompass: Details innovation architecture, linking enterprise networks, startup founders, and local community initiatives.",
       "tags": ["Panel", "In-person"],
       "track": "Level Up",
       "time": "13:00",
@@ -307,6 +273,39 @@
           "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/90f0a62bbed0ef7ecc15e3e28c34c76d433d6cf1-471x713.png",
           "isModerator": false,
           "sortOrder": 1
+        }
+      ]
+    }
+  },
+  {
+    "id": 1001125532,
+    "name": "SHPE Detroit",
+    "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/b4ac13262059c2f3857fad8f263e05917cb09bfd-2667x4252.jpg",
+    "bio": "The Society of Hispanic Professional Engineers (SHPE) Detroit Professional Chapter empowers Hispanic students and professionals across Southeast Michigan to realize their full potential in STEM. Through targeted youth outreach, student mentorship, and a regional network of engineering professionals, SHPE Detroit builds pathways that advance technical careers and foster community impact.",
+    "organization": "SHPE Detroit",
+    "position": "Team",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
+    "session": {
+      "title": "Engineering Loteria",
+      "abstract": "",
+      "description": "Celebrate Hispanic Heritage Month through an interactive, culturally rooted spin on the classic game of chance. Replace the traditional chalupa and catrín with engineering icons, software terms, hardware components, and technical milestones. Attendees network, test their STEM trivia, and compete for prizes in a lively community atmosphere.\n⚬\tInteractive Gameplay: Custom Lotería cards spotlight engineering concepts, technical tools, and historic Hispanic innovators.\n⚬\tCommunity Connection: Connect students, seasoned technologists, and industry leaders across disciplines.\n⚬\tPrizes and Trivia: Earn recognition and take home gear while celebrating culture, craft, and technical problem-solving.",
+      "tags": ["STEM Pipeline", "Tech Trivia", "Diversity"],
+      "track": "Level Up",
+      "time": "14:00",
+      "room": "Main Room",
+      "sessionDuration": 60,
+      "speakers": ["SHPE Detroit"],
+      "moderators": [],
+      "panelists": ["SHPE Detroit"],
+      "participants": [
+        {
+          "name": "SHPE Detroit",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/b4ac13262059c2f3857fad8f263e05917cb09bfd-2667x4252.jpg",
+          "isModerator": false,
+          "sortOrder": 0
         }
       ]
     }
