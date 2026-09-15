@@ -58,7 +58,7 @@ export const conferenceActivities = [
     title: 'Sessions',
     content: null,
     time: '13:00',
-    timeEnd: '14:00',
+    timeEnd: '15:00',
     room: VENUE_ROOMS.LEVEL_UP,
   },
   {
