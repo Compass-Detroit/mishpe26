@@ -61,12 +61,17 @@ const parseSessionDates = (session) => {
 
   const range = parseTimeRangeFromTime(time)
   const startTime = range?.start ?? normalizeTimeString(time)
-  const endTime = range?.end ?? normalizeTimeString(timeEnd ?? '') ?? null
+  const rawEnd = typeof timeEnd === 'string' ? timeEnd.trim() : ''
+  const endTime = range?.end ?? normalizeTimeString(rawEnd) ?? null
+  const unknownEnd = Boolean(rawEnd) && !endTime
 
   if (!startTime) return null
 
   const startDate = buildEventDate(eventDate, startTime, timezoneOffset)
   if (Number.isNaN(startDate?.getTime())) return null
+
+  // An explicit unknown end (`?`) must not become a fabricated 45-minute slot.
+  if (unknownEnd) return null
 
   let endDate = null
   if (endTime) {
@@ -81,6 +86,9 @@ const parseSessionDates = (session) => {
 
   return { startDate, endDate }
 }
+
+export const canExportToCalendar = (session) =>
+  Boolean(parseSessionDates(session))
 
 const normalizeSessionsArray = (sessions) =>
   (Array.isArray(sessions) ? sessions : [sessions]).filter(Boolean)

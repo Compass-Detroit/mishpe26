@@ -13,7 +13,7 @@
     "session": {
       "title": "Designing Our Stories: Technology, Culture & the Power of the Latino Narrative",
       "abstract": "",
-      "description": "Technology doesn't just build products. It shapes how people experience, understand, and share the world.\n\nFor Latino communities in Detroit and throughout Michigan, storytelling is an essential part of preserving culture, building identity, creating connection, and making our contributions visible. From the stories we tell about our families and neighborhoods to the digital platforms, brands, products, and technologies we create, design and storytelling are deeply connected.\n\nThis session explores how Latino communities can use storytelling and technology to move from being represented by others to designing and sharing our own narratives.\n\nThe conversation will explore:\n\n- How culture influences the way we design technology and experiences\n- Why storytelling is a form of technology and community infrastructure\n- How Latino stories are represented, preserved, and sometimes overlooked\n- The role of UX, design, AI, media, and digital platforms in shaping cultural narratives\n- How entrepreneurs, technologists, designers, and community leaders can tell stories with greater intention\n- How Detroit's Latino communities can use technology to document and amplify stories across generations\n- What happens when we design technology with culture in mind, rather than designing culture out of technology\n\nThe big question: what changes when we stop asking technology to tell our stories, and start designing the technology, experiences, and platforms that let us tell them ourselves?",
+      "description": "Technology doesn't just build products. It shapes how people experience, understand, and share the world.\n\nFor Latino communities in Detroit and throughout Michigan, storytelling is an essential part of preserving culture, building identity, creating connection, and making our contributions visible. From the stories we tell about our families and neighborhoods to the digital platforms, brands, products, and technologies we create, design and storytelling are deeply connected.\n\nThis session explores how Latino communities can use storytelling and technology to move from being represented by others to designing and sharing our own narratives.\n\nThe conversation will explore:\n\n⚬\tHow culture influences the way we design technology and experiences\n⚬\tWhy storytelling is a form of technology and community infrastructure\n⚬\tHow Latino stories are represented, preserved, and sometimes overlooked\n⚬\tThe role of UX, design, AI, media, and digital platforms in shaping cultural narratives\n⚬\tHow entrepreneurs, technologists, designers, and community leaders can tell stories with greater intention\n⚬\tHow Detroit's Latino communities can use technology to document and amplify stories across generations\n⚬\tWhat happens when we design technology with culture in mind, rather than designing culture out of technology\n\nThe big question: what changes when we stop asking technology to tell our stories, and start designing the technology, experiences, and platforms that let us tell them ourselves?",
       "tags": ["Level Up", "In-person"],
       "track": "Level Up",
       "time": "09:00",
@@ -30,7 +30,8 @@
           "sortOrder": 0
         }
       ]
-    }
+    },
+    "linkedIn": "https://www.linkedin.com/in/juleaferrara/"
   },
   {
     "id": 1363757462,
@@ -67,37 +68,38 @@
     "linkedIn": "https://www.linkedin.com/in/umelo-onyejiaka-84213524b"
   },
   {
-    "id": 1995700221,
-    "name": "Kelli Williams",
-    "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/05b398ca53038e1f600d7222369acfd265f31646-1133x1549.jpg",
-    "bio": "Kelli Nicole is a former registered nurse, entrepreneur, workforce innovator, and AI strategist whose work sits at the intersection of technology, resilience, workforce development, and access.\n\nAfter 15 years in nursing across cardiac ICU, emergency care, travel nursing, and the Michigan Department of Corrections, Kelli stepped into an entirely different world: construction. She trained through an apprenticeship program, worked in underground plumbing, and later traveled as a catastrophe project manager supporting large commercial projects after major hurricanes. Those experiences shaped the way she sees work, systems, and the people too often overlooked inside both.\n\nShe later founded her own cleaning company and began solving one of the hardest problems facing small businesses: how to create better-paying, sustainable jobs while still making the numbers work. Using AI, automation, workforce programs, and creative funding strategies, Kelli developed a U.S. Department of Labor apprenticeship program and helped structure workforce development strategies connected to more than $456,000 in grant funding.\n\nThen life forced an unexpected reset.\n\nAfter a serious car accident and traumatic brain injury, Kelli began relying heavily on AI to organize information, communicate, think through problems, and rebuild systems around her life and work. What began as a survival tool became something much bigger: a framework for using technology as a practical extension of human capacity.\n\nToday, Kelli speaks about AI, automation, second-brain systems, workforce innovation, and what happens when emerging technology is placed in the hands of people who have historically been left out of the conversation.\n\nHer work is rooted in Detroit and shaped by generations of family history spanning the Canary Islands, Spanish colonial Texas, and Michigan. That history reinforces the mission behind her work today: helping people use technology not simply to become more productive, but to solve real problems, create opportunity, and build something better.\n\nKelli’s message is simple: you do not need to be a technologist to use technology powerfully. You need a problem worth solving — and the willingness to build differently.",
-    "organization": "Insight Health Systems",
-    "position": "Physician Liaison",
+    "id": 108259969,
+    "name": "Shugmi Shumunov",
+    "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/34b0f121a5fe6298d3618ec6903e704487ce9913-3024x4032.jpg",
+    "bio": "\"Shugmi is a collaborative technical IC & leader with 10+ years guiding cross functional teams in designing, developing, and maintaining scalable systems and automated workflows. Specializing in seamless user interfaces and robust architecture. Proven track record of architecting enterprise solutions, optimizing database queries & legacy codebases, managing stakeholder communications, and engineering excellence\n\nWhen not coding, you'll find him picking things up and putting them down, shooting hoops, reading a good book, or laughing with friends\"",
+    "organization": "Shumunov Solutions",
+    "position": "Developer",
     "isWTM": false,
     "isGDE": false,
     "isModerator": false,
     "sortOrder": 0,
     "session": {
-      "title": "HumanOS: Build Systems That Multiply Your Productivity Across Life, Business & Strategy",
+      "title": "Pull the cord. Bring Backup.",
       "abstract": "",
-      "description": "AI is moving fast, but access to it does not automatically create opportunity. Knowing how to use these tools intentionally does.\n\nIn this interactive session, Kelli Nicole shares how she began using AI as her HumanOS- after a traumatic brain injury changed the way she processed information, organized ideas, and worked. What started as a personal adaptation evolved into a practical system for entrepreneurship, workforce development, automation, communication, and problem-solving.\n\nParticipants will learn how to move beyond basic prompting and begin building an AI-supported system that helps them capture knowledge, organize information, identify problems worth solving, and turn ideas into action. The session also explores how these skills can help people traditionally excluded from emerging technology build confidence, career readiness, and economic opportunity.\n\nAttendees will leave with a simple framework they can immediately use to begin building their own  — without needing a technical background.",
-      "tags": ["Build with AI", "In-person"],
+      "description": "Stop typing boilerplate. Start directing your AI crew to solve your own bottlenecks. What Jack Reacher and Chainsaw Man taught me about agentic development.",
+      "tags": ["Build with AI", "In person"],
       "track": "Level Up",
       "time": "10:00",
       "room": "Main Room",
       "sessionDuration": 30,
-      "speakers": ["Kelli Williams"],
+      "speakers": ["Shugmi Shumunov"],
       "moderators": [],
-      "panelists": ["Kelli Williams"],
+      "panelists": ["Shugmi Shumunov"],
       "participants": [
         {
-          "name": "Kelli Williams",
-          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/05b398ca53038e1f600d7222369acfd265f31646-1133x1549.jpg",
+          "name": "Shugmi Shumunov",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/34b0f121a5fe6298d3618ec6903e704487ce9913-3024x4032.jpg",
           "isModerator": false,
           "sortOrder": 0
         }
       ]
-    }
+    },
+    "linkedIn": "https://www.linkedin.com/in/shugmishumunov/"
   },
   {
     "id": 170536064,
@@ -113,7 +115,7 @@
     "session": {
       "title": "The 80/20 of Accessibility: Small Fixes, Big Impact",
       "abstract": "",
-      "description": "\"The 80/20 of Accessibility: Small Fixes, Big Impact\" walks through the small number of fixes that solve most accessibility problems on the web — no WCAG memorization required. Using real screen reader demos, with audience participation, this talk breaks down high-impact issues and gives students practical, five-minute habits they can start using immediately, whether they're building their first project or their fiftieth. You don't need to be an expert to catch 80% of the problems — you need a checklist.",
+      "description": "\"The 80/20 of Accessibility: Small Fixes, Big Impact\" walks through the small number of fixes that solve most accessibility problems on the web — no WCAG memorization required. Using real screen reader demos, with audience participation, this talk breaks down high-impact issues and gives attendees practical, five-minute habits they can start using immediately, whether they're building their first project or their fiftieth. You don't need to be an expert to catch 80% of the problems — you need a checklist. \n\nWhat are we waiting for, let's get started today!",
       "tags": ["Innovation", "In-person"],
       "track": "Level Up",
       "time": "10:30",
@@ -130,7 +132,9 @@
           "sortOrder": 0
         }
       ]
-    }
+    },
+    "linkedIn": "https://www.linkedin.com/in/gregraymiller/",
+    "github": "https://github.com/shrinkray"
   },
   {
     "id": 377718030,
@@ -197,7 +201,8 @@
           "sortOrder": 0
         }
       ]
-    }
+    },
+    "linkedIn": "https://www.linkedin.com/in/arbelaez/"
   },
   {
     "id": 1792384470,
@@ -236,7 +241,8 @@
           "sortOrder": 1
         }
       ]
-    }
+    },
+    "linkedIn": "https://www.linkedin.com/in/juleaferrara/"
   },
   {
     "id": 363601822,
@@ -275,15 +281,16 @@
           "sortOrder": 1
         }
       ]
-    }
+    },
+    "linkedIn": "https://www.linkedin.com/in/ricardotapiavargas/"
   },
   {
-    "id": 1001125532,
-    "name": "SHPE Detroit",
-    "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/b4ac13262059c2f3857fad8f263e05917cb09bfd-2667x4252.jpg",
-    "bio": "The Society of Hispanic Professional Engineers (SHPE) Detroit Professional Chapter empowers Hispanic students and professionals across Southeast Michigan to realize their full potential in STEM. Through targeted youth outreach, student mentorship, and a regional network of engineering professionals, SHPE Detroit builds pathways that advance technical careers and foster community impact.",
-    "organization": "SHPE Detroit",
-    "position": "Team",
+    "id": 834553404,
+    "name": "Cindy Cruz Rodriguez",
+    "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/8a3800f1b801610ca79d8bb6ba7f50ebbe83c271-750x750.webp",
+    "bio": "Hello! My name is Cindy Cruz-Rodriguez and my current role is Supplier Quality Engineer for Interiors Components at the GM Warren Technical Center where I directly engage and ensure compliance for 9 different DUNS Suppliers. \n",
+    "organization": "General Motors",
+    "position": "Supplier Quality Engineer at General Motors",
     "isWTM": false,
     "isGDE": false,
     "isModerator": false,
@@ -297,15 +304,119 @@
       "time": "14:00",
       "room": "Main Room",
       "sessionDuration": 60,
-      "speakers": ["SHPE Detroit"],
+      "speakers": ["Cindy Cruz Rodriguez", "Raquel Estrada", "Maridy Mazaira"],
       "moderators": [],
-      "panelists": ["SHPE Detroit"],
+      "panelists": ["Cindy Cruz Rodriguez", "Raquel Estrada", "Maridy Mazaira"],
       "participants": [
         {
-          "name": "SHPE Detroit",
-          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/b4ac13262059c2f3857fad8f263e05917cb09bfd-2667x4252.jpg",
+          "name": "Cindy Cruz Rodriguez",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/8a3800f1b801610ca79d8bb6ba7f50ebbe83c271-750x750.webp",
           "isModerator": false,
           "sortOrder": 0
+        },
+        {
+          "name": "Raquel Estrada",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/70ef27fe6f872c58ddd81c8d40f62537fd1525d8-1254x1254.webp",
+          "isModerator": false,
+          "sortOrder": 1
+        },
+        {
+          "name": "Maridy Mazaira",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/f51e51a6769090c84d573c14a6c31c2bdc512fdd-400x400.webp",
+          "isModerator": false,
+          "sortOrder": 2
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/cindy-cruz-rodriguez/"
+  },
+  {
+    "id": 1549540451,
+    "name": "Raquel Estrada",
+    "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/70ef27fe6f872c58ddd81c8d40f62537fd1525d8-1254x1254.webp",
+    "bio": "Fixing what’s broken. Building what’s missing. Developing the people who make it last.\n\nI’m a transformation and operational excellence leader with 12+ years of experience helping organizations turn strategy into practical, lasting improvements. Most of my work sits at the intersection of process, people, and execution—figuring out how things really work today, designing a better way forward, and helping teams make those changes stick.\n\nThroughout my career I’ve worked across financial services, consumer goods, automotive, and manufacturing environments where processes are complex and teams have to work across functions to get results. I enjoy stepping into situations where processes are fragmented or unclear and helping bring structure, alignment, and momentum.\n\nSome of the work I’ve led includes building an enterprise process transformation function at a bank, implementing BPM platforms to standardize processes and governance, running global continuous improvement initiatives, and developing internal capabilities so teams can sustain improvements on their own.",
+    "organization": "Ally Financial",
+    "position": "Process Optimization Manager",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 1,
+    "session": {
+      "title": "Engineering Loteria",
+      "abstract": "",
+      "description": "Celebrate Hispanic Heritage Month through an interactive, culturally rooted spin on the classic game of chance. Replace the traditional chalupa and catrín with engineering icons, software terms, hardware components, and technical milestones. Attendees network, test their STEM trivia, and compete for prizes in a lively community atmosphere.\n⚬\tInteractive Gameplay: Custom Lotería cards spotlight engineering concepts, technical tools, and historic Hispanic innovators.\n⚬\tCommunity Connection: Connect students, seasoned technologists, and industry leaders across disciplines.\n⚬\tPrizes and Trivia: Earn recognition and take home gear while celebrating culture, craft, and technical problem-solving.",
+      "tags": ["STEM Pipeline", "Tech Trivia", "Diversity"],
+      "track": "Level Up",
+      "time": "14:00",
+      "room": "Main Room",
+      "sessionDuration": 60,
+      "speakers": ["Cindy Cruz Rodriguez", "Raquel Estrada", "Maridy Mazaira"],
+      "moderators": [],
+      "panelists": ["Cindy Cruz Rodriguez", "Raquel Estrada", "Maridy Mazaira"],
+      "participants": [
+        {
+          "name": "Cindy Cruz Rodriguez",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/8a3800f1b801610ca79d8bb6ba7f50ebbe83c271-750x750.webp",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Raquel Estrada",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/70ef27fe6f872c58ddd81c8d40f62537fd1525d8-1254x1254.webp",
+          "isModerator": false,
+          "sortOrder": 1
+        },
+        {
+          "name": "Maridy Mazaira",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/f51e51a6769090c84d573c14a6c31c2bdc512fdd-400x400.webp",
+          "isModerator": false,
+          "sortOrder": 2
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/raquel-estrada/"
+  },
+  {
+    "id": 1649642700,
+    "name": "Maridy Mazaira",
+    "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/f51e51a6769090c84d573c14a6c31c2bdc512fdd-400x400.webp",
+    "bio": "President - Society of Hispanic Professional Engineers, Detroit Chapter",
+    "organization": "SHPE Detroit",
+    "position": "President",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 2,
+    "session": {
+      "title": "Engineering Loteria",
+      "abstract": "",
+      "description": "Celebrate Hispanic Heritage Month through an interactive, culturally rooted spin on the classic game of chance. Replace the traditional chalupa and catrín with engineering icons, software terms, hardware components, and technical milestones. Attendees network, test their STEM trivia, and compete for prizes in a lively community atmosphere.\n⚬\tInteractive Gameplay: Custom Lotería cards spotlight engineering concepts, technical tools, and historic Hispanic innovators.\n⚬\tCommunity Connection: Connect students, seasoned technologists, and industry leaders across disciplines.\n⚬\tPrizes and Trivia: Earn recognition and take home gear while celebrating culture, craft, and technical problem-solving.",
+      "tags": ["STEM Pipeline", "Tech Trivia", "Diversity"],
+      "track": "Level Up",
+      "time": "14:00",
+      "room": "Main Room",
+      "sessionDuration": 60,
+      "speakers": ["Cindy Cruz Rodriguez", "Raquel Estrada", "Maridy Mazaira"],
+      "moderators": [],
+      "panelists": ["Cindy Cruz Rodriguez", "Raquel Estrada", "Maridy Mazaira"],
+      "participants": [
+        {
+          "name": "Cindy Cruz Rodriguez",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/8a3800f1b801610ca79d8bb6ba7f50ebbe83c271-750x750.webp",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Raquel Estrada",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/70ef27fe6f872c58ddd81c8d40f62537fd1525d8-1254x1254.webp",
+          "isModerator": false,
+          "sortOrder": 1
+        },
+        {
+          "name": "Maridy Mazaira",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/f51e51a6769090c84d573c14a6c31c2bdc512fdd-400x400.webp",
+          "isModerator": false,
+          "sortOrder": 2
         }
       ]
     }

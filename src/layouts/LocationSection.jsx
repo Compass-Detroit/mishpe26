@@ -135,7 +135,7 @@ function LocationSection() {
               Saturday, September 19, 2026
             </p>
             <p className="mt-2 text-gray-400">
-              Doors Open 8:00 AM <br /> Sessions to 5:00 PM
+              Doors Open 8:00 AM <br /> Program through 6:00 PM
             </p>
           </div>
 
