@@ -137,10 +137,12 @@ const SpeakerCard = ({
                 <SpeakerDetails
                   avatar={avatar}
                   bio={bio}
+                  github={github}
                   id={id}
                   instagram={instagram}
                   isGDE={isGDE}
                   isWTM={isWTM}
+                  linkedin={linkedin}
                   mastodon={mastodon}
                   name={name}
                   organization={organization}

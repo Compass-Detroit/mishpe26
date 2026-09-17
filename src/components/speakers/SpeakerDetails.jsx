@@ -7,7 +7,12 @@ import {
   IoLinkOutline,
   IoLogoTwitter,
 } from 'react-icons/io5'
-import { FaInstagram, FaMastodon } from 'react-icons/fa6'
+import {
+  FaGithubAlt,
+  FaInstagram,
+  FaLinkedinIn,
+  FaMastodon,
+} from 'react-icons/fa6'
 
 import colors from 'tailwindcss/colors'
 import { SpeakerContext } from './SpeakerContext'
@@ -150,13 +155,30 @@ const TRACK_THEMES = {
   },
 }
 
+function httpUrl(value) {
+  if (typeof value !== 'string' || !value.trim()) return null
+  try {
+    const parsed = new URL(value)
+    return parsed.protocol === 'http:' || parsed.protocol === 'https:'
+      ? parsed.href
+      : null
+  } catch {
+    return null
+  }
+}
+
+const SOCIAL_PILL_CLASS =
+  'inline-flex items-center rounded-full border border-white/30 bg-black/30 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-offset-2'
+
 function SpeakerDetails({
   avatar,
   bio,
+  github,
   id,
   instagram,
   isGDE,
   isWTM,
+  linkedin,
   mastodon,
   name,
   onClose,
@@ -195,6 +217,8 @@ function SpeakerDetails({
   }
 
   const urls = getUrlArray()
+  const linkedinUrl = httpUrl(linkedin)
+  const githubUrl = httpUrl(github)
 
   const trackTheme = TRACK_THEMES[track] ?? TRACK_THEMES.default
 
@@ -360,12 +384,40 @@ function SpeakerDetails({
           {organization && <p className="mt-2 text-white">{organization}</p>}
 
           <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
+            {linkedinUrl && (
+              <a
+                href={linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={SOCIAL_PILL_CLASS}
+                onClick={(e) => e.stopPropagation()}
+                aria-label={`${name}'s LinkedIn profile - opens in new tab`}
+                style={interactiveFocusVars}
+              >
+                <FaLinkedinIn className="mr-2 size-4" aria-hidden="true" />
+                LinkedIn
+              </a>
+            )}
+            {githubUrl && (
+              <a
+                href={githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={SOCIAL_PILL_CLASS}
+                onClick={(e) => e.stopPropagation()}
+                aria-label={`${name}'s GitHub profile - opens in new tab`}
+                style={interactiveFocusVars}
+              >
+                <FaGithubAlt className="mr-2 size-4" aria-hidden="true" />
+                GitHub
+              </a>
+            )}
             {instagram && (
               <a
                 href={`${instagram}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center rounded-full border border-white/30 bg-black/30 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                className={SOCIAL_PILL_CLASS}
                 onClick={(e) => e.stopPropagation()}
                 aria-label={`${name}'s Instagram profile - opens in new tab`}
                 style={interactiveFocusVars}
@@ -379,7 +431,7 @@ function SpeakerDetails({
                 href={`${mastodon}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center rounded-full border border-white/30 bg-black/30 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                className={SOCIAL_PILL_CLASS}
                 onClick={(e) => e.stopPropagation()}
                 aria-label={`${name}'s Mastodon profile - opens in new tab`}
                 style={interactiveFocusVars}
@@ -393,7 +445,7 @@ function SpeakerDetails({
                 href={`https://twitter.com/${twitter}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center rounded-full border border-white/30 bg-black/30 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                className={SOCIAL_PILL_CLASS}
                 onClick={(e) => e.stopPropagation()}
                 aria-label={`${name}'s Twitter profile - opens in new tab`}
                 style={interactiveFocusVars}
@@ -411,7 +463,7 @@ function SpeakerDetails({
                     href={link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center rounded-full border border-white/30 bg-black/30 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                    className={SOCIAL_PILL_CLASS}
                     onClick={(e) => e.stopPropagation()}
                     aria-label={`Visit ${name}'s website ${domain} - opens in new tab`}
                     style={interactiveFocusVars}
@@ -598,10 +650,12 @@ function SpeakerDetails({
 SpeakerDetails.propTypes = {
   avatar: PropTypes.string.isRequired,
   bio: PropTypes.string,
+  github: PropTypes.string,
   id: PropTypes.number.isRequired,
   instagram: PropTypes.string,
   isGDE: PropTypes.bool,
   isWTM: PropTypes.bool,
+  linkedin: PropTypes.string,
   mastodon: PropTypes.string,
   name: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
