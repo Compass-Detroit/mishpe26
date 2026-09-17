@@ -19,7 +19,7 @@ function MyScheduleExports({ events }) {
     return (
       <div className="rounded-xl border border-amber-300/30 bg-amber-50/80 px-4 py-3 text-sm text-amber-900">
         {timedEvents.length
-          ? 'Saved items without a known end time cannot be added to a calendar file.'
+          ? 'Saved items with incomplete or invalid times cannot be added to a calendar file.'
           : 'Add sessions with scheduled times to export your curated calendar.'}
       </div>
     )
@@ -59,14 +59,14 @@ function MyScheduleExports({ events }) {
       {skippedCount > 0 && (
         <p className="text-xs text-gray-400">
           {skippedCount === 1
-            ? '1 saved item has no close time and was left out of the calendar file.'
-            : `${skippedCount} saved items have no close time and were left out of the calendar file.`}
+            ? '1 saved item has an incomplete or invalid time and was left out of the calendar file.'
+            : `${skippedCount} saved items have incomplete or invalid times and were left out of the calendar file.`}
         </p>
       )}
       {exportFailed && (
         <p className="text-xs text-amber-200" role="status">
-          Calendar export failed. Try again, or remove items without a known end
-          time.
+          Calendar export failed. Try again, or remove items with incomplete
+          times.
         </p>
       )}
     </div>
