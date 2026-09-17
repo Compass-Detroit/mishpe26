@@ -283,9 +283,32 @@ export async function fetchEventSpeakers(options = {}) {
       (a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0)
     )
 
+    if (participants.length === 0) {
+      console.warn(
+        `fetch-event-data: session "${session.title ?? session.sessionSlug}" ` +
+          `is published but has no speakers attached. Skipping it — add the ` +
+          `speaker on the session document, not only as Featured session on ` +
+          `the speaker.`
+      )
+      continue
+    }
+
     for (const participant of participants) {
       const row = buildRow(session, participant)
-      if (row) rows.push(row)
+      if (row) {
+        rows.push(row)
+        continue
+      }
+
+      const speakerName =
+        participant.speaker?.name ?? participant.speaker?.speakerSlug
+      console.warn(
+        `fetch-event-data: session "${session.title ?? session.sessionSlug}" ` +
+          `skipped speaker ${
+            speakerName ? `"${speakerName}"` : '(unresolved)'
+          }: ` +
+          `need a published speaker with a slug.`
+      )
     }
   }
 
