@@ -167,6 +167,16 @@ function httpUrl(value) {
   }
 }
 
+/** Studio stores GitHub as a free string — a URL or a username. */
+function githubProfileUrl(value) {
+  const asUrl = httpUrl(value)
+  if (asUrl) return asUrl
+
+  const username = typeof value === 'string' ? value.trim() : ''
+  if (!/^[A-Za-z0-9](?:[A-Za-z0-9-]{0,38})$/.test(username)) return null
+  return `https://github.com/${username}`
+}
+
 const SOCIAL_PILL_CLASS =
   'inline-flex items-center rounded-full border border-white/30 bg-black/30 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-offset-2'
 
@@ -218,7 +228,7 @@ function SpeakerDetails({
 
   const urls = getUrlArray()
   const linkedinUrl = httpUrl(linkedin)
-  const githubUrl = httpUrl(github)
+  const githubUrl = githubProfileUrl(github)
 
   const trackTheme = TRACK_THEMES[track] ?? TRACK_THEMES.default
 

@@ -18,7 +18,7 @@ function ActivityCard({
   const { isSessionSaved, toggleSession } = useSchedule()
   const isSaved = activityId ? isSessionSaved(activityId) : false
   const formatTime = (t) => {
-    if (!t) return ''
+    if (!t || t === '?') return ''
     try {
       return format(parse(t, 'HH:mm', new Date()), 'h:mm a')
     } catch {

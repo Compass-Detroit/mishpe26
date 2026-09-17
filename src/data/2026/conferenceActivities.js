@@ -112,6 +112,7 @@ export const conferenceActivities = [
     title: 'Open Dancing & Community Connections',
     content: null,
     time: '18:00',
+    // Unknown close — calendar export must not invent a 45-minute end.
     timeEnd: '?',
     room: null,
   },

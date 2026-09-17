@@ -200,6 +200,8 @@ export const teamData = [
  * pointing at it while Sanity holds zero team documents would empty the team
  * section rather than fall back here.
  *
- * Flip this to team.generated.json once the documents exist, in the same way
- * speakers.js and partners.js do, and delete the list above.
+ * Flip this to the `members` array inside team.generated.json once the
+ * documents exist — not the `{ source, members }` wrapper. The organizers
+ * layouts call `.filter()` on teamData and would throw on the object.
+ * Then delete the list above.
  */
