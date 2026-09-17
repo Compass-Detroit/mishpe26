@@ -2,6 +2,24 @@
   "source": "sanity",
   "sponsors": [
     {
+      "id": "dte-sponsor",
+      "name": "DTE",
+      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/54177530ed1b036e1acbf259ead11665dc8e1b80-111x38.png",
+      "logoAlt": "",
+      "desc": "A diversified energy company providing electric and natural gas service while investing in cleaner energy and grid modernization.",
+      "url": "https://www.dteenergy.com/",
+      "tier": "gold"
+    },
+    {
+      "id": "ibm-sponsor",
+      "name": "IBM",
+      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/74855d0fad91380876787dce60cfaab4b10b6c9e-2500x1000.png",
+      "logoAlt": "",
+      "desc": "    A global technology company specializing in hybrid cloud, artificial intelligence, consulting, and enterprise software.",
+      "url": "https://www.ibm.com/us-en",
+      "tier": "platinum"
+    },
+    {
       "id": "wayne-state-university",
       "name": "Wayne State University",
       "logo": "https://cdn.sanity.io/images/d1h6cagq/production/82a66b1dc3db3e6d2fc7056362170cefc40083bb-960x880.webp",
@@ -9,6 +27,24 @@
       "desc": "The Wayne State University College of Engineering sits at the center of Detroit, a few blocks from the industry that made the city — and it trains engineers accordingly. Its programs span biomedical, chemical, civil and environmental, computer science, electrical and computer, industrial and systems, and mechanical engineering, with graduate and research work tied closely to the mobility, manufacturing, and health-care employers in the region. The college draws one of the more diverse engineering student bodies in Michigan, many of them first-generation and commuting from the neighborhoods around campus, and it leans into that: co-ops and industry partnerships are the norm rather than the exception, and students tend to have real project work behind them before they graduate. Its home, the Anderson Engineering Building, gives the college modern teaching labs and collaborative space in the heart of the WSU campus — and makes it a fitting host for a summit about who gets to build what comes next.",
       "url": "https://engineering.wayne.edu/academics/programs",
       "tier": "diamond"
+    },
+    {
+      "id": "google-sponsor",
+      "name": "Google",
+      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/15204b6ce429f52443dba36e99f034cf8b0964bf-900x298.png",
+      "logoAlt": "",
+      "desc": "    A global technology company focused on search, AI, cloud computing, developer tools, and digital innovation.",
+      "url": "https://about.google/",
+      "tier": "platinum"
+    },
+    {
+      "id": "little-caesars-sponsor",
+      "name": "Little Caesars",
+      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/4b0e8094d61b3fb351fa1ff1776d6890a58c35ee-993x748.webp",
+      "logoAlt": "",
+      "desc": "A Detroit-based global pizza chain known for affordable, convenient pizza and a long history of innovation in the quick-service restaurant industry.",
+      "url": "https://littlecaesars.com/en-us/",
+      "tier": "gold"
     }
   ],
   "community": [
@@ -35,14 +71,6 @@
       "logoAlt": "NSBE Detroit logo",
       "desc": "Representing Black Engineers in Detroit. NSBE Detroit Professionals strive to increase technical awareness, encourage scholastic achievement, and stimulate enthusiasm in the black engineering community of Detroit. NSBE’s mission is to increase the number of culturally responsible Black engineers who excel academically, succeed professionally and positively impact the community. The NSBE Professionals inspire the next generation of technical professionals, and serve as a catalyst for transformation.",
       "url": "https://nsbedetroitprofessionals.org/"
-    },
-    {
-      "id": "devscreate313",
-      "name": "DevsCreate313",
-      "logo": "https://cdn.sanity.io/images/d1h6cagq/production/c9ba899f456ad8d32850174c738821469e80435c-618x618.webp",
-      "logoAlt": "DevsCreate313 logo",
-      "desc": "DevsCreate313 is a nonprofit organization dedicated to creating a collaborative tech ecosystem in the Detroit area. We are a community of developers, designers, entrepreneurs, and technologists who are passionate about building the future of technology in Detroit.",
-      "url": "https://devscreate313.org/"
     },
     {
       "id": "gm-cares",

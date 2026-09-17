@@ -1,16 +1,15 @@
-import DaveKoziol from '@/data/2026/assets/images/team/dav_koziol.webp'
-import GregMiller from '@/data/2026/assets/images/team/greg_miller.webp'
+import GregMiller from '@/data/2026/assets/images/team/greg-ray-miller.webp'
 import HernandoMalabet from '@/data/2026/assets/images/speakers/HernandoGonzalezMalabet.webp'
 import HodaSolati from '@/data/2026/assets/images/speakers/HodaSolati.jpg'
 import JennaRitten from '@/data/2026/assets/images/team/jenna_ritten.webp'
 import RishirajSarkar from '@/data/2026/assets/images/team/rishiraj_sarkar.webp'
 import ShimaSolati from '@/data/2026/assets/images/speakers/ShimaSolati.jpg'
-import IdaByrdHill from '@/data/2026/assets/images/team/IdaByrd-Hill.webp'
-import UmeloOnyejiaka from '@/data/2026/assets/images/team/UmeloOnyejiaka.webp'
+import UmeloOnyejiaka from '@/data/2026/assets/images/team/umelo-onyejiaka.webp'
 import RonaldFrohman from '@/data/2026/assets/images/team/roland_frohman.webp'
 import TylerMcbeath from '@/data/2026/assets/images/team/tyler_mcbeath.webp'
-import JeseekiaVaughn from '@/data/2026/assets/images/team/jeseekia_vaughn.webp'
-import BrandonWelch from '@/data/2026/assets/images/team/brandon_welch.webp'
+import JuleaFerrara from '@/data/2026/assets/images/team/julea-ferrara.webp'
+import RaquelEstrada from '@/data/2026/assets/images/team/raquel-estrada.webp'
+import CindyCruzRodriguez from '@/data/2026/assets/images/team/cindy-cruz-rodriguez.webp'
 
 export const teamData = [
   {
@@ -25,33 +24,6 @@ export const teamData = [
     role: 'Executive Director',
     commits: null,
     avatar: JennaRitten,
-  },
-  {
-    id: 2,
-    name: 'Dave Koziol',
-    twitter: 'davekoziol',
-    linkedin: 'https://www.linkedin.com/in/davekoziol/',
-    github: '',
-    team: 'compass',
-    star: true,
-    university: '',
-    organization: 'Little Caesars',
-    role: 'Secretary and GDG Chair',
-    commits: null,
-    avatar: DaveKoziol,
-  },
-  {
-    id: 3,
-    name: 'Ida Byrd-Hill',
-    linkedin: 'https://www.linkedin.com/in/idabyrdhill/',
-    github: '',
-    team: 'compass',
-    star: false,
-    university: '',
-    organization: 'Automation Workz',
-    role: 'Treasurer and Automation Workz Chair',
-    commits: null,
-    avatar: IdaByrdHill,
   },
   {
     id: 4,
@@ -114,6 +86,51 @@ export const teamData = [
   },
   {
     id: 8,
+    name: 'Julea Ferrara',
+    twitter: '',
+    linkedin: 'https://www.linkedin.com/in/juleaferrara/',
+    github: null,
+    team: 'compass',
+    star: false,
+    university: '',
+    bio: ``,
+    organization: 'J. Ferrara Consulting Solutions',
+    role: 'CEO / Founder',
+    commits: null,
+    avatar: JuleaFerrara,
+  },
+  {
+    id: 9,
+    name: 'Raquel Estrada',
+    twitter: '',
+    linkedin: 'https://www.linkedin.com/in/raquel-estrada/',
+    github: null,
+    team: 'compass',
+    star: false,
+    university: '',
+    bio: ``,
+    organization: 'Ally Financial',
+    role: 'Process Optimization Specialist',
+    commits: null,
+    avatar: RaquelEstrada,
+  },
+  {
+    id: 10,
+    name: 'Rishiraj Sarkar',
+    twitter: '',
+    linkedin: 'https://www.linkedin.com/in/cindy-cruz-rodriguez/',
+    github: null,
+    team: 'compass',
+    star: false,
+    university: '',
+    bio: ``,
+    organization: 'General Motors',
+    role: 'Supplier Quality Engineer',
+    commits: null,
+    avatar: CindyCruzRodriguez,
+  },
+  {
+    id: 11,
     name: 'Tyler McBeath',
     twitter: '',
     linkedin: 'https://www.linkedin.com/in/tyler-mcbeath-913b54102/',
@@ -127,7 +144,7 @@ export const teamData = [
     avatar: TylerMcbeath,
   },
   {
-    id: 9,
+    id: 12,
     name: 'Hernando Gonzalez Malabet',
     twitter: '',
     linkedin: 'https://www.linkedin.com/in/hernando-gonzalez-malabet-baa03625/',
@@ -141,21 +158,7 @@ export const teamData = [
     avatar: HernandoMalabet,
   },
   {
-    id: 10,
-    name: 'Jeseekia Vaughn',
-    twitter: '',
-    linkedin: 'https://www.linkedin.com/in/jeseekiavaughn/',
-    github: '',
-    team: 'compass',
-    star: false,
-    university: '',
-    organization: 'Detroit Black Tech',
-    role: 'Head of Community and Detroit Hacker House Chair',
-    commits: null,
-    avatar: JeseekiaVaughn,
-  },
-  {
-    id: 11,
+    id: 13,
     name: 'Umelo Onyejiaka',
     twitter: '',
     linkedin: 'https://www.linkedin.com/in/umelo-onyejiaka-84213524b/',
@@ -169,21 +172,7 @@ export const teamData = [
     avatar: UmeloOnyejiaka,
   },
   {
-    id: 12,
-    name: 'Brandon Welch',
-    twitter: '',
-    linkedin: 'https://www.linkedin.com/in/brandon-welch-179a16338/',
-    github: '',
-    team: 'compass',
-    star: false,
-    university: '',
-    organization: 'Why Not Collab Detroit',
-    role: 'Head of Social Media',
-    commits: null,
-    avatar: BrandonWelch,
-  },
-  {
-    id: 13,
+    id: 14,
     name: 'Greg Miller',
     linkedin: 'https://www.linkedin.com/in/gregraymiller/',
     github: 'https://github.com/shrinkray',
