@@ -132,7 +132,9 @@
           "sortOrder": 0
         }
       ]
-    }
+    },
+    "linkedIn": "https://www.linkedin.com/in/gregraymiller/",
+    "github": "https://github.com/shrinkray"
   },
   {
     "id": 377718030,
@@ -199,7 +201,8 @@
           "sortOrder": 0
         }
       ]
-    }
+    },
+    "linkedIn": "https://www.linkedin.com/in/arbelaez/"
   },
   {
     "id": 1792384470,
@@ -278,7 +281,8 @@
           "sortOrder": 1
         }
       ]
-    }
+    },
+    "linkedIn": "https://www.linkedin.com/in/ricardotapiavargas/"
   },
   {
     "id": 1001125532,
@@ -311,6 +315,7 @@
           "sortOrder": 0
         }
       ]
-    }
+    },
+    "linkedIn": "https://www.linkedin.com/company/shpe-detroit-professional/"
   }
 ]
