@@ -1,15 +1,26 @@
+import { useState } from 'react'
 import PropTypes from 'prop-types'
-import { generateICSFile } from '@/utils/calendarExport'
+import { canExportToCalendar, generateICSFile } from '@/utils/calendarExport'
 
 function MyScheduleExports({ events }) {
-  const exportableEvents = events.filter(
+  const [exportFailed, setExportFailed] = useState(false)
+  const timedEvents = events.filter(
     (event) => event.time && event.time !== 'TBA'
   )
+  const exportableEvents = timedEvents.filter(canExportToCalendar)
+  const skippedCount = timedEvents.length - exportableEvents.length
+
+  const download = (options) => {
+    const wrote = generateICSFile(exportableEvents, options)
+    setExportFailed(!wrote)
+  }
 
   if (!exportableEvents.length) {
     return (
       <div className="rounded-xl border border-amber-300/30 bg-amber-50/80 px-4 py-3 text-sm text-amber-900">
-        Add sessions with scheduled times to export your curated calendar.
+        {timedEvents.length
+          ? 'Saved items without a known end time cannot be added to a calendar file.'
+          : 'Add sessions with scheduled times to export your curated calendar.'}
       </div>
     )
   }
@@ -18,31 +29,46 @@ function MyScheduleExports({ events }) {
     'rounded-md border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-white/10'
 
   return (
-    <div className="mb-4 flex flex-wrap items-center gap-3 rounded-2xl border border-white/10 bg-black/30 p-4 backdrop-blur-sm">
-      <span className="min-w-[140px] text-xs font-semibold uppercase tracking-wider text-gray-300">
-        Export My Schedule:
-      </span>
+    <div className="mb-4 flex flex-col gap-3 rounded-2xl border border-white/10 bg-black/30 p-4 backdrop-blur-sm">
+      <div className="flex flex-wrap items-center gap-3">
+        <span className="min-w-[140px] text-xs font-semibold uppercase tracking-wider text-gray-300">
+          Export My Schedule:
+        </span>
 
-      <button
-        onClick={() => generateICSFile(exportableEvents)}
-        className={buttonClassName}
-        type="button"
-      >
-        iCal (.ics)
-      </button>
+        <button
+          onClick={() => download()}
+          className={buttonClassName}
+          type="button"
+        >
+          iCal (.ics)
+        </button>
 
-      <button
-        onClick={() =>
-          generateICSFile(exportableEvents, {
-            extension: 'ical',
-            filename: 'lhm-innovation-summit-2026-full-schedule.ical',
-          })
-        }
-        className={buttonClassName}
-        type="button"
-      >
-        iCal (.ical)
-      </button>
+        <button
+          onClick={() =>
+            download({
+              extension: 'ical',
+              filename: 'lhm-innovation-summit-2026-full-schedule.ical',
+            })
+          }
+          className={buttonClassName}
+          type="button"
+        >
+          iCal (.ical)
+        </button>
+      </div>
+      {skippedCount > 0 && (
+        <p className="text-xs text-gray-400">
+          {skippedCount === 1
+            ? '1 saved item has no close time and was left out of the calendar file.'
+            : `${skippedCount} saved items have no close time and were left out of the calendar file.`}
+        </p>
+      )}
+      {exportFailed && (
+        <p className="text-xs text-amber-200" role="status">
+          Calendar export failed. Try again, or remove items without a known end
+          time.
+        </p>
+      )}
     </div>
   )
 }

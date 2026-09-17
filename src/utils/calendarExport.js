@@ -87,6 +87,9 @@ const parseSessionDates = (session) => {
   return { startDate, endDate }
 }
 
+export const canExportToCalendar = (session) =>
+  Boolean(parseSessionDates(session))
+
 const normalizeSessionsArray = (sessions) =>
   (Array.isArray(sessions) ? sessions : [sessions]).filter(Boolean)
 
