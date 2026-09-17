@@ -13,7 +13,7 @@
     "session": {
       "title": "Designing Our Stories: Technology, Culture & the Power of the Latino Narrative",
       "abstract": "",
-      "description": "Technology doesn't just build products. It shapes how people experience, understand, and share the world.\n\nFor Latino communities in Detroit and throughout Michigan, storytelling is an essential part of preserving culture, building identity, creating connection, and making our contributions visible. From the stories we tell about our families and neighborhoods to the digital platforms, brands, products, and technologies we create, design and storytelling are deeply connected.\n\nThis session explores how Latino communities can use storytelling and technology to move from being represented by others to designing and sharing our own narratives.\n\nThe conversation will explore:\n\n- How culture influences the way we design technology and experiences\n- Why storytelling is a form of technology and community infrastructure\n- How Latino stories are represented, preserved, and sometimes overlooked\n- The role of UX, design, AI, media, and digital platforms in shaping cultural narratives\n- How entrepreneurs, technologists, designers, and community leaders can tell stories with greater intention\n- How Detroit's Latino communities can use technology to document and amplify stories across generations\n- What happens when we design technology with culture in mind, rather than designing culture out of technology\n\nThe big question: what changes when we stop asking technology to tell our stories, and start designing the technology, experiences, and platforms that let us tell them ourselves?",
+      "description": "Technology doesn't just build products. It shapes how people experience, understand, and share the world.\n\nFor Latino communities in Detroit and throughout Michigan, storytelling is an essential part of preserving culture, building identity, creating connection, and making our contributions visible. From the stories we tell about our families and neighborhoods to the digital platforms, brands, products, and technologies we create, design and storytelling are deeply connected.\n\nThis session explores how Latino communities can use storytelling and technology to move from being represented by others to designing and sharing our own narratives.\n\nThe conversation will explore:\n\n⚬\tHow culture influences the way we design technology and experiences\n⚬\tWhy storytelling is a form of technology and community infrastructure\n⚬\tHow Latino stories are represented, preserved, and sometimes overlooked\n⚬\tThe role of UX, design, AI, media, and digital platforms in shaping cultural narratives\n⚬\tHow entrepreneurs, technologists, designers, and community leaders can tell stories with greater intention\n⚬\tHow Detroit's Latino communities can use technology to document and amplify stories across generations\n⚬\tWhat happens when we design technology with culture in mind, rather than designing culture out of technology\n\nThe big question: what changes when we stop asking technology to tell our stories, and start designing the technology, experiences, and platforms that let us tell them ourselves?",
       "tags": ["Level Up", "In-person"],
       "track": "Level Up",
       "time": "09:00",
@@ -115,7 +115,7 @@
     "session": {
       "title": "The 80/20 of Accessibility: Small Fixes, Big Impact",
       "abstract": "",
-      "description": "\"The 80/20 of Accessibility: Small Fixes, Big Impact\" walks through the small number of fixes that solve most accessibility problems on the web — no WCAG memorization required. Using real screen reader demos, with audience participation, this talk breaks down high-impact issues and gives students practical, five-minute habits they can start using immediately, whether they're building their first project or their fiftieth. You don't need to be an expert to catch 80% of the problems — you need a checklist.",
+      "description": "\"The 80/20 of Accessibility: Small Fixes, Big Impact\" walks through the small number of fixes that solve most accessibility problems on the web — no WCAG memorization required. Using real screen reader demos, with audience participation, this talk breaks down high-impact issues and gives attendees practical, five-minute habits they can start using immediately, whether they're building their first project or their fiftieth. You don't need to be an expert to catch 80% of the problems — you need a checklist. \n\nWhat are we waiting for, let's get started today!",
       "tags": ["Innovation", "In-person"],
       "track": "Level Up",
       "time": "10:30",
@@ -285,12 +285,12 @@
     "linkedIn": "https://www.linkedin.com/in/ricardotapiavargas/"
   },
   {
-    "id": 1001125532,
-    "name": "SHPE Detroit",
-    "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/b4ac13262059c2f3857fad8f263e05917cb09bfd-2667x4252.jpg",
-    "bio": "The Society of Hispanic Professional Engineers (SHPE) Detroit Professional Chapter empowers Hispanic students and professionals across Southeast Michigan to realize their full potential in STEM. Through targeted youth outreach, student mentorship, and a regional network of engineering professionals, SHPE Detroit builds pathways that advance technical careers and foster community impact.",
-    "organization": "SHPE Detroit",
-    "position": "Team",
+    "id": 834553404,
+    "name": "Cindy Cruz Rodriguez",
+    "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/8a3800f1b801610ca79d8bb6ba7f50ebbe83c271-750x750.webp",
+    "bio": "Hello! My name is Cindy Cruz-Rodriguez and my current role is Supplier Quality Engineer for Interiors Components at the GM Warren Technical Center where I directly engage and ensure compliance for 9 different DUNS Suppliers. \n",
+    "organization": "General Motors",
+    "position": "Supplier Quality Engineer at General Motors",
     "isWTM": false,
     "isGDE": false,
     "isModerator": false,
@@ -304,18 +304,121 @@
       "time": "14:00",
       "room": "Main Room",
       "sessionDuration": 60,
-      "speakers": ["SHPE Detroit"],
+      "speakers": ["Cindy Cruz Rodriguez", "Raquel Estrada", "Maridy Mazaira"],
       "moderators": [],
-      "panelists": ["SHPE Detroit"],
+      "panelists": ["Cindy Cruz Rodriguez", "Raquel Estrada", "Maridy Mazaira"],
       "participants": [
         {
-          "name": "SHPE Detroit",
-          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/b4ac13262059c2f3857fad8f263e05917cb09bfd-2667x4252.jpg",
+          "name": "Cindy Cruz Rodriguez",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/8a3800f1b801610ca79d8bb6ba7f50ebbe83c271-750x750.webp",
           "isModerator": false,
           "sortOrder": 0
+        },
+        {
+          "name": "Raquel Estrada",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/70ef27fe6f872c58ddd81c8d40f62537fd1525d8-1254x1254.webp",
+          "isModerator": false,
+          "sortOrder": 1
+        },
+        {
+          "name": "Maridy Mazaira",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/f51e51a6769090c84d573c14a6c31c2bdc512fdd-400x400.webp",
+          "isModerator": false,
+          "sortOrder": 2
         }
       ]
     },
-    "linkedIn": "https://www.linkedin.com/company/shpe-detroit-professional/"
+    "linkedIn": "https://www.linkedin.com/in/cindy-cruz-rodriguez/"
+  },
+  {
+    "id": 1549540451,
+    "name": "Raquel Estrada",
+    "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/70ef27fe6f872c58ddd81c8d40f62537fd1525d8-1254x1254.webp",
+    "bio": "Fixing what’s broken. Building what’s missing. Developing the people who make it last.\n\nI’m a transformation and operational excellence leader with 12+ years of experience helping organizations turn strategy into practical, lasting improvements. Most of my work sits at the intersection of process, people, and execution—figuring out how things really work today, designing a better way forward, and helping teams make those changes stick.\n\nThroughout my career I’ve worked across financial services, consumer goods, automotive, and manufacturing environments where processes are complex and teams have to work across functions to get results. I enjoy stepping into situations where processes are fragmented or unclear and helping bring structure, alignment, and momentum.\n\nSome of the work I’ve led includes building an enterprise process transformation function at a bank, implementing BPM platforms to standardize processes and governance, running global continuous improvement initiatives, and developing internal capabilities so teams can sustain improvements on their own.",
+    "organization": "Ally Financial",
+    "position": "Process Optimization Manager",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 1,
+    "session": {
+      "title": "Engineering Loteria",
+      "abstract": "",
+      "description": "Celebrate Hispanic Heritage Month through an interactive, culturally rooted spin on the classic game of chance. Replace the traditional chalupa and catrín with engineering icons, software terms, hardware components, and technical milestones. Attendees network, test their STEM trivia, and compete for prizes in a lively community atmosphere.\n⚬\tInteractive Gameplay: Custom Lotería cards spotlight engineering concepts, technical tools, and historic Hispanic innovators.\n⚬\tCommunity Connection: Connect students, seasoned technologists, and industry leaders across disciplines.\n⚬\tPrizes and Trivia: Earn recognition and take home gear while celebrating culture, craft, and technical problem-solving.",
+      "tags": ["STEM Pipeline", "Tech Trivia", "Diversity"],
+      "track": "Level Up",
+      "time": "14:00",
+      "room": "Main Room",
+      "sessionDuration": 60,
+      "speakers": ["Cindy Cruz Rodriguez", "Raquel Estrada", "Maridy Mazaira"],
+      "moderators": [],
+      "panelists": ["Cindy Cruz Rodriguez", "Raquel Estrada", "Maridy Mazaira"],
+      "participants": [
+        {
+          "name": "Cindy Cruz Rodriguez",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/8a3800f1b801610ca79d8bb6ba7f50ebbe83c271-750x750.webp",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Raquel Estrada",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/70ef27fe6f872c58ddd81c8d40f62537fd1525d8-1254x1254.webp",
+          "isModerator": false,
+          "sortOrder": 1
+        },
+        {
+          "name": "Maridy Mazaira",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/f51e51a6769090c84d573c14a6c31c2bdc512fdd-400x400.webp",
+          "isModerator": false,
+          "sortOrder": 2
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/raquel-estrada/"
+  },
+  {
+    "id": 1649642700,
+    "name": "Maridy Mazaira",
+    "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/f51e51a6769090c84d573c14a6c31c2bdc512fdd-400x400.webp",
+    "bio": "President - Society of Hispanic Professional Engineers, Detroit Chapter",
+    "organization": "SHPE Detroit",
+    "position": "President",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 2,
+    "session": {
+      "title": "Engineering Loteria",
+      "abstract": "",
+      "description": "Celebrate Hispanic Heritage Month through an interactive, culturally rooted spin on the classic game of chance. Replace the traditional chalupa and catrín with engineering icons, software terms, hardware components, and technical milestones. Attendees network, test their STEM trivia, and compete for prizes in a lively community atmosphere.\n⚬\tInteractive Gameplay: Custom Lotería cards spotlight engineering concepts, technical tools, and historic Hispanic innovators.\n⚬\tCommunity Connection: Connect students, seasoned technologists, and industry leaders across disciplines.\n⚬\tPrizes and Trivia: Earn recognition and take home gear while celebrating culture, craft, and technical problem-solving.",
+      "tags": ["STEM Pipeline", "Tech Trivia", "Diversity"],
+      "track": "Level Up",
+      "time": "14:00",
+      "room": "Main Room",
+      "sessionDuration": 60,
+      "speakers": ["Cindy Cruz Rodriguez", "Raquel Estrada", "Maridy Mazaira"],
+      "moderators": [],
+      "panelists": ["Cindy Cruz Rodriguez", "Raquel Estrada", "Maridy Mazaira"],
+      "participants": [
+        {
+          "name": "Cindy Cruz Rodriguez",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/8a3800f1b801610ca79d8bb6ba7f50ebbe83c271-750x750.webp",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Raquel Estrada",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/70ef27fe6f872c58ddd81c8d40f62537fd1525d8-1254x1254.webp",
+          "isModerator": false,
+          "sortOrder": 1
+        },
+        {
+          "name": "Maridy Mazaira",
+          "avatar": "https://cdn.sanity.io/images/d1h6cagq/production/f51e51a6769090c84d573c14a6c31c2bdc512fdd-400x400.webp",
+          "isModerator": false,
+          "sortOrder": 2
+        }
+      ]
+    }
   }
 ]
