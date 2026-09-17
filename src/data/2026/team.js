@@ -116,7 +116,7 @@ export const teamData = [
   },
   {
     id: 10,
-    name: 'Rishiraj Sarkar',
+    name: 'Cindy Cruz Rodriguez',
     twitter: '',
     linkedin: 'https://www.linkedin.com/in/cindy-cruz-rodriguez/',
     github: null,
