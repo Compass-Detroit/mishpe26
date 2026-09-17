@@ -201,5 +201,5 @@ export const teamData = [
  * section rather than fall back here.
  *
  * Flip this to team.generated.json once the documents exist, in the same way
- * partners.js does, and delete the list above.
+ * speakers.js and partners.js do, and delete the list above.
  */
