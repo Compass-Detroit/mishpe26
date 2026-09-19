@@ -101,7 +101,7 @@ function LocationSection() {
         <div className="flex flex-col items-center space-y-6">
           <div className="flex items-center justify-center gap-4">
             <div className="h-px w-10 bg-gradient-to-r from-transparent to-iwd-gold-400/40 sm:w-14" />
-            <span className="font-body text-[10px] font-semibold uppercase tracking-[0.4em] text-iwd-gold-400 sm:text-xs">
+            <span className="font-body text-[10px] font-bold uppercase tracking-[0.4em] text-iwd-gold-400 sm:text-xs">
               Venue & Travel
             </span>
             <div className="h-px w-10 bg-gradient-to-l from-transparent to-iwd-gold-400/40 sm:w-14" />
@@ -129,9 +129,9 @@ function LocationSection() {
                   aria-hidden="true"
                 />
               </div>
-              <h3 className="text-xl font-semibold text-white">When</h3>
+              <h3 className="text-xl font-bold text-white">When</h3>
             </div>
-            <p className="text-lg font-semibold tracking-wide text-iwd-gold-300">
+            <p className="text-lg font-bold tracking-wide text-iwd-gold-300">
               Saturday, September 19, 2026
             </p>
             <p className="mt-2 text-gray-400">
@@ -147,7 +147,7 @@ function LocationSection() {
                   aria-hidden="true"
                 />
               </div>
-              <h3 className="text-xl font-semibold text-white">Venue</h3>
+              <h3 className="text-xl font-bold text-white">Venue</h3>
             </div>
             <p className="mb-2 text-2xl font-bold text-white">
               WSU James and Patricia Anderson College of Engineering Building
@@ -160,7 +160,7 @@ function LocationSection() {
                 href={VENUE_GOOGLE_MAPS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-iwd-gold-500/30 bg-iwd-gold-500/10 px-4 py-2 text-sm font-semibold text-iwd-gold-300 transition-colors hover:bg-iwd-gold-500/20"
+                className="inline-flex items-center gap-2 rounded-lg border border-iwd-gold-500/30 bg-iwd-gold-500/10 px-4 py-2 text-sm font-bold text-iwd-gold-300 transition-colors hover:bg-iwd-gold-500/20"
               >
                 <FaMap className="size-4" /> Open in Google Maps
               </a>
@@ -337,7 +337,7 @@ function LocationSection() {
                 href={VENUE_GOOGLE_MAPS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-iwd-gold-500/30 bg-iwd-gold-500/10 px-4 py-2 text-sm font-semibold text-iwd-gold-300 transition-colors hover:bg-iwd-gold-500/20"
+                className="inline-flex items-center gap-2 rounded-lg border border-iwd-gold-500/30 bg-iwd-gold-500/10 px-4 py-2 text-sm font-bold text-iwd-gold-300 transition-colors hover:bg-iwd-gold-500/20"
               >
                 <FaMap className="size-4" /> Open in Google Maps
               </a>
@@ -356,19 +356,33 @@ function LocationSection() {
                   aria-hidden="true"
                 />
               </div>
-              <h3 className="text-xl font-semibold text-white">
-                Parking Options
-              </h3>
+              <h3 className="text-xl font-bold text-white">Parking Options</h3>
             </div>
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+            <div className="grid">
               <div className="flex items-start gap-4">
                 <div className="mt-1 flex size-6 shrink-0 items-center justify-center rounded-full bg-iwd-gold-400 font-heading text-[10px] font-black text-iwd-black-950">
                   1
                 </div>
-                <div>
+                <div className="flex flex-col gap-2">
                   <strong className="mb-1 block text-white">
                     Campus parking
                   </strong>
+                  <p className="text-lg leading-relaxed text-white">
+                    Find street parking along Anthony Wayne Drive (Third Ave).
+                    Also find parking lots and structures across both Third and
+                    Warren Ave. You can find more parking options including
+                    street parking with the{' '}
+                    <a
+                      href="https://parkdetroit.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Park Detroit App (opens in a new tab)"
+                      className="text-iwd-gold-300 hover:text-iwd-gold-400"
+                    >
+                      Park Detroit App
+                    </a>
+                    .
+                  </p>
                   <p className="text-lg leading-relaxed text-gray-400">
                     Parking structure and rate details for the Wayne State
                     campus are being confirmed — check back closer to the event.
@@ -380,8 +394,8 @@ function LocationSection() {
 
           {/* Entrance Card */}
           <div className="group rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 backdrop-blur-sm transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.04]">
-            <h3 className="mb-3 text-xl font-semibold text-white">Entrance</h3>
-            <p className="text-lg leading-relaxed text-gray-400">
+            <h3 className="mb-3 text-xl font-bold text-white">Entrance</h3>
+            <p className="text-lg leading-relaxed text-white">
               Enter through the main doors on Anthony Wayne Drive. Check-in is
               located in the main lobby. Have your registration QR code ready.
             </p>
